@@ -4,6 +4,8 @@ Serie de normas e recomendacións a seguir para cando faga código para obter un
 ## Índice
 - [Doazóns](https://github.com/ran-n/doc/blob/main/doazóns.md)
 - [Estrutura](coc_gz.md#estrutura)
+  - [Carpetas](coc_gz.md#carpetas)
+  - [Código](coc_gz.md#código)
 - [Comentarios](coc_gz.md#comentarios)
 - [Metadata](coc_gz.md#metadata)
 
