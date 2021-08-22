@@ -9,6 +9,10 @@ Serie de normas e recomendacións a seguir para cando faga código para obter un
 
 ## Estrutura
 
+### Carpetas
+
+### Código
+
 ## Comentarios
 
 ## Metadata
