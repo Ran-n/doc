@@ -11,7 +11,7 @@ Central documentation for all [Ran#](mailto:ran.hash@proton.me) projects — lic
 
 ## License
 
-All Ran# projects are released under the [PayBack License (PBL) v1.0](https://github.com/Ran-n/doc/blob/main/LICENSE).
+All Ran# projects are released under the [PayBack License (PBL) v2.0](https://github.com/Ran-n/doc/blob/main/LICENSE).
 
 Free for personal and non-commercial use. Commercial use requires a revenue-share agreement — contact [ran.hash@proton.me](mailto:ran.hash@proton.me).
 
