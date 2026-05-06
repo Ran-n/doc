@@ -104,7 +104,7 @@ DEFINITIONS
 
 "Key Rotation Window"
     A shortened voting window that applies exclusively to GPG key rotation
-    votes under clause 41. The maximum duration is 24 hours. The proposer
+    votes under clause 42. The maximum duration is 24 hours. The proposer
     may shorten it but not extend it beyond 24 hours. The window opens when
     the vote record file is committed to the repository.
 
@@ -246,7 +246,7 @@ CONDITIONS
    of that notice, all rights granted by the agreement are suspended
    automatically. Suspension is not a permanent revocation — rights are
    restored upon payment of all outstanding amounts, unless the Founder elects
-   to terminate the agreement under clause 32.
+   to terminate the agreement under clause 33.
 
 ─────────────────────────────────────────────────────────────────────────────
 OWNERSHIP
@@ -269,7 +269,7 @@ OWNERSHIP
 6. OWNERSHIP PERCENTAGE
    Ownership is tracked in the CONTRIBUTORS file. The Founder begins at 100%
    ownership. Ownership may be transferred to a contributor only via
-   resolution vote and the governance process defined in clauses 19–24.
+   resolution vote and the governance process defined in clauses 19–25.
    Transferred ownership is drawn proportionally from all existing dilutable
    ownership shares in the distributable ownership pool. Since the Founder
    holds 100% ownership by default, the Founder constitutes a resolution
@@ -290,7 +290,7 @@ OWNERSHIP
    passes when yes votes exceed no votes after all ballots are cast or the
    voting window expires. Abstentions are excluded from the count. All
    votes must be recorded and verified via the governance process defined
-   in clauses 19–24. See clause 6 for the Founder's unilateral resolution
+   in clauses 19–25. See clause 6 for the Founder's unilateral resolution
    right prior to ownership being shared.
 
    Minimum ownership to call a vote:
@@ -485,7 +485,7 @@ CONTRIBUTORS FILE
       Commercial-Agent     Present only on the Founder's entry. Optional;
                            pseudonym or legal name of the person authorised to
                            negotiate and execute commercial agreements on the
-                           Founder's behalf, as defined in clause 42. May
+                           Founder's behalf, as defined in clause 43. May
                            include a scope constraint in parentheses after the
                            name. If blank, no Commercial Agent is designated.
       Successor-Ownership  Present only if the holder has a non-zero ownership
@@ -769,7 +769,7 @@ FORKS AND DERIVATIVES
     ownership percentage is held in abeyance. It does not count toward
     quorum calculations, and it cannot be voted on, transferred, or
     redistributed until a valid successor or heir identifies themselves and
-    completes the succession process defined in clause 28, or until the
+    completes the succession process defined in clause 29, or until the
     fork's remaining ownership holders vote to treat the share as abandoned
     and redistribute it via the standard dilution mechanics.
 
@@ -777,13 +777,13 @@ FORKS AND DERIVATIVES
 TRADEMARKS
 ─────────────────────────────────────────────────────────────────────────────
 
-26. NO TRADEMARK GRANT
+27. NO TRADEMARK GRANT
     This license does not grant any rights to use the Founder's name,
     pseudonym, project name, logos, or any associated marks, whether
     registered or unregistered. No such rights are implied by the terms
     of this license.
 
-27. FORK NAMING RESTRICTION
+28. FORK NAMING RESTRICTION
     A fork of this software may not use the original project's name, or any
     name confusingly similar to it, or present itself as the official version
     of the original project, without written permission granted by a majority
@@ -793,7 +793,7 @@ TRADEMARKS
 SUCCESSION
 ─────────────────────────────────────────────────────────────────────────────
 
-28. SUCCESSION
+29. SUCCESSION
     Ownership and revenue share are heritable independently. Any holder may
     designate separate successors for each via the Successor-Ownership and
     Successor-Revenue fields in the CONTRIBUTORS file. The
@@ -827,14 +827,14 @@ SUCCESSION
     90 days of the holder's death or the date the physician's certification
     is presented, whichever is the triggering event. If no notification is
     received within that period, the ownership percentage and revenue share
-    are held in abeyance under the same mechanics defined in clause 25 for
+    are held in abeyance under the same mechanics defined in clause 26 for
     inherited owners in forks, until a valid successor or heir comes forward.
 
 ─────────────────────────────────────────────────────────────────────────────
 LICENSE VERSIONING
 ─────────────────────────────────────────────────────────────────────────────
 
-29. VERSION PINNING
+30. VERSION PINNING
     Each project is governed by the version of the PBL under which it was
     released. A newer version of the PBL does not automatically apply to
     projects released under an older version. Previous distributions of a
@@ -847,7 +847,7 @@ LICENSE VERSIONING
 CONTRIBUTOR AGREEMENT
 ─────────────────────────────────────────────────────────────────────────────
 
-30. CONTRIBUTION WARRANTY
+31. CONTRIBUTION WARRANTY
     By submitting a contribution to this project — whether via pull request,
     patch, or any other means — the contributor warrants that:
       a) The contribution is their original work, except for any AI-generated
@@ -859,13 +859,13 @@ CONTRIBUTOR AGREEMENT
          the existing ownership pool, distributed proportionally among current
          owners in accordance with clause 9.
       d) They have disclosed all AI-generated portions of their contribution
-         in accordance with clause 40.
+         in accordance with clause 41.
       e) They accept the terms of this license in full, including the
          commercial use and revenue share clauses.
     Submission of a contribution constitutes acceptance of these terms
     without requiring a separate signed agreement.
 
-31. CONTRIBUTOR TERMINATION
+32. CONTRIBUTOR TERMINATION
     If a contributor violates any term of this license — including but not
     limited to submitting contributions that infringe third-party rights,
     misrepresenting authorship, or engaging in bad-faith governance — all
@@ -925,20 +925,20 @@ CONTRIBUTOR AGREEMENT
 ENFORCEMENT
 ─────────────────────────────────────────────────────────────────────────────
 
-32. COMMERCIAL VIOLATION
+33. COMMERCIAL VIOLATION
     Violation of the commercial clause — including use without an agreement,
     deliberate obfuscation of the software's presence in a product, or
     relabeling to avoid attribution — revokes all rights granted by this
     license immediately and permanently. The Founder reserves the right to
     pursue compensation for unlicensed commercial use retroactively.
 
-33. NO REVENUE THRESHOLD
+34. NO REVENUE THRESHOLD
     There is no minimum revenue threshold for the commercial use requirement.
     Any use that generates revenue — regardless of amount — constitutes
     commercial use and requires a prior agreement with the Founder. There
     are no exemptions based on revenue size, project scale, or intent.
 
-34. AUDIT RIGHT
+35. AUDIT RIGHT
     The Founder, or a representative designated by a resolution vote, may
     request from a commercial licensee a written statement of revenue
     derived from use of this software, covering any period within the
@@ -947,22 +947,22 @@ ENFORCEMENT
     calendar year per licensee. If the licensee fails to respond within
     the required period, or if the statement is found to be materially
     inaccurate, the Founder may treat the failure as a commercial violation
-    under clause 32.
+    under clause 33.
 
-35. WAIVER
+36. WAIVER
     Failure by the Founder or any rights holder to enforce any provision of
     this license at any time does not constitute a waiver of the right to
     enforce that provision in the future. No waiver of any breach shall be
     construed as a waiver of any subsequent breach.
 
-36. SEVERABILITY
+37. SEVERABILITY
     If any provision of this license is found to be invalid, illegal, or
     unenforceable by a court of competent jurisdiction, that provision shall
     be modified to the minimum extent necessary to make it enforceable, or
     severed if modification is not possible. The remaining provisions of this
     license shall continue in full force and effect.
 
-37. GOVERNING LAW AND JURISDICTION
+38. GOVERNING LAW AND JURISDICTION
     This license shall be governed by and construed in accordance with the
     laws of Spain. The copyright protections granted by this license extend
     to all jurisdictions that are signatories to the Berne Convention for
@@ -981,7 +981,7 @@ ENFORCEMENT
 SIGNATURES AND LEGAL WEIGHT
 ─────────────────────────────────────────────────────────────────────────────
 
-38. GPG SIGNATURES AS CONSENT
+39. GPG SIGNATURES AS CONSENT
     A GPG-signed ballot, as defined in clause 21, constitutes a binding
     expression of consent by the signing party under this license. By
     signing a ballot, the signing party confirms they have read, understood,
@@ -990,7 +990,7 @@ SIGNATURES AND LEGAL WEIGHT
     legal weight as a digital signature under applicable electronic signature
     law, including but not limited to the eIDAS Regulation (EU) 910/2014.
 
-39. CONTRIBUTORS FILE AS RECORD
+40. CONTRIBUTORS FILE AS RECORD
     The CONTRIBUTORS file, maintained in accordance with clause 18 and
     amended only through the governance process defined in clauses 19–22,
     constitutes the authoritative record of ownership and revenue
@@ -1000,7 +1000,7 @@ SIGNATURES AND LEGAL WEIGHT
     CONTRIBUTORS file or any governance artifact through version control
     operations — including force-push, history rewrite, tag deletion, or
     branch replacement — is void and constitutes bad-faith governance under
-    clause 31. The last validly committed version of the CONTRIBUTORS file,
+    clause 32. The last validly committed version of the CONTRIBUTORS file,
     as verifiable through the repository's signed commit history, remains
     the authoritative record regardless of any subsequent tampering.
 
@@ -1008,7 +1008,7 @@ SIGNATURES AND LEGAL WEIGHT
 AI-GENERATED CONTRIBUTIONS
 ─────────────────────────────────────────────────────────────────────────────
 
-40. AI CONTRIBUTIONS
+41. AI CONTRIBUTIONS
     Any AI-generated portion of a contribution — as defined in the
     Definitions section — is not original work of the contributor and does
     not entitle the contributor to any ownership or revenue share on that
@@ -1025,13 +1025,13 @@ AI-GENERATED CONTRIBUTIONS
 
     Contributors must disclose AI-generated portions at the time of
     submission. Failure to disclose constitutes misrepresentation of
-    authorship under clause 31 and is grounds for contributor termination.
+    authorship under clause 32 and is grounds for contributor termination.
 
 ─────────────────────────────────────────────────────────────────────────────
 GPG KEY ROTATION
 ─────────────────────────────────────────────────────────────────────────────
 
-41. GPG KEY ROTATION
+42. GPG KEY ROTATION
     An ownership holder may replace their registered GPG key by calling a
     key rotation vote. A key rotation vote is a standard resolution vote subject
     to the following special rules:
@@ -1052,7 +1052,7 @@ GPG KEY ROTATION
     A holder whose registered key is known or suspected to be compromised
     must disclose the compromise to all other ownership holders immediately.
     Casting a ballot with a known-compromised key after disclosure constitutes
-    bad-faith governance under clause 31.
+    bad-faith governance under clause 32.
 
     Emergency key replacement: if a holder's registered key is compromised
     such that they no longer control it and cannot sign a ballot to call a
@@ -1072,7 +1072,7 @@ GPG KEY ROTATION
 COMMERCIAL AGENT AND FOUNDER DORMANCY
 ─────────────────────────────────────────────────────────────────────────────
 
-42. COMMERCIAL AGENT
+43. COMMERCIAL AGENT
     The Founder may designate a Commercial Agent in the CONTRIBUTORS file
     to negotiate and execute commercial agreements on the Founder's behalf.
     The Commercial-Agent field in the CONTRIBUTORS file records the agent's
@@ -1084,11 +1084,11 @@ COMMERCIAL AGENT AND FOUNDER DORMANCY
     negotiating and executing commercial agreements within the scope recorded
     in the CONTRIBUTORS file.
 
-43. FOUNDER DORMANCY
+44. FOUNDER DORMANCY
     If the Founder is dormant — as defined in the Founder Dormancy definition —
     the remaining ownership holders may appoint a temporary Commercial Agent
     by resolution vote. The temporary agent's authority is identical to that
-    of a designated Commercial Agent under clause 42 and expires:
+    of a designated Commercial Agent under clause 43 and expires:
 
       a) when the Founder resumes participation and revokes the appointment
          by resolution vote, or
@@ -1100,7 +1100,7 @@ COMMERCIAL AGENT AND FOUNDER DORMANCY
 
     If the Founder becomes permanently incapacitated while dormant, the
     temporary Commercial Agent's appointment expires immediately. Succession
-    then proceeds under clause 28, and the temporary agent has no authority
+    then proceeds under clause 29, and the temporary agent has no authority
     to act on behalf of the successor until the successor has been confirmed
     through the governance process and has explicitly re-designated the agent.
 
