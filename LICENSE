@@ -1,7 +1,7 @@
 PayBack License (PBL)
 Version 2.0
 
-Copyright (c) 2026 Ran#  <ran.hash@proton.me>
+Copyright (c) 2026 Ran# <ran.hash@proton.me>
 
 ─────────────────────────────────────────────────────────────────────────────
 PREAMBLE
@@ -21,7 +21,7 @@ DEFINITIONS
 "Founder"
     The original author of the project, as identified in the CONTRIBUTORS
     file. The Founder holds 100% of ownership rights unless explicitly
-    relinquished under the terms of this license. The Founder may operate
+    transferred under the terms of this license. The Founder may operate
     under a pseudonym; their legal identity is recorded in the CONTRIBUTORS
     file under the Name field and may be disclosed to establish authorship
     in legal proceedings.
@@ -140,8 +140,16 @@ DEFINITIONS
 
 "Absence Track"
     A per-owner counter tracking votes where the owner was marked ABSENT.
-    Resets to zero after a stripping vote resolves. A stripping vote may be
-    called against an owner once their absence track reaches 2.
+    A stripping vote may be called against an owner once their absence track
+    reaches 2.
+
+    Mid-cycle decrement: each time an owner casts a YES or NO ballot, their
+    absence track is decremented by 1 (minimum 0), applied when the vote
+    closes. One ballot undoes one step — clearing 2 accumulated absences
+    requires 2 consecutive YES or NO ballots.
+
+    Full reset: both the absence track and the abstention track reset to zero
+    after any stripping vote resolves, regardless of outcome. See clause 23.
 
 "Abstention Track"
     A per-owner counter tracking votes where the owner voted ABSTAIN.
@@ -174,17 +182,18 @@ CONDITIONS
 
 2. SHARE-ALIKE
    Any modified or derived version must be released under this same license
-   (PBL v2.0 or later).
+   (PBL v2.0, or any later version approved by a resolution vote of the
+   project's ownership holders).
 
 3. COMMERCIAL USE REQUIRES AGREEMENT
    "Commercial use" means any use where this software, or a derivative of it,
-   is a direct and necessary input to generating revenue. Use is commercial
+   is a direct or material input to generating revenue. Use is commercial
    when any of the following apply:
 
      - The software, or a product that includes it, is sold or licensed for
        a fee
      - The software is used to operate a paid service, SaaS, or subscription
-       product that would not function without it
+       product
      - The software is deployed internally at a for-profit organisation in a
        capacity that directly reduces operating costs or directly increases
        output in the organisation's revenue-generating activities
@@ -236,11 +245,12 @@ OWNERSHIP
 6. OWNERSHIP PERCENTAGE
    Ownership is tracked in the CONTRIBUTORS file. The Founder begins at 100%
    ownership. Ownership may be transferred to a contributor only via
-   resolution vote and the governance process defined in clauses 19–22. Relinquished
-   ownership dilutes all existing dilutable ownership shares evenly, drawn
-   from the distributable ownership pool. Since the Founder holds 100%
-   ownership by default, the Founder constitutes a resolution unilaterally until
-   ownership is shared.
+   resolution vote and the governance process defined in clauses 19–24.
+   Transferred ownership is drawn proportionally from all existing dilutable
+   ownership shares in the distributable ownership pool. Since the Founder
+   holds 100% ownership by default, the Founder constitutes a resolution
+   unilaterally until ownership is shared. This principle applies wherever
+   a resolution vote is required by this license.
 
 7. FOUNDER OWNERSHIP FLOOR
    The Founder is guaranteed a minimum ownership of 30% at all times. This
@@ -256,8 +266,8 @@ OWNERSHIP
    passes when yes votes exceed no votes after all ballots are cast or the
    voting window expires. Abstentions are excluded from the count. All
    votes must be recorded and verified via the governance process defined
-   in clauses 19–22. Since the Founder holds 100% ownership by default,
-   the Founder constitutes a resolution unilaterally until ownership is shared.
+   in clauses 19–24. See clause 6 for the Founder's unilateral resolution
+   right prior to ownership being shared.
 
    Minimum ownership to call a vote:
      A non-Founder owner must hold at least 5% ownership at the time they
@@ -319,23 +329,23 @@ REVENUE SHARE
     effect only upon being listed in the CONTRIBUTORS file. Listing always
     requires a resolution vote following a meaningful contribution. A
     contributor's share may be dilutable or undiluted, and may include a
-    floor, as determined by the resolution vote at the time of listing. Since
-    the Founder holds 100% ownership by default, the Founder constitutes a
-    resolution unilaterally until ownership is shared.
+    floor, as determined by the resolution vote at the time of listing. See
+    clause 6 for the Founder's unilateral resolution right prior to
+    ownership being shared.
 
 14. REVENUE DILUTION
     When a new contributor is added to the distributable revenue pool, their
-    share is drawn evenly from all existing dilutable revenue shares — the
-    Founder's revenue above their floor and all non-undiluted contributor
-    shares — reducing each proportionally. Undiluted shares and floors are
-    exempt from this reduction.
+    share is drawn proportionally from all existing dilutable revenue shares —
+    the Founder's revenue above their floor and all non-undiluted contributor
+    shares — reducing each in proportion to its current size. Undiluted shares
+    and floors are exempt from this reduction.
 
 15. OWNERSHIP DILUTION
     When ownership is transferred to a contributor via resolution vote, the
-    transferred percentage is drawn evenly from all existing dilutable
+    transferred percentage is drawn proportionally from all existing dilutable
     ownership shares — the Founder's ownership above their floor and all
-    non-undiluted contributor ownership shares — reducing each
-    proportionally. Undiluted ownership shares and floors are exempt from
+    non-undiluted contributor ownership shares — reducing each in proportion
+    to its current size. Undiluted ownership shares and floors are exempt from
     this reduction.
 
 16. CONTRIBUTOR FLOORS AND UNDILUTED SHARES
@@ -345,9 +355,9 @@ REVENUE SHARE
     recorded explicitly in the CONTRIBUTORS file and verified via the
     governance process defined in clauses 19–22. Floors and undiluted shares
     granted to contributors follow the same mechanics as the Founder's
-    floor: exempt from dilution, recorded with the [x%] notation. Since the
-    Founder holds 100% ownership by default, the Founder constitutes a
-    resolution unilaterally until ownership is shared.
+    floor: exempt from dilution, recorded with the [x%] notation. See
+    clause 6 for the Founder's unilateral resolution right prior to
+    ownership being shared.
 
 17. NO SUBLICENSING
     Commercial agreements are personal and non-transferable. A commercial
@@ -446,7 +456,8 @@ CONTRIBUTORS FILE
                   — no dynamic placeholders; bracketed value is the floor
       Absent      Current absence track count; resets after a stripping vote
       Abstain     Current abstention track count; resets after a stripping vote
-      Score       Current participation score: (Absent × 2) + Abstain
+      Score       Current participation score; formula defined under
+                  "Participation Score" in the Definitions section
       Commercial-Agent     Present only on the Founder's entry. Optional;
                            pseudonym or legal name of the person authorised to
                            negotiate and execute commercial agreements on the
@@ -454,10 +465,11 @@ CONTRIBUTORS FILE
                            include a scope constraint in parentheses after the
                            name. If blank, no Commercial Agent is designated.
       Successor-Ownership  Present only if the holder has a non-zero ownership
-                           percentage. Optional; pseudonym or legal name of the
-                           person who inherits the ownership stake upon death or
-                           permanent incapacitation. If blank, the ownership
-                           stake passes to the holder's legal heirs.
+                           percentage or patent holdings. Optional; pseudonym or
+                           legal name of the person who inherits the ownership
+                           stake and patent holdings upon death or permanent
+                           incapacitation. If blank, these pass to the holder's
+                           legal heirs.
       Successor-Revenue    Present only if the holder has a non-zero revenue
                            share. Optional; pseudonym or legal name of the
                            person who inherits the revenue share upon death or
@@ -582,6 +594,18 @@ GOVERNANCE
     The CONTRIBUTORS file may only be updated after the vote passes and
     all artifacts are committed to the repository alongside it.
 
+    Ballot disputes: if any owner believes a ballot was cast with a
+    compromised or fraudulent key, they must raise the objection in writing
+    to all other ownership holders before the CONTRIBUTORS file is updated
+    following the vote. The objection must identify the ballot and state the
+    grounds. If the objection is not resolved by agreement, the vote is
+    paused and a key-rotation or bad-faith-governance process under clauses
+    41 and 31 respectively must be completed before the vote may resume.
+    When a paused vote resumes, the original voting window is extended by
+    the duration of the pause; previously cast valid ballots remain in
+    effect and owners who have not yet voted may cast their ballot during
+    the extension.
+
 23. ABSENCE AND ABSTENTION TRACKING
     If a vote closes during a declared absence for an owner — as defined in
     the Declared Absence definition — that owner is not marked ABSENT, no
@@ -606,7 +630,8 @@ GOVERNANCE
     Abstain, and Score values for the affected owner.
 
     Track thresholds — any of the following enables a stripping vote to
-    be called; none of them mandate it:
+    be called; none of them mandate it (see "Participation Score" in the
+    Definitions section for the score formula):
       - Absence track reaches 2
       - Abstention track reaches 4
       - Participation score reaches 3
@@ -633,10 +658,12 @@ GOVERNANCE
     vote — it does not require the ownership stripping thresholds to be met.
 
     If the stripping vote passes, the flagged owner's ownership is
-    redistributed evenly among all remaining owners via the standard
-    dilution mechanics. If revenue is also stripped, the flagged owner's
-    revenue share is likewise redistributed evenly among all remaining
-    contributors via the standard dilution mechanics.
+    redistributed among all remaining owners proportionally to their
+    existing dilutable ownership shares, following the standard dilution
+    mechanics in clause 15. If revenue is also stripped, the flagged owner's
+    revenue share is likewise redistributed among all remaining contributors
+    proportionally to their existing dilutable revenue shares, following the
+    standard dilution mechanics in clause 14.
 
     The stripped owner may earn ownership again through meaningful
     contribution and a subsequent resolution vote, as with any new contributor.
@@ -647,7 +674,8 @@ FORKS AND DERIVATIVES
 
 25. FORK REQUIREMENTS
     Any fork or derivative of this software must be released under this same
-    license (PBL v2.0 or later). The original Founder's ownership and revenue
+    license (PBL v2.0, or any later version approved by a resolution vote of
+    the fork's ownership holders). The original Founder's ownership and revenue
     floors as recorded in the original project's CONTRIBUTORS file at the
     time of the fork carry over unchanged into the fork's CONTRIBUTORS file.
     The forker may not reduce or remove the original Founder's floors. Any
@@ -703,8 +731,9 @@ SUCCESSION
     designate separate successors for each via the Successor-Ownership and
     Successor-Revenue fields in the CONTRIBUTORS file. The
     Successor-Ownership field is present only for holders with a non-zero
-    ownership percentage; the Successor-Revenue field is present only for
-    holders with a non-zero revenue share. Both fields are optional.
+    ownership percentage or patent holdings; the Successor-Revenue field is
+    present only for holders with a non-zero revenue share. Both fields are
+    optional.
 
     "Permanent incapacitation" for the purposes of this clause means a
     condition certified in writing by a licensed physician stating that the
@@ -716,8 +745,8 @@ SUCCESSION
     Upon the death or permanent incapacitation of a holder:
       - Their ownership percentage and patent holdings pass to their
         designated Successor-Ownership. If no Successor-Ownership is named,
-        ownership passes to their legal heirs in accordance with applicable
-        inheritance law.
+        ownership and patent holdings pass to their legal heirs in accordance
+        with applicable inheritance law.
       - Their revenue share passes to their designated Successor-Revenue.
         If no Successor-Revenue is named, the revenue share passes to their
         legal heirs in accordance with applicable inheritance law.
@@ -727,7 +756,12 @@ SUCCESSION
     designate to a named successor.
 
     The successor or heirs must notify the remaining ownership holders and
-    update the CONTRIBUTORS file via the standard governance process.
+    update the CONTRIBUTORS file via the standard governance process within
+    90 days of the holder's death or the date the physician's certification
+    is presented, whichever is the triggering event. If no notification is
+    received within that period, the ownership percentage and revenue share
+    are held in abeyance under the same mechanics defined in clause 25 for
+    inherited owners in forks, until a valid successor or heir comes forward.
 
 ─────────────────────────────────────────────────────────────────────────────
 LICENSE VERSIONING
@@ -769,10 +803,15 @@ CONTRIBUTOR AGREEMENT
     limited to submitting contributions that infringe third-party rights,
     misrepresenting authorship, or engaging in bad-faith governance — all
     rights granted to that contributor under this license terminate
-    immediately and permanently. Revenue share and ownership entitlements
-    recorded in the CONTRIBUTORS file are suspended pending resolution. The
-    Founder may initiate a resolution vote to formally remove the contributor
-    and redistribute their shares.
+    immediately and permanently. The terminated contributor's voting rights,
+    revenue share, and ownership entitlements recorded in the CONTRIBUTORS
+    file are suspended pending resolution; suspended revenue is held in
+    escrow and not distributed to any party until the resolution vote
+    concludes. The Founder must initiate a resolution vote to formally remove
+    the contributor and redistribute their shares within 60 days of the
+    date the Founder first became aware of the violation. If no vote is
+    called within that period, the suspension lapses and all entitlements
+    are restored.
 
     "Bad-faith governance" includes, without limitation, any of the
     following acts:
@@ -833,10 +872,10 @@ ENFORCEMENT
     are no exemptions based on revenue size, project scale, or intent.
 
 34. AUDIT RIGHT
-    Any ownership holder, or a representative designated by a resolution
-    vote, may request from a commercial licensee a written statement of
-    revenue derived from use of this software, covering any period within
-    the preceding 24 months. The licensee must respond within 30 days of
+    The Founder, or a representative designated by a resolution vote, may
+    request from a commercial licensee a written statement of revenue
+    derived from use of this software, covering any period within the
+    preceding 24 months. The licensee must respond within 30 days of
     receiving the request. The request may be made at most once per
     calendar year per licensee. If the licensee fails to respond within
     the required period, or if the statement is found to be materially
@@ -867,7 +906,9 @@ ENFORCEMENT
     without waiving the right to pursue remedies in any other jurisdiction.
     Parties who cannot resolve a dispute through good-faith negotiation agree
     to submit to binding arbitration under the WIPO Arbitration Rules before
-    resorting to litigation.
+    resorting to litigation. Nothing in this clause limits either party from
+    seeking emergency injunctive or other equitable relief from a court of
+    competent jurisdiction to prevent irreparable harm pending arbitration.
 
 ─────────────────────────────────────────────────────────────────────────────
 SIGNATURES AND LEGAL WEIGHT
@@ -910,10 +951,10 @@ AI-GENERATED CONTRIBUTIONS
     If a contributor's listing in the CONTRIBUTORS file includes ownership
     or revenue share that was granted in whole or in part on the basis of
     AI-generated work, the ownership and revenue share attributable to those
-    AI-generated portions shall be automatically subtracted from that
-    contributor's entry and transferred to the Founder upon discovery. The
-    correction must be made via the governance process defined in
-    clauses 19–22 and recorded in the CONTRIBUTORS file.
+    AI-generated portions must be subtracted from that contributor's entry
+    and transferred to the Founder upon discovery. The correction must be
+    made via the governance process defined in clauses 19–22 and recorded
+    in the CONTRIBUTORS file.
 
     Contributors must disclose AI-generated portions at the time of
     submission. Failure to disclose constitutes misrepresentation of
@@ -961,7 +1002,7 @@ GPG KEY ROTATION
     act voluntarily.
 
 ─────────────────────────────────────────────────────────────────────────────
-FOUNDER DORMANCY
+COMMERCIAL AGENT AND FOUNDER DORMANCY
 ─────────────────────────────────────────────────────────────────────────────
 
 42. COMMERCIAL AGENT
@@ -979,9 +1020,8 @@ FOUNDER DORMANCY
 43. FOUNDER DORMANCY
     If the Founder is dormant — as defined in the Founder Dormancy definition —
     the remaining ownership holders may appoint a temporary Commercial Agent
-    by resolution vote. The
-    temporary agent's authority is identical to that of a designated
-    Commercial Agent under clause 42 and expires:
+    by resolution vote. The temporary agent's authority is identical to that
+    of a designated Commercial Agent under clause 42 and expires:
 
       a) when the Founder resumes participation and revokes the appointment
          by resolution vote, or
@@ -990,6 +1030,12 @@ FOUNDER DORMANCY
     The temporary appointment does not affect the Founder's ownership,
     revenue floor, voting rights, or any other entitlement. The Founder
     retains full rights upon resuming participation.
+
+    If the Founder becomes permanently incapacitated while dormant, the
+    temporary Commercial Agent's appointment expires immediately. Succession
+    then proceeds under clause 28, and the temporary agent has no authority
+    to act on behalf of the successor until the successor has been confirmed
+    through the governance process and has explicitly re-designated the agent.
 
 ─────────────────────────────────────────────────────────────────────────────
 DISCLAIMER
@@ -1029,4 +1075,4 @@ IS LIMITED TO THE MINIMUM EXTENT REQUIRED BY LAW.
 CONTACT
 ─────────────────────────────────────────────────────────────────────────────
 
-To obtain a commercial license:  ran.hash@proton.me
+To obtain a commercial license: ran.hash@proton.me
