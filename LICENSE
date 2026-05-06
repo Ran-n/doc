@@ -995,9 +995,28 @@ ENFORCEMENT
     preceding 24 months. The licensee must respond within 30 days of
     receiving the request. The request may be made at most once per
     calendar year per licensee. If the licensee fails to respond within
-    the required period, or if the statement is found to be materially
-    inaccurate, the Founder may treat the failure as a commercial violation
-    under clause 33.
+    The written revenue statement must include, at minimum:
+
+      - Time period: the calendar start and end dates of the period covered.
+      - Gross revenue: total revenue generated during the period from all
+        activities in which the software was a direct or material input,
+        before any deductions.
+      - Net revenue attributable: revenue net of directly associated costs
+        (e.g., hosting fees, third-party licensing fees required solely to
+        operate the software), with each deduction itemised and labelled.
+      - Basis of calculation: a plain-language description of how the
+        software's contribution to revenue was identified and measured,
+        including the methodology used to apportion revenue where the
+        software is one of several inputs to a product or service.
+      - Product or service description: the name and nature of each product
+        or service in which the software was used during the period.
+      - Signatory: the statement must be signed — physically or by a
+        recognised digital signature — by a person with legal authority to
+        bind the licensee.
+
+    A statement that omits any required field, or that contains figures the
+    Founder has reasonable grounds to believe are materially inaccurate,
+    may be treated as a commercial violation under clause 33.
 
 36. WAIVER
     Failure by the Founder or any rights holder to enforce any provision of
