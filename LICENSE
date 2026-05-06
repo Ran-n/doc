@@ -170,11 +170,9 @@ DEFINITIONS
 
         Score = (Absence Track × 2) + Abstention Track
 
-    The score is not stored as an independent counter. The CONTRIBUTORS file
-    records Absent, Abstain, and Score fields; the Score field must always
-    equal the result of applying the formula to the current Absent and Abstain
-    values. If the recorded Score diverges from the formula result, the
-    formula governs.
+    The score is not stored in the CONTRIBUTORS file. Tracks are recorded
+    exclusively in warning files (see clause 23); the formula governs at all
+    times.
 
     A stripping vote may be called against an owner once their score reaches
     3, independent of the individual track thresholds defined under Absence
@@ -460,9 +458,6 @@ CONTRIBUTORS FILE
        GPG                  AABB CCDD EEFF 0011 2233 4455 6677 8899 AABB CCDD
        Ownership            100% [30%]
        Revenue              100% [30%]
-       Absent               0
-       Abstain              0
-       Score                0
        Commercial-Agent     (optional)
        Successor-Ownership  (optional)
        Successor-Revenue    (optional)
@@ -475,9 +470,6 @@ CONTRIBUTORS FILE
        GPG                  1122 3344 5566 7788 99AA BBCC DDEE FF00 1122 3344
        Ownership              0%
        Revenue               12% [8%]
-       Absent                 0
-       Abstain                0
-       Score                  0
        Successor-Revenue    (optional)
 
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -501,10 +493,6 @@ CONTRIBUTORS FILE
                   bracketed value is the floor
       Revenue     Current revenue share percentage; all values are resolved
                   — no dynamic placeholders; bracketed value is the floor
-      Absent      Current absence track count; resets after a stripping vote
-      Abstain     Current abstention track count; resets after a stripping vote
-      Score       Current participation score; formula defined under
-                  "Participation Score" in the Definitions section
       Commercial-Agent     Present only on the Founder's entry. Optional;
                            pseudonym or legal name of the person authorised to
                            negotiate and execute commercial agreements on the
@@ -672,9 +660,6 @@ GOVERNANCE
       Absent     <absence track after incrementing>
       Abstain    <abstention track after incrementing>
       Score      <participation score after incrementing>
-
-    The CONTRIBUTORS file must be updated to reflect the new Absent,
-    Abstain, and Score values for the affected owner.
 
     Track thresholds — any of the following enables a stripping vote to
     be called; none of them mandate it (see "Participation Score" in the

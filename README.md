@@ -15,7 +15,7 @@ All Ran# projects are released under the [PayBack License (PBL) v2.0](https://gi
 
 Free for personal and non-commercial use. Commercial use requires a revenue-share agreement — contact [ran.hash@proton.me](mailto:ran.hash@proton.me).
 
-Past versions are archived in [`licenses/`](https://github.com/Ran-n/doc/tree/main/licenses).
+Past versions are archived in [`licenses/`](https://github.com/Ran-n/doc/tree/main/licenses): [PBL v1.0](https://github.com/Ran-n/doc/blob/main/licenses/pbl_v1.0.md), [PBL v2.0](https://github.com/Ran-n/doc/blob/main/licenses/pbl_v2.0.md).
 
 ---
 
