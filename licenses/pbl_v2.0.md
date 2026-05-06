@@ -702,11 +702,44 @@ GOVERNANCE
     The stripped owner may earn ownership again through meaningful
     contribution and a subsequent resolution vote, as with any new contributor.
 
+25. ADMINISTRATIVE NOTICE
+    An Administrative Notice is a lightweight governance record used when
+    the CONTRIBUTORS file must be updated to reflect an undisputed factual
+    change — such as the combination of shares when a succession results in
+    a successor who already holds ownership in the project — that requires
+    no vote but demands acknowledgement from all ownership holders.
+
+    A notice record must be committed to:
+      governance/notices/<YYYY-MM-DD>_<slug>.notice
+
+    The notice file must contain:
+      - The pseudonym of the affected owner or owners
+      - A plain-language description of the factual change being recorded
+      - The proposed updated CONTRIBUTORS file, committed as
+        CONTRIBUTORS.proposed alongside the notice file
+      - The date the notice was opened
+      - The acknowledgement deadline (minimum 7 days from opening)
+
+    Each owner acknowledges by committing a GPG-signed acknowledgement file
+    to the notice folder. Silence after the deadline constitutes automatic
+    acknowledgement. However, an owner who fails to acknowledge before the
+    deadline is treated as having voted ABSTAIN for participation tracking
+    purposes: a warning file is created and their abstention track is
+    incremented under the same mechanics defined in clause 23.
+
+    An owner may not block an Administrative Notice. The CONTRIBUTORS file
+    is updated after the deadline passes, regardless of whether all owners
+    have explicitly acknowledged, provided no owner has raised a written
+    objection identifying a factual error in the proposed change before the
+    deadline. A factual objection — not a policy objection — pauses the
+    notice and triggers a resolution vote on the disputed fact. Policy
+    disagreement with an undisputed fact is not grounds for objection.
+
 ─────────────────────────────────────────────────────────────────────────────
 FORKS AND DERIVATIVES
 ─────────────────────────────────────────────────────────────────────────────
 
-25. FORK REQUIREMENTS
+26. FORK REQUIREMENTS
     Any fork or derivative of this software must be released under this same
     license (PBL v2.0, or any later version approved by a resolution vote of
     the fork's ownership holders). The original Founder's ownership and revenue
