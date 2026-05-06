@@ -1,0 +1,3 @@
+- [ ] Revisit the voting process
+- [ ] Revisit successor and representatives
+- [ ] Revisit the overall license

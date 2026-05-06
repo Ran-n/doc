@@ -13,6 +13,13 @@ All notable changes to this project are documented here.
 ## [2026-05-06]
 
 ### Added
+- `TODO.md` — todo list for pending review items
+
+---
+
+## [2026-05-06]
+
+### Added
 - `README.md` — contributing section linking to CONTRIBUTING.md
 
 ### Fixed
