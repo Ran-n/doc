@@ -830,6 +830,33 @@ SUCCESSION
     are held in abeyance under the same mechanics defined in clause 26 for
     inherited owners in forks, until a valid successor or heir comes forward.
 
+    Declined succession: if a designated successor notifies the remaining
+    ownership holders in writing that they decline the inheritance before
+    the 90-day window closes, their designation lapses immediately. The
+    entitlement — ownership, revenue share, patents, or any combination —
+    then passes to the holder's legal heirs as if no successor had been
+    named. A declination cannot be partial; a successor must accept or
+    decline each entitlement type (ownership and revenue) independently
+    if they are designated separately.
+
+    Succession by existing owner: if the designated successor already holds
+    ownership or revenue share in the same project, the inherited entitlement
+    is added to their existing share. This addition is recorded via an
+    Administrative Notice under clause 25 rather than a resolution vote.
+    No owner may object on policy grounds to the arithmetic combination;
+    only factual errors in the calculation are grounds for objection.
+
+    Contested or ambiguous entitlements: if the rightful recipient of any
+    entitlement cannot be determined — due to legal dispute, absence of
+    heirs, ambiguous or conflicting designations, declination by all named
+    successors and heirs, or any other reason — all contested entitlements
+    revert to the Founder and are held by the Founder pending resolution by
+    a competent legal authority or a resolution vote of the remaining
+    ownership holders. This applies to ownership, revenue share, and patent
+    holdings independently or together. Any entitlement of value that lacks
+    a valid, identified, and willing recipient belongs to the Founder by
+    default.
+
 ─────────────────────────────────────────────────────────────────────────────
 LICENSE VERSIONING
 ─────────────────────────────────────────────────────────────────────────────
