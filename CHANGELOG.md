@@ -1,7 +1,7 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/05/06 18:09:46.405741 )
+[//]: # (+ Revised: 	2026/05/06 18:21:49.489028 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
@@ -11,6 +11,9 @@ All notable changes to this project are documented here.
 ---
 
 ## [2026-05-06]
+
+### Added
+- `README.md` — contributing section linking to CONTRIBUTING.md
 
 ### Changed
 - `LICENSE` — PBL v2.0 audit fixes and score model update:
