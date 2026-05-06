@@ -165,9 +165,25 @@ DEFINITIONS
     after any stripping vote resolves, regardless of outcome. See clause 23.
 
 "Participation Score"
-    A combined score calculated as: (absence track × 2) + abstention track.
-    A stripping vote may be called against an owner once their participation
-    score reaches 3, independent of the individual track thresholds.
+    A combined participation metric derived from an owner's current track
+    values at any point in time:
+
+        Score = (Absence Track × 2) + Abstention Track
+
+    The score is not stored as an independent counter. The CONTRIBUTORS file
+    records Absent, Abstain, and Score fields; the Score field must always
+    equal the result of applying the formula to the current Absent and Abstain
+    values. If the recorded Score diverges from the formula result, the
+    formula governs.
+
+    A stripping vote may be called against an owner once their score reaches
+    3, independent of the individual track thresholds defined under Absence
+    Track and Abstention Track.
+
+    The score resets to zero — together with both tracks — after any stripping
+    vote resolves, regardless of outcome, as defined in clause 23. No other
+    event resets the score directly; all score changes are the result of track
+    changes applied under the rules above.
 
 ─────────────────────────────────────────────────────────────────────────────
 PERMISSIONS
