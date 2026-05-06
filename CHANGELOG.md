@@ -1,7 +1,7 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/05/06 18:21:49.489028 )
+[//]: # (+ Revised: 	2026/05/06 18:23:53.287810 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
@@ -14,6 +14,9 @@ All notable changes to this project are documented here.
 
 ### Added
 - `README.md` — contributing section linking to CONTRIBUTING.md
+
+### Fixed
+- `README.md` — currency logo URLs updated from `divisas/` to `currencies/` (SVG repo was renamed)
 
 ### Changed
 - `LICENSE` — PBL v2.0 audit fixes and score model update:
