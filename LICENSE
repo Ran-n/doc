@@ -678,7 +678,11 @@ GOVERNANCE
 
 24. OWNERSHIP STRIPPING
     Once any threshold defined in clause 23 is reached, any owner may
-    call a vote to strip or reduce the flagged owner's ownership.
+    call a vote to strip or reduce the flagged owner's ownership. A
+    stripping vote may reduce an owner's ownership percentage down to
+    their recorded floor, but never below it. The floor is the absolute
+    minimum that stripping can reach; it cannot be stripped further without
+    a separate resolution vote explicitly modifying the floor under clause 7.
 
     A stripping vote concerns ownership only by default. Revenue share is
     not affected unless the vote explicitly states that both ownership and
