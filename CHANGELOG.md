@@ -1,12 +1,35 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/05/05 19:02:30.613699 )
+[//]: # (+ Revised: 	2026/05/06 15:22:54.506766 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
 
 All notable changes to this project are documented here.
+
+---
+
+## [2026-05-06]
+
+### Added
+- `LICENSE` / `licenses/pbl_v2.0.md` — clause 25: administrative notice
+
+### Changed
+- `LICENSE` / `licenses/pbl_v2.0.md` — continued PBL v2.0 improvements:
+  - Clause 3: definition of "before deploying"
+  - Clause 17: change of control and acquisition handling
+  - Clause 23: decrement mechanics and full reset
+  - Clause 24: floor-as-stripping-floor clarification
+  - Clause 29: declined successor, existing owner succession, contested entitlements
+  - Clause 35: audit statement minimum required fields
+  - Participation score: definition precision and reset rule
+  - Absence track: mid-cycle decrement rule
+  - Abstention track: mid-cycle decrement rule
+  - Clauses 26–44: renumbered and all cross-references updated
+
+### Removed
+- `voto.md` — deleted governance voting specification
 
 ---
 
