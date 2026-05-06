@@ -237,6 +237,15 @@ CONDITIONS
    terms are agreed between parties. Operating commercially without an
    agreement is a violation of this license.
 
+   "Before deploying" means before the software first contributes to any
+   revenue-generating activity as defined above. There is no grace period
+   based on revenue amount, number of customers, or business stage. For any
+   organisation — including incorporated entities, partnerships, and sole
+   traders operating under any business structure — internal use that reduces
+   costs or increases output in revenue-generating operations triggers the
+   requirement upon first such use, regardless of whether any external
+   customer has yet been served.
+
    Commercial agreements are valid for the duration specified in the
    agreement. If no duration is specified, the agreement is valid for one
    year from the date of execution and must be renewed to remain in effect.
