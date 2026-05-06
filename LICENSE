@@ -390,6 +390,20 @@ REVENUE SHARE
     attempted sublicense or transfer is void and constitutes a violation of
     this license.
 
+    Change of control: in the event of a merger, acquisition, asset purchase,
+    or any other transaction resulting in a change of control of a commercial
+    licensee — regardless of whether the licensee's legal entity survives the
+    transaction — the licensee must notify the Founder in writing within 30
+    days of the change of control. The commercial agreement is suspended from
+    the date the change of control takes effect. The affected entity may
+    continue to operate under the terms of the suspended agreement for up to
+    30 days from the date of written notification while a new agreement is
+    negotiated. If no new agreement is executed within 30 days of
+    notification, the suspended agreement terminates automatically and all
+    commercial rights cease. Operating beyond the 30-day window under a
+    suspended agreement without executing a new agreement constitutes a
+    commercial violation under clause 33.
+
 ─────────────────────────────────────────────────────────────────────────────
 CONTRIBUTORS FILE
 ─────────────────────────────────────────────────────────────────────────────
