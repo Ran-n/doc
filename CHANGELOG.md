@@ -1,7 +1,7 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/05/06 15:22:54.506766 )
+[//]: # (+ Revised: 	2026/05/06 18:09:46.405741 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
@@ -12,10 +12,35 @@ All notable changes to this project are documented here.
 
 ## [2026-05-06]
 
+### Changed
+- `LICENSE` — PBL v2.0 audit fixes and score model update:
+  - Clause 3: suspension-to-termination transition now requires written notice; termination is final once communicated
+  - Clause 6: "constitutes a resolution" rephrased to "may pass any resolution unilaterally"
+  - Clause 10: "majority ownership vote" replaced with defined term "resolution vote"
+  - Clause 17: 30-day continuation window now runs from change-of-control date, not notification date; insolvency added as a change-of-control trigger
+  - Clause 20: Opened field must match commit timestamp; commit timestamp governs on divergence
+  - Clause 22: ballot validity condition "non-zero ownership" now explicitly measured at vote-open time
+  - Clause 23: EXCUSED decrement rule for absence track added; participation penalty for Administrative Notice silence removed
+  - Clause 25: silence on an Administrative Notice no longer triggers a track increment or warning file
+  - Clause 26: abeyance abandonment vote now requires resolution vote; minimum 2-year wait before abandonment vote may be called
+  - Clause 29: declination wording corrected (all-or-nothing per entitlement type); heir deadline now protected with 30-day minimum from date of declination; contested entitlements now have a fallback when the Founder is the deceased party
+  - Clause 32: Founder-as-violator gap closed — any owner may initiate the 60-day resolution vote; AI non-disclosure added explicitly to the violation triggers
+  - Clause 35: truncated sentence restored — non-response to audit request may be treated as commercial violation
+  - Clause 41: AI disclosure now requires explicit identification in the submission message; non-disclosure deemed misrepresentation for clause 32 purposes
+  - Clause 42: Key Rotation Window "extend" restriction aligned with definition ("beyond 24 hours")
+  - Clause 44: sole-owner dormancy provision added; extended-absence review mechanism added for when a Commercial Agent is already designated
+  - Definitions — Quorum: now requires at least one YES or NO ballot; votes with no substantive ballots fail quorum
+  - Definitions — Absence Track: EXCUSED decrement rule added
+  - Definitions — Floor / Undiluted Share: [x%] notation clarified as floor (guaranteed minimum, exempt from dilution); Undiluted Share above the floor must be explicitly noted in the CONTRIBUTORS file
+  - Definitions — Governance Artifact: new definition added covering all files that form the official governance record
+  - Participation score no longer stored in the CONTRIBUTORS file; tracks recorded exclusively in warning files; Absent/Abstain/Score fields removed from CONTRIBUTORS file format
+
+### Removed
+- `licenses/pbl_v2.0.md` — removed from archive; will be re-added before next version upgrade
+- `voto.md` — deleted governance voting specification
+
 ### Added
 - `LICENSE` / `licenses/pbl_v2.0.md` — clause 25: administrative notice
-
-### Changed
 - `LICENSE` / `licenses/pbl_v2.0.md` — continued PBL v2.0 improvements:
   - Clause 3: definition of "before deploying"
   - Clause 17: change of control and acquisition handling
@@ -27,9 +52,6 @@ All notable changes to this project are documented here.
   - Absence track: mid-cycle decrement rule
   - Abstention track: mid-cycle decrement rule
   - Clauses 26–44: renumbered and all cross-references updated
-
-### Removed
-- `voto.md` — deleted governance voting specification
 
 ---
 
