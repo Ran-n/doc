@@ -660,15 +660,21 @@ GOVERNANCE
       - Abstention track reaches 4
       - Participation score reaches 3
 
-    An owner's absence track resets to zero whenever they cast any ballot
-    (YES, NO, ABSTAIN) or are marked EXCUSED in a vote. EXCUSED counts as
-    participation for the purpose of resetting the absence track, but does
-    not increment or affect any other track or score.
+    Mid-cycle track decrements: when a vote closes, after applying any
+    absence or abstention increments for owners who were ABSENT or ABSTAIN,
+    any owner who cast a YES or NO ballot in that vote has their absence
+    track and abstention track each decremented by 1 (minimum 0 each).
+    EXCUSED counts as participation for the purpose of decrementing the
+    absence track by 1 but does not decrement the abstention track and does
+    not increment any track or score. ABSTAIN and ABSENT ballots do not
+    trigger a decrement.
 
-    Thresholds are prerequisites for calling a stripping vote, not
-    automatic triggers. No action is required until an owner chooses to
-    call one. Both tracks and the participation score reset to zero after
-    a stripping vote resolves, regardless of outcome.
+    Thresholds are prerequisites for calling a stripping vote, not automatic
+    triggers. No action is required until an owner chooses to call one.
+    After any stripping vote resolves — regardless of outcome — both tracks
+    and the participation score for all owners involved reset to zero
+    immediately. Any mid-cycle decrement progress is also cleared by this
+    full reset.
 
 24. OWNERSHIP STRIPPING
     Once any threshold defined in clause 23 is reached, any owner may
