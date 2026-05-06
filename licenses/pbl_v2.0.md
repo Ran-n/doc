@@ -153,8 +153,16 @@ DEFINITIONS
 
 "Abstention Track"
     A per-owner counter tracking votes where the owner voted ABSTAIN.
-    Resets to zero after a stripping vote resolves. A stripping vote may be
-    called against an owner once their abstention track reaches 4.
+    A stripping vote may be called against an owner once their abstention
+    track reaches 4.
+
+    Mid-cycle decrement: each time an owner casts a YES or NO ballot, their
+    abstention track is decremented by 1 (minimum 0), applied when the vote
+    closes. One ballot undoes one step — clearing 4 accumulated abstentions
+    requires 4 consecutive YES or NO ballots.
+
+    Full reset: both the abstention track and the absence track reset to zero
+    after any stripping vote resolves, regardless of outcome. See clause 23.
 
 "Participation Score"
     A combined score calculated as: (absence track × 2) + abstention track.
