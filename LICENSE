@@ -86,11 +86,13 @@ DEFINITIONS
     of all undiluted ownership shares.
 
 "Quorum"
-    The participation requirement for a valid vote. Quorum is met when all
-    ownership holders have cast a ballot (YES, NO, ABSTAIN, or EXCUSED) or
-    the voting window has expired. Owners who fail to cast a ballot before
-    the deadline are automatically marked ABSENT — ABSENT is recorded by
-    the system, not cast by the owner.
+    The minimum participation requirement for a valid vote. Quorum is met
+    when owners holding at least 50% of total ownership have cast a ballot
+    (YES, NO, ABSTAIN, or EXCUSED), or the voting window has expired. If
+    the voting window expires without quorum being met, the vote is void and
+    must be re-opened. Owners who fail to cast a ballot before the deadline
+    are automatically marked ABSENT — ABSENT is recorded by the system, not
+    cast by the owner. Quorum must be met before a resolution can pass.
 
 "Resolution"
     A vote outcome. A resolution passes when yes votes exceed no votes,
@@ -176,7 +178,10 @@ DEFINITIONS
 
     A stripping vote may be called against an owner once their score reaches
     3, independent of the individual track thresholds defined under Absence
-    Track and Abstention Track.
+    Track and Abstention Track. The score threshold is the primary trigger
+    and will typically fire before the individual track thresholds; the
+    individual track thresholds serve as independent fallback triggers in
+    cases where a single type of non-participation dominates.
 
     The score resets to zero — together with both tracks — after any stripping
     vote resolves, regardless of outcome, as defined in clause 23. No other
@@ -205,11 +210,16 @@ CONDITIONS
 2. SHARE-ALIKE
    Any modified or derived version must be released under this same license
    (PBL v2.0, or any later version approved by a resolution vote of the
-   project's ownership holders).
+   project's ownership holders, provided such later version is a published,
+   publicly available revision of PBL issued by the original license author).
 
 3. COMMERCIAL USE REQUIRES AGREEMENT
    "Commercial use" means any use where this software, or a derivative of it,
-   is a direct or material input to generating revenue. Use is commercial
+   is a direct or material input to generating revenue. "Material input" means
+   the software contributes in a non-trivial way to the functionality, cost
+   reduction, or output that drives the revenue in question. Incidental or
+   isolated use that has no measurable effect on any revenue-generating
+   activity is not a material input. Use is commercial
    when any of the following apply:
 
      - The software, or a product that includes it, is sold or licensed for
@@ -244,6 +254,11 @@ CONDITIONS
    requirement upon first such use, regardless of whether any external
    customer has yet been served.
 
+   Where the software is incorporated into a product by one party and that
+   product is then sold or operated by a different party, each party whose
+   independent use satisfies the commercial use definition above must
+   independently obtain a commercial agreement with the Founder.
+
    Commercial agreements are valid for the duration specified in the
    agreement. If no duration is specified, the agreement is valid for one
    year from the date of execution and must be renewed to remain in effect.
@@ -252,8 +267,12 @@ CONDITIONS
    address on record. If the outstanding amounts are not paid within 14 days
    of that notice, all rights granted by the agreement are suspended
    automatically. Suspension is not a permanent revocation — rights are
-   restored upon payment of all outstanding amounts, unless the Founder elects
-   to terminate the agreement under clause 33.
+   restored upon payment of all outstanding amounts. The Founder may convert
+   a suspension into permanent termination of the commercial agreement by
+   written notice to the licensee, effective immediately upon delivery of
+   that notice. Termination under this paragraph does not affect the
+   Founder's right to pursue remedies for the period of unlicensed use
+   under clause 33.
 
 ─────────────────────────────────────────────────────────────────────────────
 OWNERSHIP
@@ -294,11 +313,18 @@ OWNERSHIP
 8. VOTING
    All project decisions are governed by a vote among ownership holders.
    Any owner may call a vote, subject to the restrictions below. A vote
-   passes when yes votes exceed no votes after all ballots are cast or the
-   voting window expires. Abstentions are excluded from the count. All
-   votes must be recorded and verified via the governance process defined
-   in clauses 19–25. See clause 6 for the Founder's unilateral resolution
-   right prior to ownership being shared.
+   passes when quorum is met and yes votes exceed no votes after all ballots
+   are cast or the voting window expires. Abstentions are excluded from the
+   count. If quorum is not met when the voting window expires, the vote is
+   void. All votes must be recorded and verified via the governance process
+   defined in clauses 19–25. See clause 6 for the Founder's unilateral
+   resolution right prior to ownership being shared.
+
+   Voting rights:
+     Only ownership holders with a non-zero ownership percentage have voting
+     rights. Contributors holding a revenue share but zero ownership have no
+     governance rights under this license and may not call or vote on any
+     resolution.
 
    Minimum ownership to call a vote:
      A non-Founder owner must hold at least 5% ownership at the time they
@@ -404,10 +430,13 @@ REVENUE SHARE
     days of the change of control. The commercial agreement is suspended from
     the date the change of control takes effect. The affected entity may
     continue to operate under the terms of the suspended agreement for up to
-    30 days from the date of written notification while a new agreement is
-    negotiated. If no new agreement is executed within 30 days of
-    notification, the suspended agreement terminates automatically and all
-    commercial rights cease. Operating beyond the 30-day window under a
+    30 days from the date of the change of control (not from the date of
+    notification) while a new agreement is negotiated, provided written
+    notification has been given. Failure to notify within 30 days forfeits
+    any grace period and the suspension becomes effective immediately upon
+    the change of control. If no new agreement is executed within 30 days of
+    the change of control, the suspended agreement terminates automatically
+    and all commercial rights cease. Operating beyond that window under a
     suspended agreement without executing a new agreement constitutes a
     commercial violation under clause 33.
 
@@ -565,8 +594,9 @@ GOVERNANCE
      METADATA
     ──────────────────────────────────────────────────────────────────────
 
-     Opened    <YYYY-MM-DD HH:MM:SS UTC>
-     Deadline  <YYYY-MM-DD HH:MM:SS UTC>
+     Opened     <YYYY-MM-DD HH:MM:SS UTC>
+     Opened-by  <Pseudonym of the owner who called the vote>
+     Deadline   <YYYY-MM-DD HH:MM:SS UTC>
 
      Files
        <filename>   <BLAKE3 hash>
@@ -615,9 +645,11 @@ GOVERNANCE
     BALLOTS section of the .vote file to reflect their vote and commits it.
 
 22. VERIFICATION
-    A vote passes when yes votes exceed no votes after all owners have
-    voted or the voting window has expired. Abstentions are excluded from
-    the count. A ballot is valid when:
+    A vote passes when quorum is met and yes votes exceed no votes after
+    all owners have voted or the voting window has expired. Abstentions are
+    excluded from the count. If the voting window expires without quorum,
+    the vote is void and no CONTRIBUTORS update may be made on its basis.
+    A ballot is valid when:
       - The .sig file verifies against the corresponding .ballot file
       - The signing key fingerprint matches the GPG field of the owner's
         entry in the CONTRIBUTORS file at the time of the vote
@@ -730,10 +762,13 @@ GOVERNANCE
 
     Each owner acknowledges by committing a GPG-signed acknowledgement file
     to the notice folder. Silence after the deadline constitutes automatic
-    acknowledgement. However, an owner who fails to acknowledge before the
-    deadline is treated as having voted ABSTAIN for participation tracking
-    purposes: a warning file is created and their abstention track is
-    incremented under the same mechanics defined in clause 23.
+    acknowledgement and carries no participation penalty. An owner who fails
+    to acknowledge before the deadline for two or more Administrative Notices
+    in the same calendar year is treated as having voted ABSTAIN for
+    participation tracking purposes on the second and subsequent missed
+    notices: a warning file is created and their abstention track is
+    incremented under the same mechanics defined in clause 23. The first
+    missed notice in any calendar year carries no penalty.
 
     An owner may not block an Administrative Notice. The CONTRIBUTORS file
     is updated after the deadline passes, regardless of whether all owners
@@ -753,7 +788,12 @@ FORKS AND DERIVATIVES
     the fork's ownership holders). The original Founder's ownership and revenue
     floors as recorded in the original project's CONTRIBUTORS file at the
     time of the fork carry over unchanged into the fork's CONTRIBUTORS file.
-    The forker may not reduce or remove the original Founder's floors. Any
+    The original Founder's revenue floor carried into a fork represents a
+    minimum share of any commercial revenue generated by the fork, payable
+    to the original Founder under the same conditions as apply in the original
+    project. The original Founder may waive or reduce this entitlement in
+    writing addressed to the fork's ownership holders. The forker may not
+    reduce or remove the original Founder's floors without such a waiver. Any
     person wishing to be listed as a contributor in a fork must be added via
     a resolution vote in the fork, subject to the same governance process as the
     original project. Any changes to the original Founder's floors in the
@@ -832,8 +872,12 @@ SUCCESSION
 
     The successor or heirs must notify the remaining ownership holders and
     update the CONTRIBUTORS file via the standard governance process within
-    90 days of the holder's death or the date the physician's certification
-    is presented, whichever is the triggering event. If no notification is
+    90 days of the triggering event. For death, the triggering date is the
+    date on which the remaining ownership holders first receive written
+    notification supported by a death certificate or equivalent legal
+    document. For permanent incapacitation, the triggering date is the date
+    the physician's certification is presented to the remaining ownership
+    holders. If no notification is
     received within that period, the ownership percentage and revenue share
     are held in abeyance under the same mechanics defined in clause 26 for
     inherited owners in forks, until a valid successor or heir comes forward.
@@ -841,11 +885,12 @@ SUCCESSION
     Declined succession: if a designated successor notifies the remaining
     ownership holders in writing that they decline the inheritance before
     the 90-day window closes, their designation lapses immediately. The
-    entitlement — ownership, revenue share, patents, or any combination —
-    then passes to the holder's legal heirs as if no successor had been
-    named. A declination cannot be partial; a successor must accept or
-    decline each entitlement type (ownership and revenue) independently
-    if they are designated separately.
+    declined entitlement then passes to the holder's legal heirs as if no
+    successor had been named. Declination is per-entitlement-type: a
+    successor designated separately for ownership and for revenue may
+    independently accept or decline each. A successor designated for both
+    in a single combined designation must accept or decline both together;
+    they may not partially accept a single combined designation.
 
     Succession by existing owner: if the designated successor already holds
     ownership or revenue share in the same project, the inherited entitlement
@@ -894,7 +939,7 @@ CONTRIBUTOR AGREEMENT
          the existing ownership pool, distributed proportionally among current
          owners in accordance with clause 9.
       d) They have disclosed all AI-generated portions of their contribution
-         in accordance with clause 41.
+         in accordance with the AI-Generated Portion definition and clause 41.
       e) They accept the terms of this license in full, including the
          commercial use and revenue share clauses.
     Submission of a contribution constitutes acceptance of these terms
@@ -904,16 +949,17 @@ CONTRIBUTOR AGREEMENT
     If a contributor violates any term of this license — including but not
     limited to submitting contributions that infringe third-party rights,
     misrepresenting authorship, or engaging in bad-faith governance — all
-    rights granted to that contributor under this license terminate
-    immediately and permanently. The terminated contributor's voting rights,
-    revenue share, and ownership entitlements recorded in the CONTRIBUTORS
-    file are suspended pending resolution; suspended revenue is held in
-    escrow and not distributed to any party until the resolution vote
-    concludes. The Founder must initiate a resolution vote to formally remove
-    the contributor and redistribute their shares within 60 days of the
-    date the Founder first became aware of the violation. If no vote is
-    called within that period, the suspension lapses and all entitlements
-    are restored.
+    rights granted to that contributor under this license are immediately
+    suspended pending a resolution vote. The suspended contributor's voting
+    rights, revenue share, and ownership entitlements recorded in the
+    CONTRIBUTORS file are frozen; suspended revenue is held in escrow and
+    not distributed to any party until the resolution vote concludes.
+    The Founder must initiate a resolution vote to formally remove the
+    contributor and redistribute their shares within 60 days of the date
+    the Founder first became aware of the violation. If the resolution vote
+    passes, all rights are permanently terminated. If no vote is called
+    within that period, the suspension lapses and all entitlements are
+    restored.
 
     "Bad-faith governance" includes, without limitation, any of the
     following acts:
@@ -979,7 +1025,12 @@ ENFORCEMENT
     derived from use of this software, covering any period within the
     preceding 24 months. The licensee must respond within 30 days of
     receiving the request. The request may be made at most once per
-    calendar year per licensee. If the licensee fails to respond within
+    calendar year per licensee. If the licensee fails to respond within 30 days
+    of receiving the request, or provides a response that omits any required
+    field, the Founder may treat the non-response as a commercial violation
+    under clause 33, including suspension of all rights granted by the
+    commercial agreement.
+
     The written revenue statement must include, at minimum:
 
       - Time period: the calendar start and end dates of the period covered.
@@ -1078,8 +1129,11 @@ AI-GENERATED CONTRIBUTIONS
     in the CONTRIBUTORS file.
 
     Contributors must disclose AI-generated portions at the time of
-    submission. Failure to disclose constitutes misrepresentation of
-    authorship under clause 32 and is grounds for contributor termination.
+    submission. Disclosure must be made in the pull request description,
+    patch cover letter, or equivalent submission artifact, identifying which
+    portions were AI-generated. Failure to disclose constitutes
+    misrepresentation of authorship under clause 32 and is grounds for
+    contributor termination.
 
 ─────────────────────────────────────────────────────────────────────────────
 GPG KEY ROTATION
@@ -1092,6 +1146,8 @@ GPG KEY ROTATION
 
       - The voting window is governed by the Key Rotation Window definition:
         a maximum of 24 hours. The proposer may shorten it but not extend it.
+        The Key Rotation Window supersedes the standard Voting Window entirely
+        for key rotation votes; the standard 48-hour floor does not apply.
       - The vote record must state the holder's pseudonym, the fingerprint
         of the current key, and the fingerprint of the proposed new key.
       - The new key must be publicly verifiable (e.g., uploaded to a public
@@ -1147,6 +1203,12 @@ COMMERCIAL AGENT AND FOUNDER DORMANCY
       a) when the Founder resumes participation and revokes the appointment
          by resolution vote, or
       b) after 12 months, unless renewed by a further resolution vote.
+
+    For the purpose of this appointment vote only, a dormant Founder's
+    absence from the ballot is not counted as NO and does not block passage
+    of the vote. The dormant Founder's ownership percentage is excluded from
+    the ownership snapshot for that specific vote, and quorum is calculated
+    against the remaining owners' total ownership.
 
     The temporary appointment does not affect the Founder's ownership,
     revenue floor, voting rights, or any other entitlement. The Founder

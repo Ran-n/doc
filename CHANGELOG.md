@@ -10,6 +10,32 @@ All notable changes to this project are documented here.
 
 ---
 
+## [2026-05-07]
+
+### Changed
+- `LICENSE` — PBL v2.0 gap audit and improvements (18 fixes):
+  - Clause 2: share-alike "any later version" now requires the version to be a published PBL revision by the original author
+  - Clause 3: "material input" defined; supply-chain commercial use gap closed — each party in a distribution chain must independently obtain a commercial agreement
+  - Clause 3: payment-default suspension-to-termination mechanics clarified with explicit written-notice requirement; removed incorrect cross-reference to clause 33
+  - Clause 17: change-of-control 30-day grace period anchored to change-of-control date (not notification date); late notification forfeits the grace period
+  - Clause 20: `Opened-by` field added to vote record format to support the 30-day cooldown rule
+  - Clause 22: quorum required for a vote to pass; votes that expire without quorum are void
+  - Clause 25: Administrative Notice silence penalty reduced — first missed notice per calendar year carries no penalty; second and subsequent trigger abstention track increment
+  - Clause 26: fork revenue floor explicitly creates a payment obligation for the fork; original Founder may waive in writing
+  - Clause 29: declination clarified — per-entitlement-type for separate designations; single combined designation is all-or-nothing
+  - Clause 29: death triggering date defined as date remaining holders first receive written notification with death certificate
+  - Clause 31(d): AI disclosure cross-reference corrected to include the AI-Generated Portion definition
+  - Clause 32: termination mechanics fixed — rights are suspended pending vote, not immediately and permanently terminated; permanent termination requires vote to pass
+  - Clause 35: incomplete sentence completed — non-response to audit request treated as commercial violation including suspension of rights
+  - Clause 41: AI disclosure procedure specified — must be in the PR description or equivalent submission artifact
+  - Clause 42: Key Rotation Window explicitly supersedes the standard Voting Window; 48-hour floor does not apply
+  - Clause 44: dormant Founder's ownership excluded from snapshot for temporary Commercial Agent appointment vote
+  - Definitions — Quorum: redefined as a real minimum participation threshold (≥50% ownership must have voted); void if not met
+  - Definitions — Participation Score: score threshold documented as the primary trigger; individual track thresholds clarified as independent fallback triggers
+  - Voting rights explicitly stated — revenue-only contributors (zero ownership) have no governance rights
+
+---
+
 ## [2026-05-06]
 
 ### Added
