@@ -1,3 +1,5 @@
 - [ ] Revisit the voting process
+- [ ] Implement secret voting (likely commit-reveal or threshold decryption)
 - [ ] Revisit successor and representatives
 - [ ] Revisit the overall license
+- [ ] Revisit the legitimate forking process (voted fork with new Founder and ownership/revenue partition)

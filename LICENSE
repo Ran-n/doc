@@ -44,7 +44,8 @@ DEFINITIONS
     Any part of a contribution that was produced, in whole or in part, by an
     artificial intelligence tool, regardless of how much the contributor
     prompted, edited, or guided the output. The contributor bears the burden
-    of disclosing AI-generated portions at the time of submission.
+    of disclosing AI-generated portions at the time of submission. The
+    required form and location of that disclosure are defined in clause 41.
 
 "Ownership"
     The right to make decisions about the project, including merging
@@ -88,11 +89,11 @@ DEFINITIONS
 "Quorum"
     The minimum participation requirement for a valid vote. Quorum is met
     when owners holding at least 50% of total ownership have cast a ballot
-    (YES, NO, ABSTAIN, or EXCUSED), or the voting window has expired. If
-    the voting window expires without quorum being met, the vote is void and
-    must be re-opened. Owners who fail to cast a ballot before the deadline
-    are automatically marked ABSENT — ABSENT is recorded by the system, not
-    cast by the owner. Quorum must be met before a resolution can pass.
+    (YES, NO, ABSTAIN, or EXCUSED). If the voting window expires without
+    quorum being met, the vote is void and must be re-opened. Owners who fail
+    to cast a ballot before the deadline are automatically marked ABSENT —
+    ABSENT is recorded by the system, not cast by the owner. Quorum must be
+    met before a resolution can pass.
 
 "Resolution"
     A vote outcome. A resolution passes when yes votes exceed no votes,
@@ -106,7 +107,8 @@ DEFINITIONS
 
 "Key Rotation Window"
     A shortened voting window that applies exclusively to GPG key rotation
-    votes under clause 42. The maximum duration is 24 hours. The proposer
+    votes under clause 42, replacing the standard Voting Window in full.
+    The maximum duration is 24 hours; there is no minimum floor. The proposer
     may shorten it but not extend it beyond 24 hours. The window opens when
     the vote record file is committed to the repository.
 
@@ -188,6 +190,19 @@ DEFINITIONS
     event resets the score directly; all score changes are the result of track
     changes applied under the rules above.
 
+"Governance Artifact"
+    Any file that forms part of the official governance record, including
+    vote records, proposed CONTRIBUTORS files, ballots, signatures, warning
+    files, notice records, acknowledgement files, and related hashes or
+    metadata stored under the governance/ folder.
+
+"Emergency Key Replacement"
+    The process defined in clause 42 by which any other ownership holder may
+    call a key rotation vote on behalf of an ownership holder whose registered
+    GPG key has been compromised such that the holder can no longer sign a
+    ballot to initiate the rotation themselves. The affected holder is excused
+    from casting a ballot in that vote and no participation penalty is applied.
+
 ─────────────────────────────────────────────────────────────────────────────
 PERMISSIONS
 ─────────────────────────────────────────────────────────────────────────────
@@ -230,7 +245,7 @@ CONDITIONS
        capacity that directly reduces operating costs or directly increases
        output in the organisation's revenue-generating activities
      - The software is incorporated into a larger product that is sold or
-       monetized, and the software's functionality is materially present in
+       monetised, and the software's functionality is materially present in
        the value offered to customers
 
    Use is NOT commercial solely because:
@@ -298,7 +313,7 @@ OWNERSHIP
    resolution vote and the governance process defined in clauses 19–25.
    Transferred ownership is drawn proportionally from all existing dilutable
    ownership shares in the distributable ownership pool. Since the Founder
-   holds 100% ownership by default, the Founder constitutes a resolution
+   holds 100% ownership by default, the Founder may pass any resolution
    unilaterally until ownership is shared. This principle applies wherever
    a resolution vote is required by this license.
 
@@ -315,8 +330,10 @@ OWNERSHIP
    Any owner may call a vote, subject to the restrictions below. A vote
    passes when quorum is met and yes votes exceed no votes after all ballots
    are cast or the voting window expires. Abstentions are excluded from the
-   count. If quorum is not met when the voting window expires, the vote is
-   void. All votes must be recorded and verified via the governance process
+   count. If yes votes equal no votes, the side that the Founder voted for
+   wins; if the Founder abstained, did not vote, or is not a party to the
+   vote, the vote fails. If quorum
+   is not met when the voting window expires, the vote is void. All votes must be recorded and verified via the governance process
    defined in clauses 19–25. See clause 6 for the Founder's unilateral
    resolution right prior to ownership being shared.
 
@@ -334,6 +351,14 @@ OWNERSHIP
      A non-Founder owner may not open a new vote until at least 30 days
      have elapsed since the closing date of the last vote they opened. The
      Founder is exempt from this requirement.
+
+     Per-subject cooldown:
+     No owner — including the Founder — may open a vote on the same subject
+     as a vote that closed within the preceding 30 days, regardless of that
+     vote's outcome. Two votes share the same subject when their slugs are
+     identical or when a reasonable reader would conclude they concern the
+     same specific decision. The Founder may waive this restriction for
+     urgent matters by stating the reason in the vote record.
 
    Ballot options:
      YES         — in favour of the proposed change
@@ -557,11 +582,17 @@ GOVERNANCE
           <YYYY-MM-DD>_<slug>/
             <YYYY-MM-DD>_<slug>.vote
             CONTRIBUTORS.proposed         (only if vote modifies CONTRIBUTORS)
-            <fingerprint>.ballot
-            <fingerprint>.sig
+            <fingerprint>.ballot          (clearsigned; one per voter)
+            <fingerprint>.excused         (clearsigned; only if EXCUSED)
             ...
         warnings/
           <YYYY-MM-DD>_warning-<absent|abstain>-<pseudonym>.warn
+        notices/
+          <YYYY-MM-DD>_<slug>.notice
+          <YYYY-MM-DD>_<slug>/
+            CONTRIBUTORS.proposed
+            <fingerprint>.ack             (clearsigned; one per owner)
+            ...
 
 20. VOTE RECORD FORMAT
     All project votes must be recorded as a vote record file, regardless
@@ -579,10 +610,16 @@ GOVERNANCE
     change-founder-revenue-floor-to-40pct,
     approve-commercial-agreement-with-acme).
 
-    The vote record file is a living document — it is updated each time
-    an owner casts their ballot. It is never directly signed. The
-    cryptographic proof of each ballot is the corresponding .ballot and
-    .sig file pair. The vote record must follow this format:
+    The vote record file is sealed at creation — it must not be modified
+    after it is first committed to the repository. The proposer seals it
+    by committing a clearsigned ballot file using their own GPG key, stored as:
+      governance/votes/<YYYY-MM-DD>_<slug>/<proposer-fingerprint>.ballot
+    This file serves as both the proposer's seal of the .vote record and,
+    if the proposer is an ownership holder, their own vote. Any modification
+    to the .vote file after the initial commit constitutes bad-faith governance
+    under clause 32. The current tally is derived solely from the .ballot files
+    present in the vote folder; no separate ballot summary is maintained
+    in the .vote file. The vote record must follow this format:
 
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      VOTE
@@ -609,13 +646,6 @@ GOVERNANCE
      <Pseudonym>   <ownership %>
      ...
 
-    ──────────────────────────────────────────────────────────────────────
-     BALLOTS
-    ──────────────────────────────────────────────────────────────────────
-
-     <Pseudonym>   <YES | NO | ABSTAIN | ABSENT | EXCUSED | —>
-     ...
-
     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     The Files section lists every file relevant to the vote that must be
@@ -623,41 +653,44 @@ GOVERNANCE
     so that any party can verify the exact content that was voted on.
     For votes that modify CONTRIBUTORS, CONTRIBUTORS.proposed must be
     listed. The Files section may be omitted for votes with no associated
-    files. The — symbol in BALLOTS indicates a ballot not yet cast.
+    files.
 
 21. BALLOT FORMAT
-    Each owner casts their vote by creating a ballot file containing their
-    pseudonym, their vote, the vote slug, the BLAKE3 hash of the .vote
-    file at cast time, and a UTC timestamp of when the ballot was cast:
+    Each owner casts their vote by creating a clearsigned ballot file. The
+    plaintext content of the ballot must be:
 
       Pseudonym  <pseudonym>
       Vote       <YES | NO | ABSTAIN>
       Vote-on    <YYYY-MM-DD>_<slug>
-      Vote-hash  <BLAKE3 hash of the .vote file at cast time>
+      Vote-hash  <BLAKE3 hash of the sealed .vote file>
       Timestamp  <YYYY-MM-DD HH:MM:SS UTC>
 
-    The ballot file is stored as:
+    The file is produced with gpg --clearsign, yielding a single file with
+    the plaintext content and the GPG signature block inline. It is stored as:
       governance/votes/<YYYY-MM-DD>_<slug>/<fingerprint>.ballot
-    The owner then produces a detached GPG signature of their ballot file,
-    stored as:
-      governance/votes/<YYYY-MM-DD>_<slug>/<fingerprint>.sig
-    After committing their ballot and signature, the owner also updates the
-    BALLOTS section of the .vote file to reflect their vote and commits it.
+
+    The Vote-hash must match the BLAKE3 hash of the .vote file as first
+    committed. All valid ballots carry the same Vote-hash value. A ballot
+    whose Vote-hash does not match the sealed .vote file is invalid. No
+    further modifications to the .vote file are made after casting.
 
 22. VERIFICATION
     A vote passes when quorum is met and yes votes exceed no votes after
     all owners have voted or the voting window has expired. Abstentions are
-    excluded from the count. If the voting window expires without quorum,
-    the vote is void and no CONTRIBUTORS update may be made on its basis.
+    excluded from the count. If yes votes equal no votes, the side that the
+    Founder voted for wins; if the Founder abstained, did not vote, or is not
+    a party to the vote, the vote fails. If the voting window expires without
+    quorum, the vote is void
+    and no CONTRIBUTORS update may be made on its basis.
     A ballot is valid when:
-      - The .sig file verifies against the corresponding .ballot file
+      - The clearsign signature in the .ballot file verifies correctly
       - The signing key fingerprint matches the GPG field of the owner's
         entry in the CONTRIBUTORS file at the time of the vote
       - The pseudonym in the .ballot file matches the owner's CONTRIBUTORS
         entry
       - The owner holds a non-zero ownership percentage
-      - The Vote-hash field matches the BLAKE3 hash of the .vote file as
-        it existed when the ballot was cast
+      - The Vote-hash field matches the BLAKE3 hash of the sealed .vote
+        file as first committed to the repository
     The CONTRIBUTORS file may only be updated after the vote passes and
     all artifacts are committed to the repository alongside it.
 
@@ -667,7 +700,7 @@ GOVERNANCE
     following the vote. The objection must identify the ballot and state the
     grounds. If the objection is not resolved by agreement, the vote is
     paused and a key-rotation or bad-faith-governance process under clauses
-    41 and 31 respectively must be completed before the vote may resume.
+    42 and 32 respectively must be completed before the vote may resume.
     When a paused vote resumes, the original voting window is extended by
     the duration of the pause; previously cast valid ballots remain in
     effect and owners who have not yet voted may cast their ballot during
@@ -677,8 +710,12 @@ GOVERNANCE
     If a vote closes during a declared absence for an owner — as defined in
     the Declared Absence definition — that owner is not marked ABSENT, no
     warning file is created, and no track or score is incremented for that
-    vote. The vote record must note the declared absence in the BALLOTS
-    section in place of the ABSENT status, using the token EXCUSED.
+    vote. The owner's EXCUSED status is recorded by committing a clearsigned
+    file to the vote folder as:
+      governance/votes/<YYYY-MM-DD>_<slug>/<fingerprint>.excused
+    The plaintext content must include the owner's pseudonym, the vote slug,
+    the reason (declared absence), and the absence period dates. It is
+    produced with gpg --clearsign using the owner's registered key.
 
     After each vote, if an owner is marked ABSENT or ABSTAIN, their
     respective track is incremented and a warning file is created at:
@@ -760,8 +797,12 @@ GOVERNANCE
       - The date the notice was opened
       - The acknowledgement deadline (minimum 7 days from opening)
 
-    Each owner acknowledges by committing a GPG-signed acknowledgement file
-    to the notice folder. Silence after the deadline constitutes automatic
+    Each owner acknowledges by committing a clearsigned acknowledgement file
+    to the notice folder, stored as:
+      governance/notices/<YYYY-MM-DD>_<slug>/<fingerprint>.ack
+    The plaintext content must contain the owner's pseudonym, the notice
+    slug, and a UTC timestamp. It is produced with gpg --clearsign using
+    the owner's registered key. Silence after the deadline constitutes automatic
     acknowledgement and carries no participation penalty. An owner who fails
     to acknowledge before the deadline for two or more Administrative Notices
     in the same calendar year is treated as having voted ABSTAIN for
@@ -773,10 +814,13 @@ GOVERNANCE
     An owner may not block an Administrative Notice. The CONTRIBUTORS file
     is updated after the deadline passes, regardless of whether all owners
     have explicitly acknowledged, provided no owner has raised a written
-    objection identifying a factual error in the proposed change before the
-    deadline. A factual objection — not a policy objection — pauses the
-    notice and triggers a resolution vote on the disputed fact. Policy
-    disagreement with an undisputed fact is not grounds for objection.
+    objection identifying a factual error in the proposed change. An
+    objection is valid only if committed to the repository before the
+    acknowledgement deadline; objections raised after the deadline but before
+    the CONTRIBUTORS file is updated are not recognised and do not pause the
+    notice. A factual objection — not a policy objection — pauses the notice
+    and triggers a resolution vote on the disputed fact. Policy disagreement
+    with an undisputed fact is not grounds for objection.
 
 ─────────────────────────────────────────────────────────────────────────────
 FORKS AND DERIVATIVES
@@ -820,6 +864,56 @@ FORKS AND DERIVATIVES
     completes the succession process defined in clause 29, or until the
     fork's remaining ownership holders vote to treat the share as abandoned
     and redistribute it via the standard dilution mechanics.
+
+26b. LEGITIMATE FORK BY RESOLUTION VOTE
+    A fork may be elevated to a legitimate independent project — with its
+    own governance and an independent ownership and revenue structure — only
+    by a resolution vote of the original project's ownership holders. Until
+    such a vote passes, any fork of this software remains subject to the
+    inherited governance structure defined in clause 26 and confers no
+    independent rights on the forker.
+
+    To initiate a legitimate fork, any ownership holder may propose a fork
+    by submitting a proposed CONTRIBUTORS file for the fork alongside the
+    vote record. The proposed CONTRIBUTORS file must specify:
+
+      a) The complete initial ownership and revenue partition for the fork,
+         expressed as percentages summing to 100% for each, covering all
+         parties who will hold a share in the fork. Floors and undiluted
+         shares must be stated explicitly.
+
+      b) The Founder of the fork. If no new Founder is designated, the
+         original Founder carries over as the fork's Founder. Designating
+         a new Founder is optional — the fork may retain the same Founder
+         or any other existing ownership holder in that role.
+
+      c) The original project's revised ownership and revenue partition,
+         if any ownership or revenue is being transferred out of the original
+         project as part of this vote. Absent explicit transfer, the original
+         project's CONTRIBUTORS file is unchanged.
+
+    The legitimate fork vote may concern both the fork's proposed CONTRIBUTORS
+    file and the original project's revised CONTRIBUTORS file as a permitted
+    bundled vote, provided both are explicitly stated in the vote description
+    and slug.
+
+    When the vote passes:
+      - The fork's CONTRIBUTORS file is committed as proposed. The fork's
+        Founder ownership floor defaults to 30% unless the vote explicitly
+        sets a different value.
+      - The original Founder's revenue floor in the fork, as defined in
+        clause 26, is reduced or removed only if the vote explicitly grants
+        a waiver under clause 26; otherwise it carries over unchanged.
+      - All governance artifacts from the original project must be copied
+        into the fork's repository under the governance/ folder, preserving
+        the full record of how the fork was authorised.
+      - From the moment the fork's CONTRIBUTORS file is committed, the fork
+        is an independent project governed exclusively by its own ownership
+        holders under this license.
+
+    A legitimate fork does not sever the original project. Both projects
+    continue independently, each governed by their own CONTRIBUTORS file
+    and ownership holders from that point forward.
 
 ─────────────────────────────────────────────────────────────────────────────
 TRADEMARKS
@@ -877,10 +971,10 @@ SUCCESSION
     notification supported by a death certificate or equivalent legal
     document. For permanent incapacitation, the triggering date is the date
     the physician's certification is presented to the remaining ownership
-    holders. If no notification is
-    received within that period, the ownership percentage and revenue share
-    are held in abeyance under the same mechanics defined in clause 26 for
-    inherited owners in forks, until a valid successor or heir comes forward.
+    holders. If no notification is received within that period, the
+    ownership percentage and revenue share are held in abeyance under the
+    same mechanics defined in clause 26 for inherited owners in forks, until
+    a valid successor or heir comes forward.
 
     Declined succession: if a designated successor notifies the remaining
     ownership holders in writing that they decline the inheritance before
@@ -981,10 +1075,11 @@ CONTRIBUTOR AGREEMENT
 
       e) Committing changes to the CONTRIBUTORS file outside the governance
          process defined in clauses 19–22, altering any governance artifact
-         after it has been committed, or using any version control operation
-         — including force-push, history rewrite, or branch replacement —
-         to alter, remove, or obscure any governance artifact or its commit
-         history in the repository.
+         outside the update procedures expressly permitted by this license,
+         or using any version control operation — including force-push,
+         history rewrite, or branch replacement — to alter, remove, or
+         obscure any governance artifact or its commit history in the
+         repository.
 
       f) Misrepresenting the subject or scope of a vote in the vote record
          or slug in order to obtain approval for a decision that would not
@@ -1009,15 +1104,16 @@ ENFORCEMENT
 33. COMMERCIAL VIOLATION
     Violation of the commercial clause — including use without an agreement,
     deliberate obfuscation of the software's presence in a product, or
-    relabeling to avoid attribution — revokes all rights granted by this
+    relabelling to avoid attribution — revokes all rights granted by this
     license immediately and permanently. The Founder reserves the right to
     pursue compensation for unlicensed commercial use retroactively.
 
 34. NO REVENUE THRESHOLD
     There is no minimum revenue threshold for the commercial use requirement.
-    Any use that generates revenue — regardless of amount — constitutes
-    commercial use and requires a prior agreement with the Founder. There
-    are no exemptions based on revenue size, project scale, or intent.
+    Any use that satisfies the commercial use definition in clause 3 requires
+    a prior agreement with the Founder regardless of revenue amount. There
+    are no exemptions based on revenue size, project scale, or intent once
+    the use is commercial.
 
 35. AUDIT RIGHT
     The Founder, or a representative designated by a resolution vote, may
@@ -1027,9 +1123,9 @@ ENFORCEMENT
     receiving the request. The request may be made at most once per
     calendar year per licensee. If the licensee fails to respond within 30 days
     of receiving the request, or provides a response that omits any required
-    field, the Founder may treat the non-response as a commercial violation
-    under clause 33, including suspension of all rights granted by the
-    commercial agreement.
+    field, the Founder may suspend all rights granted by the commercial
+    agreement and treat the non-response as a commercial violation under
+    clause 33.
 
     The written revenue statement must include, at minimum:
 
@@ -1145,9 +1241,8 @@ GPG KEY ROTATION
     to the following special rules:
 
       - The voting window is governed by the Key Rotation Window definition:
-        a maximum of 24 hours. The proposer may shorten it but not extend it.
-        The Key Rotation Window supersedes the standard Voting Window entirely
-        for key rotation votes; the standard 48-hour floor does not apply.
+        a maximum of 24 hours, with no minimum floor. The proposer may shorten
+        it but not extend it beyond 24 hours.
       - The vote record must state the holder's pseudonym, the fingerprint
         of the current key, and the fingerprint of the proposed new key.
       - The new key must be publicly verifiable (e.g., uploaded to a public

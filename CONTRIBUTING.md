@@ -101,4 +101,4 @@ By contributing, you agree that your work will be released under the same licens
 
 Free for personal and non-commercial use. Commercial use requires a revenue-share agreement — contact [ran.hash@proton.me](mailto:ran.hash@proton.me).
 
-Contributing does not transfer copyright or ownership. Non-trivial contributions — new features, bug fixes, and substantive code or documentation changes — may entitle you to a revenue share, subject to a quorum vote among existing owners, once you are listed in the [CONTRIBUTORS](CONTRIBUTORS) file.
+Contributing does not transfer copyright or ownership. Non-trivial contributions — new features, bug fixes, and substantive code changes — may entitle you to a revenue share, subject to a resolution vote among existing owners, once you are listed in the [CONTRIBUTORS](CONTRIBUTORS) file.

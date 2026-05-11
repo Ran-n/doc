@@ -10,6 +10,19 @@ All notable changes to this project are documented here.
 
 ---
 
+## [2026-05-10]
+
+### Changed
+- `LICENSE` — PBL v2.0 gap audit round 2 (6 fixes):
+  - Clause 19: `governance/notices/` folder and acknowledgement file structure added to governance directory tree
+  - Clause 25: acknowledgement file path and naming convention defined (`<fingerprint>.ack` + `.sig`); acknowledgement file content specified
+  - Clause 25: objection timing explicitly restricted to pre-deadline only; post-deadline objections not recognised
+  - Clause 29: split sentence in succession notification window repaired
+  - Definitions — AI-Generated Portion: cross-reference to clause 41 added for disclosure procedure
+  - Definitions — Emergency Key Replacement: new entry added to match named procedure in clause 42
+
+---
+
 ## [2026-05-07]
 
 ### Changed
