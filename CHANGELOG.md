@@ -1,12 +1,97 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/05/06 18:23:53.287810 )
+[//]: # (+ Revised: 	2026/05/11 16:08:07.128086 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
 
 All notable changes to this project are documented here.
+
+---
+
+## [2026-05-11] (4)
+
+### Changed
+- `LICENSE` — PBL v2.0 comprehensive audit — 22 fixes across errors, gaps, ambiguities, and edge cases:
+  - **Definitions:** Quorum definition now explicitly states ABSENT does not count toward quorum (only YES/NO/ABSTAIN/EXCUSED satisfy participation); Founder Dormancy definition now states EXCUSED resets the consecutive-absent counter but does not resolve the dormancy condition; Permanent Incapacitation now requires an original physician's certificate and adds a dispute procedure; AI-Generated Portion definition clarifies post-generation editing does not change classification; Fork definition tightened — the moment any independent modification is made the copy becomes a fork; private modification outside direct contribution or an approved fork is not permitted; Absence Track and Abstention Track definitions now specify that both tracks decrement simultaneously and atomically from a single YES/NO ballot
+  - **Clause 8 & 22 (Voting / Verification):** Founder tie-break rule now explicitly covers ABSENT Founder (treated the same as did not vote)
+  - **Clause 9 (Patent Ownership):** Patent assignment scoped to inventions directly embodied in the submitted contribution; no longer assignable beyond scope of contribution
+  - **Clause 21b (Secret Ballot):** Reveal window fixed at 48 hours, non-extendable; nonce entropy requirement set at minimum 128 bits from a CSPRNG; secrecy obligation added — disclosing commitment data before voting window closes is bad-faith governance
+  - **Clause 22 (Verification):** CONTRIBUTORS file update must be in the same commit as the final seal; late ballot dispute procedure added for cases where dispute is raised after CONTRIBUTORS is already updated
+  - **Clause 23 (Absence and Abstention Tracking):** Mid-cycle decrements clarified as atomic/simultaneous; EXCUSED decrement applies uniformly to all owners including Founder
+  - **Clause 24 (Ownership Stripping):** Revenue-only stripping clarified — may be called at any time by any owner without threshold; stripped-to-zero owners lose voting rights but retain right to request factual correction
+  - **Clause 29 (Succession):** Abeyance window aligned with clause 26 — 180-day resolution deadline added; Successor-Revenue holder inherits commercial negotiation rights upon Founder's death or incapacitation, subject to resolution vote
+  - **Clause 41 (AI Contributions):** Formal disclosure format added with required AI-Disclosure, Tool, and Scope fields; "AI-Disclosure: none" required when no AI was used
+  - **Clause 43 (Commercial Agent):** Unilateral designation permitted before ownership is shared; scope constraint format defined — plain-language parenthetical, disputes resolved by resolution vote
+  - **Clause 44 (Founder Dormancy):** Clarified EXCUSED does not end the dormancy condition; Founder must cast an active ballot to exit dormancy
+  - **Clause 3 (Commercial Use):** Commercial agreement expiration grace period of 30 days added before unlicensed status applies
+  - **Clause 35 (Audit Right):** Dispute procedure for inaccurate revenue statements added — Founder must notify before escalating, 14-day cure window, arbitration before enforcement
+
+---
+
+## [2026-05-11] (3)
+
+### Changed
+- `LICENSE` — PBL v2.0 gap and consistency audit — 4 fixes:
+  - Cross-references in clauses 16, 28, 32(e), 40, 41 corrected from "clauses 19–22" to "clauses 19–25"; the governance process includes Administrative Notices (clause 25), so the prior range understated which acts qualify as governance-compliant
+  - Clause 20: bundled-vote exceptions now list both permitted cases — clause 24 (combined ownership-and-revenue stripping) and clause 26b (fork + original CONTRIBUTORS revision); previously only clause 24 was named, implicitly forbidding clause 26b's expressly bundled vote
+  - Clause 29: removed duplicated definition of "Permanent incapacitation" (already defined in the Definitions section); clause 29 now references the canonical definition
+  - Clause 3: added pointer to the CONTACT section so commercial users know where to find the Founder's contact address
+
+---
+
+## [2026-05-11] (2)
+
+### Changed
+- `LICENSE` — PBL v2.0 forking process review — 4 fixes:
+  - Clause 26: original Founder's ownership floor now explicitly carries over into a fork with the same clause 7 mechanics applied within the fork; only revenue floor was previously stated
+  - Clause 26b: new Founder designation now requires documented written consent before the fork vote opens; a designation without consent is void and invalidates the proposed CONTRIBUTORS file
+  - Clause 26b: queue record exclusivity rule added — only one queue record may be active at a time; a second record committed while one is active has no effect; the second proposer must wait for the first vote to conclude or the first record to be voided
+  - Clause 26b: queue immediate-open rule clarified — if no votes were open at the time of queuing, the fork vote opens immediately upon the queue record being committed
+
+---
+
+## [2026-05-11]
+
+### Changed
+- `LICENSE` — PBL v2.0 prose cleanup: remove AI-style phrasing (broken mid-sentence linebreaks in cl.8 and cl.22; "including but not limited to" → "including"; "in whole or in part" → "wholly or partly"; "without limitation" dropped; redundant "in writing" removed from bad-faith queue exception; 48h fallback statement tightened)
+
+- `LICENSE` — PBL v2.0 forking gap audit — 6 additional fixes:
+  - Fix 1 — Clause 26: added snapshot rule for no-commit forks (distribution-moment trigger), matching the Fork definition
+  - Fix 2 — Clause 26b: added fallback allowing any other owner to execute the fork commit if the proposer is incapacitated or dies within the 48-hour window; does not extend the window
+  - Fix 3 — Clause 26b: added bad-faith queue exception — non-proposer owners may unanimously void a malicious queue record via a joint clearsigned declaration; voiding triggers a clause 32 termination process against the proposer
+  - Fix 4 — Clause 26b: clarified that governance artifact copy includes in-progress vote folders copied as-is; open votes carry no binding effect on the fork
+  - Fix 5 — Clause 28: clarified that the naming restriction is bilateral once a fork is independent; each project controls permission to use its own name
+  - Fix 6 — Clause 26b fork-of-fork: clarified that the original Founder's revenue floor in a direct fork is unaffected by any further forking of that direct fork; a sub-fork carries no inherited obligation to the original Founder
+
+- `LICENSE` — PBL v2.0 forking gap audit — 6 further fixes:
+  - Clause 2 + Clause 26: "derivative" and "derived version" aligned to the Fork definition; both now reference the Fork definition explicitly
+  - Clause 26: independence paragraph scoped to legitimate (clause 26b) forks only; a fork that has not been elevated under clause 26b does not gain independence by merely committing files
+  - Clause 26: abeyance revenue share — inherited owner's revenue share is likewise suspended during abeyance; fork must hold it in escrow; accrued escrow released to confirmed successor or distributed proportionally on redistribution
+  - Clause 26b: fork-of-fork rule added — a legitimate fork is a normal independent project; forking it again follows the same rules as any project; the original Founder's carried-over floor does not cascade into grandchild forks
+  - Clause 26b: lost-proposer rule — the queue record constitutes the proposer's opening ballot and YES vote; if the proposer becomes unable to act, remaining owners vote to conclusion; the vote is not voided
+  - Clause 28: "majority ownership vote" replaced with standard "resolution vote" under clauses 19–22
+
+- `LICENSE` — PBL v2.0 forking gap audit — 8 additional fixes:
+  - Definitions — Fork: new definition added; covers all independent copies developed or distributed outside the original project; excludes private non-distributed copies
+  - Clause 26: illegitimate forks (those carrying the inherited CONTRIBUTORS file but not elevated via clause 26b) have no independent rights; may not enter commercial agreements, accept contributions, call votes, or modify CONTRIBUTORS; any such act is void and constitutes bad-faith governance under clause 32
+  - Clause 26: deceased original Founder with no successor — carried-over revenue floor passes to designated Successor-Revenue or legal heirs; fork must hold owed amounts in escrow until a valid heir is confirmed; escrow follows clause 3 mechanics
+  - Clause 26: sole-owner abeyance clarified — if the fork has only one ownership holder when the 180-day abeyance window expires, the abeyance share is automatically absorbed into that owner's holding; CONTRIBUTORS updated via Administrative Notice under clause 25
+  - Clause 26b: fork queue record is irrevocable — cannot be withdrawn or cancelled after committing; the fork vote must be held to conclusion
+  - Clause 26b: 48-hour commit window after a passing fork vote is explicitly hard — no extension permitted for any reason
+  - Clause 26b: deliberate omission of governance artifacts from the fork constitutes bad-faith governance under clause 32; accidental omissions are curable within 30 days of identification; failure to cure is treated as deliberate
+  - Clause 26 + 26b: waiver conflict resolved — original Founder's carried-over revenue floor may be reduced or removed only by a resolution vote among the fork's ownership holders, even when proposed by the Founder; no unilateral waiver is effective
+
+- `LICENSE` — PBL v2.0 forking gap fixes (8 fixes):
+  - Clause 26: unlicensed forks — a fork that does not carry over the inherited CONTRIBUTORS file at creation has no valid license; any distribution constitutes copyright infringement
+  - Clause 26: fork commercial obligation — original Founder's revenue floor follows clause 3 payment/suspension/termination mechanics; original Founder must be named as payee in any fork commercial agreement; audit right under clause 35 explicitly extends to forks
+  - Clause 26: post-fork independence — fork and original project are fully independent after the fork's CONTRIBUTORS file is committed; actions in one project have no effect on the other; waivers are per-project
+  - Clause 26: fork CONTRIBUTORS snapshot — snapshot is the last validly committed CONTRIBUTORS at the moment of the fork's initial commit; pending votes and proposed files have no effect on the fork
+  - Clause 26: abeyance deadline — inherited shares in abeyance must be resolved within 180 days; redistribution vote may not be called before that window expires without unanimous written consent
+  - Clause 26b: minimum ownership — 5% minimum ownership requirement under clause 8 applies to fork proposals by non-Founder owners
+  - Clause 26b: fork queue and vote ordering — fork vote requires all open votes to close first; queue record freezes new votes while existing ones finish; fork vote may run alongside new votes but those votes do not carry over; failed fork vote lifts the queue immediately
+  - Clause 26b: 48-hour commit deadline — CONTRIBUTORS.proposed required at vote-opening time; forker has 48 hours after vote passes to create fork repo and commit; lapsed vote subject to 30-day cooldown
 
 ---
 
