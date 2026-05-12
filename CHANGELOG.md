@@ -1,12 +1,42 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/05/11 16:08:07.128086 )
+[//]: # (+ Revised: 	2026/05/12 00:00:00.000000 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
 
 All notable changes to this project are documented here.
+
+---
+
+## [2026-05-12]
+
+### Changed
+- `LICENSE` — PBL v2.0 round 5: governance hardening, new clauses, and clause renumbering — 25 fixes:
+  - **Cross-reference corrections:** AI-Generated Portion disclosure now points to clause 43 (was 41); Key Rotation Window now points to clause 44 (was 42); Commercial Agent mechanics now point to clause 45 (was 43); Founder Dormancy removal now points to clause 44 (was 42); AI Contributions section heading updated throughout
+  - **Commercial Agent (Definitions + cl.45):** Agent may not modify license terms, transfer ownership, or alter revenue shares; unilateral designation by Founder permitted before ownership is shared; mechanics of designation and scope recording defined in clause 45
+  - **EXCUSED-absence extension vote:** procedure for extending a leave beyond 6 months defined — owner may ballot before absence or during it without losing EXCUSED status; extension vote must conclude before the 6-month limit; if the vote fails or is not called in time, standard absence/abstention tracking resumes
+  - **Stripping-vote full reset (cl.23, cl.24):** reset of absence track, abstention track, and participation score now explicitly scoped to the owner who was the subject of the stripping vote; no other owner's tracks or score are affected
+  - **Founder zero-ownership voting (cl.8):** if the Founder holds zero ownership at the time of a vote the Founder has no voting rights in that vote and is excluded from the tie-break rule; a tie fails regardless
+  - **Cooldown and void votes (cl.8):** a vote that was void for lack of quorum does not trigger the 30-day per-subject cooldown; it may be re-opened immediately
+  - **Secret-ballot substitute tally (cl.21b):** if a proposer is unable to submit their own tally before the reveal window expires, any other ownership holder may submit it on their behalf, provided the proposer has supplied their choice and nonce in writing; the substitute signs with their own key and attaches the proposer's written disclosure; if no owner can or will submit, the proposer is treated as ABSTAIN
+  - **Administrative Notice scope (cl.25):** definition of qualifying "factual changes" expanded with explicit examples of what qualifies (GPG fingerprint update after a passed rotation vote; pseudonym or contact-address correction) and explicit examples of what does not qualify and requires a resolution vote instead (altering ownership or revenue percentages; adding or removing a contributor; modifying any floor or undiluted designation)
+  - **Fork revenue floor (cl.26):** Founder's minimum share now explicitly defined as a first-priority carve-out from 100 % of the fork's gross commercial revenue before any internal distribution; not applied against the fork's internal distributable pool
+  - **Fork dormancy deadlock (cl.26):** if a fork record has been queued 90+ consecutive days and no vote has opened because all remaining votes were open at queuing and have still not closed, the fork vote opens automatically at the 90-day mark; those prior open votes are treated as void for purposes of unblocking the fork vote only and continue independently
+  - **Fork window force majeure (cl.26):** the 48-hour fork-execution window is paused during impediments entirely outside the forker's control (platform outage, natural disaster, government action); the forker must document the impediment by committing a signed statement within 24 hours of the window expiring; absence of such statement means the lapse stands; disputes resolved by resolution vote
+  - **Fork vote irrevocability (cl.26):** prose clarified — "the remaining ownership holders proceed" wording tightened to make clear that irrevocability of the fork record means the vote must proceed to conclusion, not lapse
+  - **Operational continuity during contested Founder succession (cl.29):** default notices under cl.3 sent by remaining holders collectively; audit right under cl.35 exercised by resolution vote; revenue owed to Founder held in escrow until succession is confirmed; no new commercial agreement may be executed in the Founder's name until succession is confirmed or a Commercial Agent is appointed
+  - **Simultaneous incapacitation of all owners (cl.29):** new rule — last valid CONTRIBUTORS file remains authoritative; all active commercial agreements suspended; successors and heirs must reconstitute governance within 180 days; if none come forward, any party with evidence of a prior commercial relationship may apply to a competent court for appointment of a trustee; forking rights unaffected
+  - **Violation notice triggers and retroactive claim limit (cl.33):** the 60-day window for the Founder to call a stripping vote now runs from the earliest of: written notice delivered to the Founder's recorded contact address; a governance artifact documenting the violation committed to the repository; or the Founder's written acknowledgement committed to the repository; retroactive compensation claims limited to five years preceding the date of written documentation; limitation does not apply where the violation involved deliberate concealment, fraud, or wilful misrepresentation
+  - **Audit right during contested succession (cl.35):** if the Founder is deceased or permanently incapacitated and succession is unresolved, the audit right is exercised by the remaining ownership holders acting collectively by resolution vote; revenue statements received during contested succession are held until a valid successor or heir is confirmed
+  - **Commercial-use dispute presumption and payment terms (cl.3):** where the parties dispute whether software use is a material input, the use is presumed commercial unless the asserting party demonstrates in writing that the software has no measurable effect on revenue-generating activity; new payment-terms paragraph states that specific percentages, frequency, currency, and method are defined in each commercial agreement; non-cash consideration valued at fair market value; the license prescribes only that a valid agreement must exist before commercial use begins
+  - **New clause 38 — Indemnification:** each commercial licensee indemnifies the Founder, ownership holders, contributors, and their successors and heirs against claims arising from the licensee's use, deployment, distribution, products, services, or breaches; not applicable to claims arising solely from the Founder's own unmodified software; non-commercial users have no indemnification obligation
+  - **New clause 39 — Export Compliance:** parties represent compliance with applicable export control laws including EU Dual-Use Regulation (EU) 2021/821; commercial licensees solely responsible for jurisdiction-level compliance; Founder makes no representation about export eligibility to specific destinations
+  - **Clause renumbering:** former cl.38 (Governing Law) → cl.40; cl.39 (GPG Signatures) → cl.41; cl.40 (CONTRIBUTORS File) → cl.42; remaining clauses shifted accordingly
+  - **Governing Law / Arbitration (cl.40, formerly 38):** seat of arbitration fixed as Madrid, Spain; proceedings in English unless parties agree otherwise; one arbitrator by default; any party may request a three-arbitrator panel within 15 days of the notice of arbitration being filed
+  - **GPG Signatures as Consent (cl.41, formerly 39):** eIDAS representation narrowed — GPG clearsign signatures are presented as evidence of consent and may carry probative weight as electronic signatures; they are not represented as qualified or advanced electronic signatures under eIDAS 910/2014 unless the signing party has separately obtained a qualifying certificate; parties agree GPG signatures shall be treated as sufficient for internal governance and may be admitted as evidence in arbitral or judicial proceedings governed by this license
+  - **License author succession (cl.3 / PBL upgrade clause):** if the original license author is deceased, designated Successor-Revenue or legal heirs acting as custodian of the license may issue updated PBL revisions
 
 ---
 

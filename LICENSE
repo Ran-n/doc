@@ -49,7 +49,7 @@ DEFINITIONS
     output; code that originated from an AI tool remains AI-generated for the
     purposes of this license. The contributor bears the burden of disclosing
     AI-generated portions at the time of submission. The required form and
-    location of that disclosure are defined in clause 41.
+    location of that disclosure are defined in clause 43.
 
 "Ownership"
     The right to make decisions about the project, including merging
@@ -112,16 +112,20 @@ DEFINITIONS
 
 "Key Rotation Window"
     A shortened voting window that applies exclusively to GPG key rotation
-    votes under clause 42, replacing the standard Voting Window in full.
+    votes under clause 44, replacing the standard Voting Window in full.
     The maximum duration is 24 hours; there is no minimum floor. The proposer
     may shorten it but not extend it beyond 24 hours. The window opens when
     the vote record file is committed to the repository.
 
 "Commercial Agent"
     A person designated by the Founder in the CONTRIBUTORS file to negotiate
-    and execute commercial agreements on the Founder's behalf. The Commercial
-    Agent acts within any scope constraints recorded in the CONTRIBUTORS file.
-    Designation and removal of a Commercial Agent require a resolution vote.
+    and execute commercial agreements on the Founder's behalf, within any
+    scope constraints recorded in the CONTRIBUTORS file. A Commercial Agent
+    may not modify the terms of this license, transfer ownership, or alter
+    revenue shares. Designation and removal of a Commercial Agent require a
+    resolution vote, except that before ownership is shared the Founder may
+    act unilaterally consistent with clause 6. The mechanics of designation
+    and scope recording are defined in clause 45.
 
 "Declared Absence"
     A period during which an ownership holder has notified the other ownership
@@ -134,6 +138,15 @@ DEFINITIONS
     absence do not count toward that holder's absence track, dormancy clock,
     or any participation metric. A declared absence may not exceed 6 months
     per calendar year in aggregate without a resolution vote to extend it.
+    An extension vote follows the standard governance process. The owner
+    requesting the extension may cast their ballot before their absence
+    begins or, if already absent, may participate in the extension vote
+    without losing their EXCUSED status for that vote. The extension vote
+    may not itself be called during the absence it is meant to extend;
+    it must be opened and concluded before the 6-month limit is reached.
+    If the extension vote fails or is not called in time, any votes that
+    close after the 6-month limit is reached are governed by the standard
+    absence and abstention tracking rules.
 
 "Founder Dormancy"
     A condition that arises when the Founder has accumulated 3 or more
@@ -162,8 +175,10 @@ DEFINITIONS
     the abstention track decrement simultaneously and atomically from the
     same ballot; they are not applied sequentially.
 
-    Full reset: both the absence track and the abstention track reset to zero
-    after any stripping vote resolves, regardless of outcome. See clause 23.
+    Full reset: both the absence track and the abstention track of the
+    owner who was the subject of the stripping vote reset to zero after
+    that stripping vote resolves, regardless of outcome. No other owner's
+    tracks are affected by this reset. See clause 23.
 
 "Abstention Track"
     A per-owner counter tracking votes where the owner voted ABSTAIN.
@@ -176,8 +191,10 @@ DEFINITIONS
     undoes one step in each track simultaneously — clearing 4 accumulated
     abstentions requires 4 consecutive YES or NO ballots.
 
-    Full reset: both the abstention track and the absence track reset to zero
-    after any stripping vote resolves, regardless of outcome. See clause 23.
+    Full reset: both the abstention track and the absence track of the
+    owner who was the subject of the stripping vote reset to zero after
+    that stripping vote resolves, regardless of outcome. No other owner's
+    tracks are affected by this reset. See clause 23.
 
 "Participation Score"
     A combined participation metric derived from an owner's current track
@@ -196,10 +213,11 @@ DEFINITIONS
     individual track thresholds serve as independent fallback triggers in
     cases where a single type of non-participation dominates.
 
-    The score resets to zero — together with both tracks — after any stripping
-    vote resolves, regardless of outcome, as defined in clause 23. No other
-    event resets the score directly; all score changes are the result of track
-    changes applied under the rules above.
+    The score of the owner who was the subject of a stripping vote resets
+    to zero — together with both their tracks — after that stripping vote
+    resolves, regardless of outcome, as defined in clause 23. No other owner's
+    score is affected by this reset. No other event resets the score directly;
+    all score changes are the result of track changes applied under the rules above.
 
 "Governance Artifact"
     Any file that forms part of the official governance record, including
@@ -208,7 +226,7 @@ DEFINITIONS
     metadata stored under the governance/ folder.
 
 "Emergency Key Replacement"
-    The process defined in clause 42 by which any other ownership holder may
+    The process defined in clause 44 by which any other ownership holder may
     call a key rotation vote on behalf of an ownership holder whose registered
     GPG key has been compromised such that the holder can no longer sign a
     ballot to initiate the rotation themselves. The affected holder is excused
@@ -256,7 +274,9 @@ CONDITIONS
    defined under the Fork definition — must be released under this same license
    (PBL v2.0, or any later version approved by a resolution vote of the
    project's ownership holders, provided such later version is a published,
-   publicly available revision of PBL issued by the original license author).
+   publicly available revision of PBL issued by the original license author
+   or, if the original license author is deceased, by their designated
+   Successor-Revenue or legal heirs acting as custodian of the license).
    Each project governs its own version upgrade independently: the original
    project's ownership holders decide which version applies to the original
    project; a legitimate fork's ownership holders decide which version applies
@@ -268,8 +288,11 @@ CONDITIONS
    the software contributes in a non-trivial way to the functionality, cost
    reduction, or output that drives the revenue in question. Incidental or
    isolated use that has no measurable effect on any revenue-generating
-   activity is not a material input. Use is commercial
-   when any of the following apply:
+   activity is not a material input. Where the parties dispute whether use
+   is a material input, the use is presumed to be commercial unless the
+   party asserting non-commercial use demonstrates in writing that the
+   software has no measurable effect on any revenue-generating activity.
+   Use is commercial when any of the following apply:
 
      - The software, or a product that includes it, is sold or licensed for
        a fee
@@ -324,6 +347,14 @@ CONDITIONS
    Founder's right to pursue remedies for the period of unlicensed use
    under clause 33.
 
+   Payment terms — including the specific percentage of revenue owed, the
+   payment frequency, currency, and method — are defined in each commercial
+   agreement. Non-cash consideration (including equity, barter, or in-kind
+   exchange) must be valued at fair market value in a mutually agreed
+   currency at the time of the agreement. This license does not prescribe
+   payment terms; it requires only that a valid commercial agreement
+   governing those terms exists before any commercial use begins.
+
 ─────────────────────────────────────────────────────────────────────────────
 OWNERSHIP
 ─────────────────────────────────────────────────────────────────────────────
@@ -369,8 +400,12 @@ OWNERSHIP
    wins; if the Founder abstained, did not vote, was marked ABSENT, or is
    not a party to the vote, the vote fails. For the purposes of the
    tie-break rule, an ABSENT Founder is treated the same as a Founder who
-   did not vote. If quorum is not met when the voting window expires,
-   the vote is void. All votes must be recorded and verified via the
+   did not vote. If the Founder holds zero ownership at the time of a vote —
+   whether through transfer or a floor of zero — the Founder has no voting
+   rights in that vote and is not a party for the purposes of the tie-break
+   rule; a tie fails regardless of any prior vote by the Founder. If quorum
+   is not met when the voting window expires, the vote is void. All votes
+   must be recorded and verified via the
    governance process defined in clauses 19–25. See clause 6 for the
    Founder's unilateral resolution right prior to ownership being shared.
 
@@ -391,11 +426,13 @@ OWNERSHIP
 
      Per-subject cooldown:
      No owner — including the Founder — may open a vote on the same subject
-     as a vote that closed within the preceding 30 days, regardless of that
-     vote's outcome. Two votes share the same subject when their slugs are
-     identical or when a reasonable reader would conclude they concern the
-     same specific decision. The Founder may waive this restriction for
-     urgent matters by stating the reason in the vote record.
+     as a vote that closed within the preceding 30 days and produced a
+     tally (passed or failed). A vote that was void for lack of quorum does
+     not trigger the cooldown; it may be re-opened immediately. Two votes
+     share the same subject when their slugs are identical or when a
+     reasonable reader would conclude they concern the same specific
+     decision. The Founder may waive this restriction for urgent matters
+     by stating the reason in the vote record.
 
    Ballot options:
      YES         — in favour of the proposed change
@@ -592,7 +629,7 @@ CONTRIBUTORS FILE
       Commercial-Agent     Present only on the Founder's entry. Optional;
                            pseudonym or legal name of the person authorised to
                            negotiate and execute commercial agreements on the
-                           Founder's behalf, as defined in clause 43. May
+                           Founder's behalf, as defined in clause 45. May
                            include a scope constraint in parentheses after the
                            name. If blank, no Commercial Agent is designated.
       Successor-Ownership  Present only if the holder has a non-zero ownership
@@ -880,6 +917,18 @@ GOVERNANCE
     behalf. No owner other than the voter and the proposer may submit
     a tally on another voter's behalf.
 
+    If the proposer is themselves unable to submit their own tally before
+    the reveal window expires — due to incapacitation, key compromise, or
+    any other reason — any other ownership holder may submit the tally on
+    the proposer's behalf, provided the proposer has supplied their choice
+    and nonce to that owner in writing. The substitute submitter must sign
+    the tally file with their own registered key, include a Submitted-by
+    field naming themselves, and attach the proposer's written disclosure
+    as a clearsigned file in the same vote folder. If no owner is able or
+    willing to submit the proposer's tally within the reveal window, the
+    proposer is treated as ABSTAIN under the same mechanics defined for
+    voters who fail to reveal.
+
     A tally is valid when:
       - The clearsign signature in the .tally file verifies correctly
       - The signing key fingerprint matches the registered GPG key of
@@ -996,8 +1045,9 @@ GOVERNANCE
     Thresholds are prerequisites for calling a stripping vote, not automatic
     triggers. No action is required until an owner chooses to call one.
     After any stripping vote resolves — regardless of outcome — both tracks
-    and the participation score for all owners involved reset to zero
-    immediately. Any mid-cycle decrement progress is also cleared by this
+    and the participation score of the owner who was the subject of that
+    stripping vote reset to zero immediately. No other owner's tracks or
+    score are affected. Any mid-cycle decrement progress is also cleared by this
     full reset.
 
 24. OWNERSHIP STRIPPING
@@ -1031,9 +1081,17 @@ GOVERNANCE
 25. ADMINISTRATIVE NOTICE
     An Administrative Notice is a lightweight governance record used when
     the CONTRIBUTORS file must be updated to reflect an undisputed factual
-    change — such as the combination of shares when a succession results in
-    a successor who already holds ownership in the project — that requires
-    no vote but demands acknowledgement from all ownership holders.
+    change — that is, a change whose underlying facts are not in dispute,
+    as distinct from a policy decision that requires a vote. Examples of
+    qualifying factual changes include: combining shares when a succession
+    results in a successor who already holds ownership in the project;
+    updating a GPG fingerprint following a passed key rotation vote;
+    recording a pseudonym or contact-address correction agreed to by the
+    affected owner. Examples of changes that do not qualify and require a
+    resolution vote instead: altering any ownership or revenue percentage;
+    adding or removing a contributor; modifying any floor or undiluted
+    designation. A notice requires no vote but demands acknowledgement from
+    all ownership holders.
 
     A notice record must be committed to:
       governance/notices/<YYYY-MM-DD>_<slug>.notice
@@ -1105,10 +1163,15 @@ FORKS AND DERIVATIVES
     the fork's governance may not strip below; it follows the same mechanics
     as the Founder ownership floor defined in clause 7, applied within the
     fork. The original Founder's revenue floor carried into a fork represents
-    a minimum share of any commercial revenue generated by the fork, payable
-    to the original Founder under the same payment, suspension, and
-    termination mechanics defined in clause 3. The original Founder must be
-    named as a payee in any commercial agreement the fork executes. The
+    a minimum share of the fork's total commercial revenue — calculated as
+    a first-priority carve-out from 100% of the fork's gross commercial
+    revenue before any internal distribution among the fork's own owners and
+    contributors — payable to the original Founder under the same payment,
+    suspension, and termination mechanics defined in clause 3. This floor is
+    not applied against the fork's internal distributable pool; it is applied
+    at the top level, regardless of how the fork partitions the remainder
+    among its own owners. The original Founder must be named as a payee in
+    any commercial agreement the fork executes. The
     original Founder's audit right under clause 35 applies to any fork that
     has entered a commercial agreement or
     otherwise satisfies clause 3, as though the fork were a direct licensee
@@ -1228,6 +1291,16 @@ FORKS AND DERIVATIVES
     fork record constitutes the proposer's opening ballot and their YES
     vote on the fork.
 
+    Dormancy deadlock: if a fork record has been queued for 90 or more
+    consecutive days and no vote has opened because all remaining votes were
+    already open at the time of queuing and have still not closed — due to
+    dormancy or any other cause — the fork vote opens automatically at the
+    90-day mark regardless of whether prior open votes have closed. Any such
+    prior open votes that have not closed by that point are treated as void
+    for purposes of unblocking the fork vote only; they continue toward
+    their own resolution independently and their outcome in the original
+    project is unaffected.
+
     Bad-faith queue exception: if the ownership holders — excluding the
     proposer — unanimously conclude that the fork record was committed
     without a legitimate purpose, with the intent to freeze governance and
@@ -1243,9 +1316,11 @@ FORKS AND DERIVATIVES
 
     If the proposer becomes unable to act after committing the fork record —
     due to death, permanent incapacitation, key compromise, or any other
-    reason — the remaining ownership holders proceed to cast their ballots
-    and the vote resolves on the basis of those ballots alone. The proposer's
-    inability to act further does not void the vote or lift the queue.
+    reason — the irrevocability of the fork record means the vote must
+    proceed to conclusion, not that it lapses. The remaining ownership
+    holders proceed to cast their ballots and the vote resolves on the
+    basis of those ballots alone. The proposer's inability to act further
+    does not void the vote or lift the queue.
     If the fork vote fails, the queue is lifted immediately and voting in
     the original project resumes normally. While the fork vote is open,
     new votes may be opened in the original project; any such votes proceed
@@ -1287,12 +1362,25 @@ FORKS AND DERIVATIVES
     When the vote passes:
       - The forker must create the fork repository and commit the fork's
         CONTRIBUTORS file exactly as approved within 48 hours of the vote
-        closing. This window is hard — it cannot be extended by any party
-        for any reason, except as provided below. If the fork repository is
-        not created and the CONTRIBUTORS file not committed within that
-        window, the vote lapses. A lapsed fork vote is subject to the
-        standard 30-day per-subject cooldown under clause 8 before a new
-        fork vote may be opened.
+        closing. This window may be extended only in the circumstances
+        described below; in all other cases it is hard. If the fork
+        repository is not created and the CONTRIBUTORS file not committed
+        within that window, the vote lapses. A lapsed fork vote is subject
+        to the standard 30-day per-subject cooldown under clause 8 before
+        a new fork vote may be opened.
+
+        Force majeure: if the forker is unable to execute the fork commit
+        within the 48-hour window due to circumstances entirely outside
+        their control — including extended outage of the hosting platform
+        designated in the vote record, natural disaster, or government
+        action — the window is paused for the duration of the impediment
+        and resumes when the impediment ends. The forker must document the
+        impediment by committing a signed statement to the original
+        repository within 24 hours of the window expiring, identifying the
+        impediment and its dates. If no such statement is committed, the
+        lapse stands and the cooldown applies. Disputes over whether an
+        impediment qualifies as force majeure are resolved by a resolution
+        vote of the original project's ownership holders.
 
         If the proposer becomes permanently incapacitated or dies after the
         vote passes but before the 48-hour window expires, any other
@@ -1453,6 +1541,20 @@ SUCCESSION
     agreements requiring the Founder's participation are suspended until
     succession is complete.
 
+    Operational continuity during contested Founder succession: while the
+    Founder's succession is unresolved, the following rules apply to
+    Founder-specific rights. (a) Default notices under clause 3 are sent
+    by the remaining ownership holders acting collectively; any one owner
+    may send the notice on the collective's behalf, provided a record of
+    that delegation is committed to the repository. (b) The audit right
+    under clause 35 is exercised by the remaining ownership holders
+    acting by resolution vote. (c) Revenue owed to the Founder under any
+    active commercial agreement is held in escrow by the remaining ownership
+    holders and released to the confirmed successor or heir upon resolution
+    of succession. (d) No new commercial agreement may be executed in the
+    Founder's name until succession is confirmed or a Commercial Agent is
+    appointed under clause 45.
+
     Contested or ambiguous entitlements: if the rightful recipient of any
     entitlement cannot be determined — due to legal dispute, absence of
     heirs, ambiguous or conflicting designations, declination by all named
@@ -1467,6 +1569,23 @@ SUCCESSION
     contested entitlement is held in abeyance by the remaining ownership
     holders and resolved exclusively by applicable inheritance law or a
     competent legal authority, with no internal default recipient.
+
+    Simultaneous incapacitation of all owners: if all ownership holders
+    are simultaneously deceased or permanently incapacitated such that no
+    active owner remains to conduct governance, the following rules apply.
+    The last validly committed CONTRIBUTORS file remains the authoritative
+    record of ownership and revenue entitlements. All active commercial
+    agreements are suspended from the date the last active owner becomes
+    unavailable; no commercial rights may be exercised until at least one
+    valid successor or heir is confirmed. The confirmed successors and heirs
+    of each owner collectively inherit that owner's governance rights and
+    must reconstitute governance within 180 days of the last triggering
+    event. If no successors or heirs come forward within that period, any
+    party who has contributed to the project and holds evidence of a prior
+    commercial relationship may apply to a competent court for appointment
+    of a trustee to manage the project's commercial obligations. Nothing in
+    this paragraph limits any party's right to fork the project under
+    clause 26, subject to the license terms.
 
 ─────────────────────────────────────────────────────────────────────────────
 LICENSE VERSIONING
@@ -1497,7 +1616,7 @@ CONTRIBUTOR AGREEMENT
          the existing ownership pool, distributed proportionally among current
          owners in accordance with clause 9.
       d) They have disclosed all AI-generated portions of their contribution
-         in accordance with the AI-Generated Portion definition and clause 41.
+         in accordance with the AI-Generated Portion definition and clause 43.
       e) They accept the terms of this license in full, including the
          commercial use and revenue share clauses.
     Submission of a contribution constitutes acceptance of these terms
@@ -1513,9 +1632,13 @@ CONTRIBUTOR AGREEMENT
     CONTRIBUTORS file are frozen; suspended revenue is held in escrow and
     not distributed to any party until the resolution vote concludes.
     The Founder must initiate a resolution vote to formally remove the
-    contributor and redistribute their shares within 60 days of the date
-    the Founder first became aware of the violation. If the resolution vote
-    passes, all rights are permanently terminated. If no vote is called
+    contributor and redistribute their shares within 60 days of the
+    earliest of: (a) the date written notice of the violation is delivered
+    to the Founder at the contact address recorded in the CONTRIBUTORS file;
+    (b) the date a governance artifact documenting the violation is committed
+    to the repository; or (c) the date the Founder commits any written
+    acknowledgement of the violation to the repository. If the resolution
+    vote passes, all rights are permanently terminated. If no vote is called
     within that period, the suspension lapses and all entitlements are
     restored.
 
@@ -1569,7 +1692,12 @@ ENFORCEMENT
     deliberate obfuscation of the software's presence in a product, or
     relabelling to avoid attribution — revokes all rights granted by this
     license immediately and permanently. The Founder reserves the right to
-    pursue compensation for unlicensed commercial use retroactively.
+    pursue compensation for unlicensed commercial use retroactively, limited
+    to the five years preceding the date on which the Founder first received
+    written documentation of the violation. This limitation does not apply
+    where the violation involved deliberate concealment, fraud, or wilful
+    misrepresentation, in which case no time limit applies to retroactive
+    claims.
 
 34. NO REVENUE THRESHOLD
     There is no minimum revenue threshold for the commercial use requirement.
@@ -1589,6 +1717,13 @@ ENFORCEMENT
     field, the Founder may suspend all rights granted by the commercial
     agreement and treat the non-response as a commercial violation under
     clause 33.
+
+    If the Founder is deceased or permanently incapacitated and succession
+    is unresolved, the audit right is exercised by the remaining ownership
+    holders acting collectively by resolution vote. Any revenue statement
+    received during contested succession is held by the remaining ownership
+    holders until a valid successor or heir is confirmed, at which point it
+    is delivered to that party.
 
     The written revenue statement must include, at minimum:
 
@@ -1626,7 +1761,38 @@ ENFORCEMENT
     severed if modification is not possible. The remaining provisions of this
     license shall continue in full force and effect.
 
-38. GOVERNING LAW AND JURISDICTION
+38. INDEMNIFICATION
+    Each commercial licensee agrees to indemnify, defend, and hold harmless
+    the Founder, ownership holders, contributors, and their respective
+    successors and heirs from and against any claims, damages, losses,
+    liabilities, costs, and expenses (including reasonable legal fees)
+    arising out of or relating to: (a) the licensee's use, deployment, or
+    distribution of the software; (b) any product or service the licensee
+    builds using the software; (c) the licensee's breach of any term of
+    this license or any commercial agreement entered into under it; or
+    (d) any claim by a third party that the licensee's product or service
+    infringes that third party's intellectual property rights, to the
+    extent such claim arises from the licensee's modifications or
+    combination of the software with other components not supplied by the
+    Founder. This obligation does not apply to claims arising solely from
+    the Founder's own unmodified software as originally distributed, or
+    from any act or omission of the Founder. Non-commercial users have
+    no indemnification obligation under this license.
+
+39. EXPORT COMPLIANCE
+    This software is subject to applicable export control laws and
+    regulations, including the EU Dual-Use Regulation (EU) 2021/821 and any
+    successor legislation. By using, distributing, or deploying this
+    software, each party represents that it is not located in, under the
+    control of, or a national or resident of any country subject to a trade
+    embargo applicable in Spain or the European Union, and that it is not
+    listed on any applicable denied-party or restricted-party list. Any
+    commercial licensee is solely responsible for ensuring that their use
+    complies with all applicable export control obligations in their
+    jurisdiction. The Founder makes no representation that the software is
+    eligible for export to any particular destination without restriction.
+
+40. GOVERNING LAW AND JURISDICTION
     This license shall be governed by and construed in accordance with the
     laws of Spain. The copyright protections granted by this license extend
     to all jurisdictions that are signatories to the Berne Convention for
@@ -1637,24 +1803,37 @@ ENFORCEMENT
     without waiving the right to pursue remedies in any other jurisdiction.
     Parties who cannot resolve a dispute through good-faith negotiation agree
     to submit to binding arbitration under the WIPO Arbitration Rules before
-    resorting to litigation. Nothing in this clause limits either party from
-    seeking emergency injunctive or other equitable relief from a court of
-    competent jurisdiction to prevent irreparable harm pending arbitration.
+    resorting to litigation. The seat of arbitration shall be Madrid, Spain.
+    Proceedings shall be conducted in English unless all parties agree
+    otherwise in writing. The number of arbitrators shall be one, unless a
+    party requests a three-arbitrator panel within 15 days of the notice of
+    arbitration being filed, in which case three arbitrators shall be
+    appointed in accordance with the WIPO Arbitration Rules. Nothing in this
+    clause limits either party from seeking emergency injunctive or other
+    equitable relief from a court of competent jurisdiction to prevent
+    irreparable harm pending arbitration.
 
 ─────────────────────────────────────────────────────────────────────────────
 SIGNATURES AND LEGAL WEIGHT
 ─────────────────────────────────────────────────────────────────────────────
 
-39. GPG SIGNATURES AS CONSENT
+41. GPG SIGNATURES AS CONSENT
     A GPG-signed ballot, as defined in clause 21, constitutes a binding
     expression of consent by the signing party under this license. By
     signing a ballot, the signing party confirms they have read, understood,
-    and agree to be bound by the decision being voted on. GPG signatures
-    produced in accordance with this license are intended to carry the same
-    legal weight as a digital signature under applicable electronic signature
-    law, including but not limited to the eIDAS Regulation (EU) 910/2014.
+    and agree to be bound by the decision being voted on. GPG clearsign
+    signatures produced in accordance with this license are intended to serve
+    as evidence of consent and may carry probative weight as electronic
+    signatures in applicable legal proceedings. They are not represented as
+    qualified or advanced electronic signatures under the eIDAS Regulation
+    (EU) 910/2014 unless the signing party has separately obtained a
+    certificate meeting the technical requirements of that regulation. The
+    parties agree that GPG signatures produced under this license shall be
+    treated as a sufficient form of digital signature for the purposes of
+    internal governance and may be admitted as evidence in any arbitral or
+    judicial proceeding governed by this license.
 
-40. CONTRIBUTORS FILE AS RECORD
+42. CONTRIBUTORS FILE AS RECORD
     The CONTRIBUTORS file, maintained in accordance with clause 18 and
     amended only through the governance process defined in clauses 19–25,
     constitutes the authoritative record of ownership and revenue
@@ -1672,7 +1851,7 @@ SIGNATURES AND LEGAL WEIGHT
 AI-GENERATED CONTRIBUTIONS
 ─────────────────────────────────────────────────────────────────────────────
 
-41. AI CONTRIBUTIONS
+43. AI CONTRIBUTIONS
     Any AI-generated portion of a contribution — as defined in the
     Definitions section — is not original work of the contributor and does
     not entitle the contributor to any ownership or revenue share on that
@@ -1685,7 +1864,14 @@ AI-GENERATED CONTRIBUTIONS
     AI-generated portions must be subtracted from that contributor's entry
     and transferred to the Founder upon discovery. The correction must be
     made via the governance process defined in clauses 19–25 and recorded
-    in the CONTRIBUTORS file.
+    in the CONTRIBUTORS file. This correction is the primary remedy for
+    undisclosed AI-generated work discovered after a contributor has been
+    listed. Contributor termination under clause 32 applies in addition to
+    correction when the failure to disclose was wilful or where the
+    undisclosed portions are so substantial that the correction would
+    eliminate the contributor's entire entitlement; it does not replace the
+    correction obligation. Where the contributor disclosed in good faith but
+    inaccurately, correction without termination is the appropriate remedy.
 
     Contributors must disclose AI-generated portions at the time of
     submission. Disclosure must be made in the pull request description,
@@ -1709,7 +1895,7 @@ AI-GENERATED CONTRIBUTIONS
 GPG KEY ROTATION
 ─────────────────────────────────────────────────────────────────────────────
 
-42. GPG KEY ROTATION
+44. GPG KEY ROTATION
     An ownership holder may replace their registered GPG key by calling a
     key rotation vote. A key rotation vote is a standard resolution vote subject
     to the following special rules:
@@ -1751,15 +1937,14 @@ GPG KEY ROTATION
 COMMERCIAL AGENT AND FOUNDER DORMANCY
 ─────────────────────────────────────────────────────────────────────────────
 
-43. COMMERCIAL AGENT
-    The Founder may designate a Commercial Agent in the CONTRIBUTORS file
-    to negotiate and execute commercial agreements on the Founder's behalf.
-    The Commercial-Agent field in the CONTRIBUTORS file records the agent's
-    pseudonym and any scope constraints on their authority. Designation and
-    removal of a Commercial Agent require a resolution vote. Before ownership
-    is shared, the Founder may designate or remove a Commercial Agent
-    unilaterally without a formal vote, consistent with the Founder's
-    unilateral resolution right under clause 6.
+45. COMMERCIAL AGENT
+    The Founder may designate a Commercial Agent as defined in the
+    Definitions section. The Commercial-Agent field in the CONTRIBUTORS file
+    records the agent's pseudonym and any scope constraints on their
+    authority. Designation and removal of a Commercial Agent require a
+    resolution vote. Before ownership is shared, the Founder may designate
+    or remove a Commercial Agent unilaterally without a formal vote,
+    consistent with the Founder's unilateral resolution right under clause 6.
 
     Scope constraints must be stated in plain language as a parenthetical
     remark in the Commercial-Agent field, for example: "Jane Doe (SaaS
@@ -1768,16 +1953,11 @@ COMMERCIAL AGENT AND FOUNDER DORMANCY
     Disputes over whether an executed agreement violates recorded scope
     constraints are resolved by a resolution vote.
 
-    A Commercial Agent may not modify the terms of this license, transfer
-    ownership, or alter revenue shares. Their authority is limited to
-    negotiating and executing commercial agreements within the scope recorded
-    in the CONTRIBUTORS file.
-
-44. FOUNDER DORMANCY
+46. FOUNDER DORMANCY
     If the Founder is dormant — as defined in the Founder Dormancy definition —
     the remaining ownership holders may appoint a temporary Commercial Agent
     by resolution vote. The temporary agent's authority is identical to that
-    of a designated Commercial Agent under clause 43 and expires:
+    of a designated Commercial Agent under clause 45 and expires:
 
       a) when the Founder resumes participation and revokes the appointment
          by resolution vote, or
@@ -1844,3 +2024,8 @@ CONTACT
 ─────────────────────────────────────────────────────────────────────────────
 
 To obtain a commercial license: ran.hash@proton.me
+
+The authoritative and always-current contact address is the Email field
+in the Founder's entry of the CONTRIBUTORS file at the root of this
+repository. In the event of any discrepancy between the address above
+and the CONTRIBUTORS file, the CONTRIBUTORS file governs.
