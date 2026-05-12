@@ -1,7 +1,7 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 10:11:02.891629 )
-[//]: # (+ Revised: 	2026/05/05 17:24:04.969283 )
+[//]: # (+ Revised: 	2026/05/12 14:23:31.269403 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Contributing
@@ -16,8 +16,10 @@ Thank you for your interest in contributing.
 - [Reporting Bugs](#reporting-bugs)
 - [Suggesting Features](#suggesting-features)
 - [Submitting Changes](#submitting-changes)
+- [Review Process](#review-process)
 - [Commit Style](#commit-style)
 - [License](#license)
+  - [AI Disclosure](#ai-disclosure)
 
 ---
 
@@ -53,11 +55,24 @@ Open an issue and describe:
 1. Fork the repository
 2. Create a branch from `main`: `git checkout -b my-change`
 3. Make your changes
-4. Commit following the [commit style](#commit-style) below
+4. Commit following the [Commit Style](#commit-style) below
 5. Push your branch and open a pull request against `main`
 6. Describe what you changed and why in the PR body
+7. Include an [AI disclosure](#ai-disclosure) in the PR description — this is required
 
 Keep each pull request focused on a single concern. Unrelated changes belong in separate PRs.
+
+---
+
+## Review Process
+
+Pull requests are reviewed by the maintainer. Expect feedback within a reasonable time; there is no guaranteed SLA. A PR may be:
+
+- **Merged** as-is
+- **Merged after changes** — address the requested changes and push to the same branch
+- **Closed** — if it is out of scope, duplicates existing work, or cannot be reconciled with the project direction
+
+Do not open a new PR to replace a closed one without first discussing the closure in the original thread.
 
 ---
 
@@ -97,8 +112,28 @@ Rules:
 
 ## License
 
-By contributing, you agree that your work will be released under the same license as this project — the [PayBack License (PBL)](LICENSE).
+By contributing, you agree that your work will be released under the [PayBack License (PBL)](LICENSE). Free for personal and non-commercial use. Commercial use requires a revenue-share agreement — contact [ran.hash@proton.me](mailto:ran.hash@proton.me).
 
-Free for personal and non-commercial use. Commercial use requires a revenue-share agreement — contact [ran.hash@proton.me](mailto:ran.hash@proton.me).
+**What qualifies as a meaningful contribution:** new features, bug fixes, and substantive code changes. Documentation, formatting, and comment-only changes do not qualify.
 
-Contributing does not transfer copyright or ownership. Non-trivial contributions — new features, bug fixes, and substantive code changes — may entitle you to a revenue share, subject to a resolution vote among existing owners, once you are listed in the [CONTRIBUTORS](CONTRIBUTORS) file.
+Meaningful contributions may entitle you to a revenue share, subject to a resolution vote among existing owners. You must be listed in the [CONTRIBUTORS](CONTRIBUTORS) file before any entitlement applies. Until listed, you hold no ownership or revenue rights regardless of the work merged.
+
+### AI Disclosure
+
+Every pull request must include an AI disclosure in the PR description. This is a binding requirement under clause 43 of the license — omitting it constitutes misrepresentation of authorship.
+
+If you used an AI tool (code generation, completion, or transformation):
+
+```
+AI-Disclosure: yes
+Tool: <name of the AI tool, e.g. GitHub Copilot, ChatGPT>
+Scope: <which files, functions, or sections were produced by the AI tool>
+```
+
+If you did not use any AI tool:
+
+```
+AI-Disclosure: none
+```
+
+Any AI-generated portion of a contribution is not considered your original work and does not entitle you to ownership or revenue share on that portion — it is treated as the Founder's contribution.

@@ -1,12 +1,19 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/05/12 00:00:00.000000 )
+[//]: # (+ Revised: 	2026/05/12 14:24:59.213218 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
 
 All notable changes to this project are documented here.
+
+---
+
+## [2026-05-12] (2)
+
+### Changed
+- `CONTRIBUTING.md` — added Review Process section; clarified CONTRIBUTORS listing prerequisite for revenue-share entitlement; split License section for readability
 
 ---
 
