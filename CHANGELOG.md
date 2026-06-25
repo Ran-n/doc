@@ -1,12 +1,31 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/05/12 14:24:59.213218 )
+[//]: # (+ Revised: 	2026/06/25 10:04:31.861428 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
 
 All notable changes to this project are documented here.
+
+---
+
+## [2026-06-25]
+
+### Fixed
+- **Reply pattern sweep** — all bot command replies that were inadvertently public now correctly use `replyEphemeral`:
+  - `role.ts` — grant, revoke, create, and delete confirmations
+  - `help.ts` — "couldn't load" and "no command found" error responses
+  - `membercount.ts` — "can only be used in a server" error response
+  - `serverstats.ts` — overview, channels, and membercount subcommands (were public while mods/protection subs were ephemeral)
+  - `leveling.ts` — three list views used raw `flags: 64` (no auto-delete); converted to `replyEphemeral(..., { persist: true })`
+  - `botinfo.ts` — two views used `flags: ["Ephemeral"]` (string-array form, no auto-delete); converted to `replyEphemeral(..., { persist: true })`
+- **Channel topics** — every bot-created text channel now includes a meaningful topic:
+  - Support ticket channels (`ticketPanel.ts`) — "Support ticket — use the controls below to manage this ticket."
+  - Verification ticket channels (`verification.ts`) — "Verification ticket — staff will review your application here."
+  - `media-duplication-ω` (`messageCreate.ts`) — "Alerts for duplicate and catfish media detected across monitored servers."
+- **Jail channel naming** — jail channels now follow the ω naming convention (`jail-{username}-ω`) and include a topic describing their purpose
+- **`profile-review-ω` auto-provisioning** — channel was declared as a constant but never created; added to `ensureProfilesChannels` with staff-only permission overwrites and to the `purgeDuplicates` deduplication list
 
 ---
 
