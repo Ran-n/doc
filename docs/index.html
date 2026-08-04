@@ -139,6 +139,15 @@
   .lic-original-toggle:hover { border-color: var(--accent); color: var(--accent); }
   .lic-original-toggle[hidden] { display: none; }
 
+  .lic-condense-toggle {
+    font: inherit; cursor: pointer; white-space: nowrap;
+    border: 1px solid var(--card-border); border-radius: 999px; background: transparent;
+    color: var(--fg-dim); padding: 0.32rem 0.8rem; font-size: 0.78rem; font-weight: 600;
+  }
+  .lic-condense-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .license-card.lic-condensed .lic-notice,
+  .license-card.lic-condensed .lic-doc { display: none; }
+
   .lic-sources { display: flex; align-items: center; gap: 0.85rem; }
   .lic-source-group { display: flex; align-items: center; gap: 0.15rem; }
   .lic-source-link, .lic-source-raw {
@@ -283,16 +292,14 @@
       <a href="https://breren.com" id="nav-breren" class="nav-breren-link" target="_top">
         <svg class="breren-icon" viewBox="0 0 512 512" aria-hidden="true">
           <style>
-            .breren-icon .outer  { stroke: #33302e; }
-            .breren-icon .middle { stroke: #4a4542; }
-            .breren-icon .inner  { stroke: #635d59; }
-            .breren-icon .hut    { fill: #6b4423; }
-            @media (prefers-color-scheme: dark) {
-              .breren-icon .outer  { stroke: #b0a696; }
-              .breren-icon .middle { stroke: #a39d95; }
-              .breren-icon .inner  { stroke: #928878; }
-              .breren-icon .hut    { fill: #c9944f; }
-            }
+            .breren-icon .outer  { stroke: #b0a696; }
+            .breren-icon .middle { stroke: #a39d95; }
+            .breren-icon .inner  { stroke: #928878; }
+            .breren-icon .hut    { fill: #c9944f; }
+            :root[data-theme="light"] .breren-icon .outer  { stroke: #33302e; }
+            :root[data-theme="light"] .breren-icon .middle { stroke: #4a4542; }
+            :root[data-theme="light"] .breren-icon .inner  { stroke: #635d59; }
+            :root[data-theme="light"] .breren-icon .hut    { fill: #6b4423; }
           </style>
           <path class="outer" fill="none" stroke-width="32" stroke-linecap="round"
                 d="M 191.0 68.5 Q 256.0 59.9 321.7 67.6 Q 387.3 75.2 412.8 136.1
@@ -365,6 +372,7 @@
               <a class="lic-source-raw" href="https://codeberg.org/ran-n/doc/raw/branch/main/LICENSE" target="_top" title="Raw — Codeberg" id="current-link-raw-codeberg"><svg><use href="#icon-raw"/></svg></a>
             </span>
           </div>
+          <button type="button" class="lic-condense-toggle" id="current-condense-toggle"></button>
         </div>
         <p class="lic-notice" id="lic-notice" hidden></p>
         <div class="lic-doc" id="current-body"></div>
@@ -459,7 +467,8 @@
       footer_note: 'Questions about commercial use: ',
       theme_light: 'Switch to light mode', theme_dark: 'Switch to dark mode',
       translation_notice: '',
-      view_original: 'View original', view_translation: 'View translation'
+      view_original: 'View original', view_translation: 'View translation',
+      condense_label: 'Condense', expand_label: 'Expand'
     },
     gl: {
       nav_source: 'Código', nav_breren: 'Breren ↗',
@@ -474,7 +483,8 @@
       footer_note: 'Preguntas sobre uso comercial: ',
       theme_light: 'Cambiar a modo claro', theme_dark: 'Cambiar a modo escuro',
       translation_notice: 'Esta é unha tradución de cortesía. O texto en inglés é a versión vinculante e autoritativa desta licenza.',
-      view_original: 'Ver orixinal', view_translation: 'Ver tradución'
+      view_original: 'Ver orixinal', view_translation: 'Ver tradución',
+      condense_label: 'Condensar', expand_label: 'Expandir'
     },
     es: {
       nav_source: 'Código', nav_breren: 'Breren ↗',
@@ -489,7 +499,8 @@
       footer_note: 'Preguntas sobre uso comercial: ',
       theme_light: 'Cambiar a modo claro', theme_dark: 'Cambiar a modo oscuro',
       translation_notice: 'Esta es una traducción de cortesía. El texto en inglés es la versión vinculante y autoritativa de esta licencia.',
-      view_original: 'Ver original', view_translation: 'Ver traducción'
+      view_original: 'Ver original', view_translation: 'Ver traducción',
+      condense_label: 'Condensar', expand_label: 'Expandir'
     },
     pt: {
       nav_source: 'Código', nav_breren: 'Breren ↗',
@@ -504,7 +515,8 @@
       footer_note: 'Perguntas sobre uso comercial: ',
       theme_light: 'Mudar para o modo claro', theme_dark: 'Mudar para o modo escuro',
       translation_notice: 'Esta é uma tradução de cortesia. O texto em inglês é a versão vinculativa e autoritativa desta licença.',
-      view_original: 'Ver original', view_translation: 'Ver tradução'
+      view_original: 'Ver original', view_translation: 'Ver tradução',
+      condense_label: 'Condensar', expand_label: 'Expandir'
     },
     fr: {
       nav_source: 'Code source', nav_breren: 'Breren ↗',
@@ -519,7 +531,8 @@
       footer_note: 'Questions sur l’usage commercial : ',
       theme_light: 'Passer en mode clair', theme_dark: 'Passer en mode sombre',
       translation_notice: "Ceci est une traduction de courtoisie. Le texte anglais est la version faisant foi et ayant force obligatoire de cette licence.",
-      view_original: 'Voir l’original', view_translation: 'Voir la traduction'
+      view_original: 'Voir l’original', view_translation: 'Voir la traduction',
+      condense_label: 'Condenser', expand_label: 'Développer'
     },
     de: {
       nav_source: 'Quellcode', nav_breren: 'Breren ↗',
@@ -534,7 +547,8 @@
       footer_note: 'Fragen zur kommerziellen Nutzung: ',
       theme_light: 'Zum hellen Modus wechseln', theme_dark: 'Zum dunklen Modus wechseln',
       translation_notice: 'Dies ist eine Übersetzung als Lesehilfe. Der englische Text ist die verbindliche und maßgebliche Fassung dieser Lizenz.',
-      view_original: 'Original anzeigen', view_translation: 'Übersetzung anzeigen'
+      view_original: 'Original anzeigen', view_translation: 'Übersetzung anzeigen',
+      condense_label: 'Einklappen', expand_label: 'Ausklappen'
     },
     zh: {
       nav_source: '源代码', nav_breren: 'Breren ↗',
@@ -549,7 +563,8 @@
       footer_note: '商业用途相关问题：',
       theme_light: '切换到浅色模式', theme_dark: '切换到深色模式',
       translation_notice: '本文为便利性翻译。英文文本为本许可证具有约束力的权威版本。',
-      view_original: '查看原文', view_translation: '查看译文'
+      view_original: '查看原文', view_translation: '查看译文',
+      condense_label: '收起', expand_label: '展开'
     },
     ja: {
       nav_source: 'ソース', nav_breren: 'Breren ↗',
@@ -564,7 +579,8 @@
       footer_note: '商業利用に関するお問い合わせ: ',
       theme_light: 'ライトモードに切り替える', theme_dark: 'ダークモードに切り替える',
       translation_notice: 'これは参考用の翻訳です。本ライセンスの拘束力を持つ正式なテキストは英語版です。',
-      view_original: '原文を表示', view_translation: '翻訳を表示'
+      view_original: '原文を表示', view_translation: '翻訳を表示',
+      condense_label: '折りたたむ', expand_label: '展開する'
     }
   };
 
@@ -624,6 +640,7 @@
     document.getElementById('v1-date').textContent = t('v1_date');
     document.getElementById('footer-note').firstChild.textContent = t('footer_note');
     updateRawTitles();
+    updateCondenseLabel();
     renderLicenses();
     updateBrerenLinks();
   }
@@ -762,6 +779,27 @@
         ORIGINAL_OVERRIDE[bodyId] = !ORIGINAL_OVERRIDE[bodyId];
         renderLicenses();
       });
+    });
+  }
+
+  // Lets the current PBL text be condensed away without framing it as one
+  // entry in a version list — a plain toggle on the card itself, not a
+  // <details> accordion like the archive entries use.
+  var currentCondensed = false;
+
+  function updateCondenseLabel() {
+    var btn = document.getElementById('current-condense-toggle');
+    if (!btn) return;
+    btn.textContent = currentCondensed ? t('expand_label') : t('condense_label');
+  }
+
+  function setupCondenseToggle() {
+    var btn = document.getElementById('current-condense-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      currentCondensed = !currentCondensed;
+      btn.closest('.license-card').classList.toggle('lic-condensed', currentCondensed);
+      updateCondenseLabel();
     });
   }
 
@@ -1104,6 +1142,7 @@
   setupLangPicker();
   setupThemeToggle();
   setupOriginalToggles();
+  setupCondenseToggle();
   applyTheme(effectiveTheme());
   document.documentElement.lang = currentLang;
   applyTexts();
