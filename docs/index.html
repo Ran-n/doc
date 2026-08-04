@@ -569,6 +569,11 @@
     var requestedLang = currentLang;
     var resolvedLang = requestedLang;
 
+    // Hide any notice left over from a previous language immediately —
+    // otherwise it stays on screen (showing the wrong language) until this
+    // fetch resolves, instead of disappearing the moment the switch happens.
+    if (noticeEl) noticeEl.hidden = true;
+
     fetchLicenseText(basename, requestedLang)
       .catch(function () {
         if (requestedLang === 'en') throw new Error('missing base license text: ' + basename);

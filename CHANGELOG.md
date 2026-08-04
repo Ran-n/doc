@@ -1,7 +1,7 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/08/04 18:34:30.214364 )
+[//]: # (+ Revised: 	2026/08/04 18:43:01.884160 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
@@ -11,6 +11,9 @@ All notable changes to this project are documented here.
 ---
 
 ## [2026-08-04]
+
+### Fixed
+- **Stale translation banner on language switch (`docs/index.html`)** — the license-text loader left the previous language's "courtesy translation" notice on screen until the new language's fetch resolved, so a quick switch (or the `rn-preset` postMessage handshake reconciling the detected browser language to the embedding site's language) could show English page chrome next to a leftover Galician (or other) notice. The notice is now hidden immediately when a render starts, instead of only updating once the fetch completes.
 
 ### Changed
 - **Current license section made collapsible (`docs/index.html`)** — the v2.0 license now sits in the same `<details>`/`<summary>` toggle used for previous versions, so it can be collapsed after reading instead of always taking up the full page; also dropped the "adds governance" one-line summary shown under the heading.
