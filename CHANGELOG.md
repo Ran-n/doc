@@ -1,7 +1,7 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/08/04 20:13:50.073454 )
+[//]: # (+ Revised: 	2026/08/04 20:18:50.135258 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
@@ -22,7 +22,7 @@ All notable changes to this project are documented here.
 - **Breren logo on the "Breren ↗" nav link (`docs/index.html`)** — inlined the actual castro/hillfort mark from breren.com's `icons/breren-logo.svg` (with its built-in light/dark stroke colors) before the link text, instead of a plain text link.
 - **Per-document original/translation toggle (`docs/index.html`)** — a "View original" / "View translation" pill button on each license card lets that card be flipped to the English original independently of the site-wide language picker; only shown when a translation actually exists for the current UI language.
 - **Source icons per document (`docs/index.html`)** — each license card now links out to GitHub, GitLab, and Codeberg (official brand marks, inline SVG sprite) plus a raw-text link for each, replacing the old single GitHub-only text link. Grouped per platform, ordered to match the footer.
-- **Condense/expand toggle on the current PBL text (`docs/index.html`)** — an icon button (rotating ▸/▾ triangle, top-right of the card header, matching the archive entries' disclosure chevrons) lets the full v2.0 text be collapsed after reading, without folding it back into a `<details>` accordion (which would re-introduce the version-list framing described below).
+- **Condense/expand toggle on the current PBL text (`docs/index.html`)** — an icon button (rotating ▸/▾ triangle, top-left of the card header, matching the archive entries' disclosure chevrons) lets the full v2.0 text be collapsed after reading, without folding it back into a `<details>` accordion (which would re-introduce the version-list framing described below).
 
 ### Changed
 - **License page redesign (`docs/index.html`)** — the PBL v2.0/v1.0 text is no longer dumped into a monospace `<pre>` block; it's now parsed from structured plain text into a real document: headed sections, styled clause numbers, a proper definitions list, bullet/lettered lists, and literal governance file-format specimens (CONTRIBUTORS/VOTE templates, ballot/seal field lists) kept verbatim in distinct code panels instead of being mixed into prose.

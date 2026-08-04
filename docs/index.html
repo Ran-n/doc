@@ -140,7 +140,7 @@
   .lic-original-toggle[hidden] { display: none; }
 
   .lic-condense-toggle {
-    margin-left: 0.2rem; cursor: pointer;
+    margin-right: auto; cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center;
     width: 1.7rem; height: 1.7rem; padding: 0; border: none; border-radius: 6px;
     background: transparent; color: var(--fg-dim);
@@ -362,6 +362,7 @@
       </div>
       <div class="license-card">
         <div class="license-card-head">
+          <button type="button" class="lic-condense-toggle" id="current-condense-toggle"><span class="chevron" aria-hidden="true">▸</span></button>
           <button type="button" class="lic-original-toggle" id="current-original-toggle" hidden></button>
           <div class="lic-sources">
             <span class="lic-source-group">
@@ -377,7 +378,6 @@
               <a class="lic-source-raw" href="https://codeberg.org/ran-n/doc/raw/branch/main/LICENSE" target="_top" title="Raw — Codeberg" id="current-link-raw-codeberg"><svg><use href="#icon-raw"/></svg></a>
             </span>
           </div>
-          <button type="button" class="lic-condense-toggle" id="current-condense-toggle"><span class="chevron" aria-hidden="true">▸</span></button>
         </div>
         <p class="lic-notice" id="lic-notice" hidden></p>
         <div class="lic-doc" id="current-body"></div>
