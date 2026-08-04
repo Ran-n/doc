@@ -508,6 +508,19 @@
     document.getElementById('v1-note').textContent = t('v1_note');
     document.getElementById('footer-note').firstChild.textContent = t('footer_note');
     renderLicenses();
+    updateBrerenLinks();
+  }
+
+  // A plain top-level navigation (target="_top" link click) can't carry a
+  // postMessage — the page unloads before any message would matter. So the
+  // hand-off back to breren.com rides along as query params instead;
+  // breren.com reads them on load and applies+strips them.
+  function updateBrerenLinks() {
+    var theme = document.documentElement.getAttribute('data-theme') || effectiveTheme();
+    var qs = '?lang=' + encodeURIComponent(currentLang) + '&theme=' + encodeURIComponent(theme);
+    var href = 'https://breren.com/' + qs;
+    var nav = document.getElementById('nav-breren');
+    if (nav) nav.href = href;
   }
 
   // ---- license text rendering -------------------------------------------
@@ -900,6 +913,7 @@
     document.documentElement.setAttribute('data-theme', theme);
     document.getElementById('theme-toggle').textContent = theme === 'dark' ? '☀️' : '🌙';
     updateThemeButtonLabel();
+    updateBrerenLinks();
   }
   function updateThemeButtonLabel() {
     var theme = document.documentElement.getAttribute('data-theme');
