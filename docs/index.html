@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PayBack License (PBL) — Version History</title>
-<meta name="description" content="The PayBack License (PBL) used by every Ran# project — current text and full version history.">
+<title>PayBack License (PBL)</title>
+<meta name="description" content="The PayBack License (PBL) used by every Ran# project — the current text in full, plus an archive of past editions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%9C%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -58,6 +59,8 @@
   nav.site-links a { text-decoration: none; transition: color 0.15s; }
   nav.site-links a:hover, nav.site-links a:focus-visible { color: var(--fg); }
   nav.site-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .nav-breren-link { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .breren-icon { width: 1.05rem; height: 1.05rem; flex: none; }
 
   .toolbar { display: flex; align-items: center; gap: 0.5rem; flex: none; }
   .lang-picker { position: relative; }
@@ -200,31 +203,59 @@
   }
   .lic-doc > pre.lic-tmpl:first-child { margin-top: 0; }
 
-  details.version-entry {
-    background: var(--bg-panel); border: 1px solid var(--card-border); border-radius: 10px;
-    margin-bottom: 0.9rem; overflow: hidden;
+  .current-meta-row {
+    display: flex; align-items: center; gap: 0.75rem; margin: 0 0 1rem; flex-wrap: wrap;
   }
-  details.version-entry summary {
-    cursor: pointer; padding: 1rem 1.2rem; font-weight: 700; list-style: none;
+  .version-pill {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.78rem;
+    letter-spacing: 0.03em; color: var(--bg); background: var(--accent);
+    padding: 0.2rem 0.65rem; border-radius: 999px; flex: none;
+  }
+  .effective-note {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--fg-dim);
+  }
+
+  details.archive {
+    border-top: 1px solid var(--card-border); padding-top: 1.6rem;
+  }
+  details.archive > summary {
+    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.55rem;
+    font-family: 'Unbounded', sans-serif; font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.05rem); color: var(--fg-muted);
+  }
+  details.archive > summary::-webkit-details-marker { display: none; }
+  details.archive > summary:hover { color: var(--fg); }
+  details.archive > summary .chevron { font-weight: 400; font-size: 0.85rem; transition: transform 0.15s; }
+  details.archive[open] > summary .chevron { transform: rotate(90deg); }
+  .archive-intro {
+    margin: 0.7rem 0 1.1rem; color: var(--fg-dim); font-size: 0.88rem; max-width: 58ch;
+  }
+  .archive-list { display: flex; flex-direction: column; gap: 0.7rem; }
+
+  details.archive-entry {
+    background: var(--bg-panel); border: 1px solid var(--card-border);
+    border-left: 3px solid var(--card-border); border-radius: 8px; overflow: hidden;
+  }
+  details.archive-entry summary {
+    cursor: pointer; list-style: none; padding: 0.85rem 1rem;
     display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
   }
-  details.version-entry summary::-webkit-details-marker { display: none; }
-  details.version-entry summary .chevron {
-    color: var(--fg-dim); font-weight: 400; font-size: 0.85rem; margin-right: 0.5rem;
+  details.archive-entry summary::-webkit-details-marker { display: none; }
+  .archive-entry-title { display: flex; align-items: baseline; gap: 0.55rem; font-weight: 700; font-size: 0.9rem; }
+  .archive-entry-title .chevron {
+    color: var(--fg-dim); font-weight: 400; font-size: 0.8rem; transition: transform 0.15s;
   }
-  details.version-entry[open] summary .chevron { transform: rotate(90deg); display: inline-block; }
-  .version-entry-note {
-    padding: 0 1.2rem 1rem; color: var(--fg-dim); font-size: 0.9rem; margin: 0;
+  details.archive-entry[open] .archive-entry-title .chevron { transform: rotate(90deg); }
+  .archive-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--fg-dim); border: 1px solid var(--card-border);
+    border-radius: 4px; padding: 0.08rem 0.4rem;
   }
-  .version-entry .license-card { margin: 0 1.2rem 1.2rem; }
-  details.current-entry { margin-bottom: 0; }
-  details.current-entry summary { align-items: center; }
-  details.current-entry .current-entry-title {
-    display: flex; align-items: center; gap: 0.6rem;
-    font-family: 'Unbounded', sans-serif; font-weight: 700;
-    font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--fg);
+  .archive-entry-date {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--fg-dim);
   }
-  details.current-entry .license-card { border: none; border-radius: 0; margin: 0 -1.2rem -1rem; }
+  .archive-entry-note { padding: 0 1rem 0.9rem; margin: 0; color: var(--fg-dim); font-size: 0.86rem; }
+  details.archive-entry .license-card { margin: 0 1rem 1rem; }
 
   footer.site {
     margin-top: 2.5rem; padding: 2rem 0 3rem; border-top: 1px solid var(--card-border);
@@ -249,7 +280,46 @@
     <a class="brand" href="#top">PayBack License</a>
     <nav class="site-links">
       <a href="https://github.com/Ran-n/doc" id="nav-source" target="_top">Source</a>
-      <a href="https://breren.com" id="nav-breren" target="_top">Breren ↗</a>
+      <a href="https://breren.com" id="nav-breren" class="nav-breren-link" target="_top">
+        <svg class="breren-icon" viewBox="0 0 512 512" aria-hidden="true">
+          <style>
+            .breren-icon .outer  { stroke: #33302e; }
+            .breren-icon .middle { stroke: #4a4542; }
+            .breren-icon .inner  { stroke: #635d59; }
+            .breren-icon .hut    { fill: #6b4423; }
+            @media (prefers-color-scheme: dark) {
+              .breren-icon .outer  { stroke: #b0a696; }
+              .breren-icon .middle { stroke: #a39d95; }
+              .breren-icon .inner  { stroke: #928878; }
+              .breren-icon .hut    { fill: #c9944f; }
+            }
+          </style>
+          <path class="outer" fill="none" stroke-width="32" stroke-linecap="round"
+                d="M 191.0 68.5 Q 256.0 59.9 321.7 67.6 Q 387.3 75.2 412.8 136.1
+                   Q 438.2 196.8 449.0 259.5 Q 459.8 322.2 417.5 371.3
+                   Q 375.2 420.2 315.6 452.1 Q 256.0 484.0 200.4 446.5
+                   Q 144.7 409.1 97.4 366.0 Q 50.0 322.9 55.5 257.7
+                   Q 60.8 192.6 93.4 134.8"/>
+          <path class="middle" fill="none" stroke-width="26"
+                d="M 212.5 128.8 Q 256.0 121.5 300.2 127.9 Q 344.5 134.2 361.0 175.4
+                   Q 377.4 216.6 386.1 258.9 Q 394.7 301.1 365.6 333.9
+                   Q 336.4 366.7 296.2 387.7 Q 256.0 408.8 219.2 383.1
+                   Q 182.2 357.5 150.9 329.0 Q 119.4 300.3 124.8 257.7
+                   Q 130.3 215.2 149.5 175.6 Q 168.9 136.1 212.5 128.8 Z"/>
+          <path class="inner" fill="none" stroke-width="19"
+                d="M 225.3 185.4 Q 256.0 176.2 288.3 183.8 Q 320.5 191.5 325.9 223.7
+                   Q 331.2 256.0 325.1 287.5 Q 318.9 318.9 287.5 328.5
+                   Q 256.0 338.1 222.9 330.1 Q 189.9 322.1 186.5 289.1
+                   Q 183.0 256.0 188.9 225.3 Q 194.8 194.8 225.3 185.4 Z"/>
+          <circle class="hut" cx="256.0" cy="216.7" r="15.6"/>
+          <circle class="hut" cx="291.5" cy="244.4" r="12.0"/>
+          <circle class="hut" cx="280.2" cy="289.3" r="13.2"/>
+          <circle class="hut" cx="235.2" cy="284.7" r="10.8"/>
+          <circle class="hut" cx="215.2" cy="242.7" r="14.4"/>
+          <circle class="hut" cx="256.0" cy="256.0" r="18.0"/>
+        </svg>
+        <span id="nav-breren-text">Breren ↗</span>
+      </a>
     </nav>
     <div class="toolbar">
       <div class="lang-picker">
@@ -270,68 +340,69 @@
     <section class="hero">
       <p class="eyebrow" id="eyebrow">License</p>
       <h1 id="hero-title">PayBack License (PBL)</h1>
-      <p class="lede" id="hero-lede">The license used by every Ran# project — free for personal, academic, and non-commercial use. This page holds the current text and every past version.</p>
+      <p class="lede" id="hero-lede">Free for personal, academic, and non-commercial use. This is the license every Ran# project ships under — read below, in full.</p>
     </section>
 
     <section class="doc-section">
-      <details class="version-entry current-entry" open>
-        <summary>
-          <span class="current-entry-title"><span class="chevron">▸</span><span id="current-h2">Current — Version 2.0</span><span class="badge" id="current-badge">current</span></span>
-          <span class="section-meta" id="current-meta">Released 2026-05-12</span>
-        </summary>
-        <div class="license-card">
-          <div class="license-card-head">
-            <button type="button" class="lic-original-toggle" id="current-original-toggle" hidden></button>
-            <div class="lic-sources">
-              <span class="lic-source-group">
-                <a class="lic-source-link" href="https://github.com/Ran-n/doc/blob/main/LICENSE" target="_top" title="GitHub" aria-label="GitHub" onclick="event.stopPropagation()"><svg><use href="#icon-github"/></svg></a>
-                <a class="lic-source-raw" href="https://raw.githubusercontent.com/Ran-n/doc/main/LICENSE" target="_top" title="Raw — GitHub" id="current-link-raw-github" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
-              </span>
-              <span class="lic-source-group">
-                <a class="lic-source-link" href="https://gitlab.com/Ran-n/doc/-/blob/main/LICENSE" target="_top" title="GitLab" aria-label="GitLab" onclick="event.stopPropagation()"><svg><use href="#icon-gitlab"/></svg></a>
-                <a class="lic-source-raw" href="https://gitlab.com/Ran-n/doc/-/raw/main/LICENSE" target="_top" title="Raw — GitLab" id="current-link-raw-gitlab" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
-              </span>
-              <span class="lic-source-group">
-                <a class="lic-source-link" href="https://codeberg.org/ran-n/doc/src/branch/main/LICENSE" target="_top" title="Codeberg" aria-label="Codeberg" onclick="event.stopPropagation()"><svg><use href="#icon-codeberg"/></svg></a>
-                <a class="lic-source-raw" href="https://codeberg.org/ran-n/doc/raw/branch/main/LICENSE" target="_top" title="Raw — Codeberg" id="current-link-raw-codeberg" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
-              </span>
-            </div>
+      <div class="current-meta-row">
+        <span class="version-pill" id="version-pill">v2.0</span>
+        <span class="effective-note" id="effective-note">In effect since 2026-05-12</span>
+      </div>
+      <div class="license-card">
+        <div class="license-card-head">
+          <button type="button" class="lic-original-toggle" id="current-original-toggle" hidden></button>
+          <div class="lic-sources">
+            <span class="lic-source-group">
+              <a class="lic-source-link" href="https://github.com/Ran-n/doc/blob/main/LICENSE" target="_top" title="GitHub" aria-label="GitHub"><svg><use href="#icon-github"/></svg></a>
+              <a class="lic-source-raw" href="https://raw.githubusercontent.com/Ran-n/doc/main/LICENSE" target="_top" title="Raw — GitHub" id="current-link-raw-github"><svg><use href="#icon-raw"/></svg></a>
+            </span>
+            <span class="lic-source-group">
+              <a class="lic-source-link" href="https://gitlab.com/Ran-n/doc/-/blob/main/LICENSE" target="_top" title="GitLab" aria-label="GitLab"><svg><use href="#icon-gitlab"/></svg></a>
+              <a class="lic-source-raw" href="https://gitlab.com/Ran-n/doc/-/raw/main/LICENSE" target="_top" title="Raw — GitLab" id="current-link-raw-gitlab"><svg><use href="#icon-raw"/></svg></a>
+            </span>
+            <span class="lic-source-group">
+              <a class="lic-source-link" href="https://codeberg.org/ran-n/doc/src/branch/main/LICENSE" target="_top" title="Codeberg" aria-label="Codeberg"><svg><use href="#icon-codeberg"/></svg></a>
+              <a class="lic-source-raw" href="https://codeberg.org/ran-n/doc/raw/branch/main/LICENSE" target="_top" title="Raw — Codeberg" id="current-link-raw-codeberg"><svg><use href="#icon-raw"/></svg></a>
+            </span>
           </div>
-          <p class="lic-notice" id="lic-notice" hidden></p>
-          <div class="lic-doc" id="current-body"></div>
         </div>
-      </details>
+        <p class="lic-notice" id="lic-notice" hidden></p>
+        <div class="lic-doc" id="current-body"></div>
+      </div>
     </section>
 
     <section class="doc-section">
-      <h2 id="previous-h2">Previous versions</h2>
-      <p class="section-meta" id="previous-meta"></p>
-
-      <details class="version-entry">
-        <summary>
-          <span><span class="chevron">▸</span>Version 1.0 — Released 2026-04-18</span>
-        </summary>
-        <p class="version-entry-note" id="v1-note">The original PBL: free for personal/non-commercial use, commercial use requires a revenue-share agreement with the author. No governance, voting, or multi-contributor ownership mechanics — superseded by v2.0.</p>
-        <div class="license-card">
-          <div class="license-card-head">
-            <button type="button" class="lic-original-toggle" id="v1-original-toggle" hidden></button>
-            <div class="lic-sources">
-              <span class="lic-source-group">
-                <a class="lic-source-link" href="https://github.com/Ran-n/doc/blob/main/licenses/pbl_v1.0.md" target="_top" title="GitHub" aria-label="GitHub" onclick="event.stopPropagation()"><svg><use href="#icon-github"/></svg></a>
-                <a class="lic-source-raw" href="https://raw.githubusercontent.com/Ran-n/doc/main/licenses/pbl_v1.0.md" target="_top" title="Raw — GitHub" id="v1-link-raw-github" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
-              </span>
-              <span class="lic-source-group">
-                <a class="lic-source-link" href="https://gitlab.com/Ran-n/doc/-/blob/main/licenses/pbl_v1.0.md" target="_top" title="GitLab" aria-label="GitLab" onclick="event.stopPropagation()"><svg><use href="#icon-gitlab"/></svg></a>
-                <a class="lic-source-raw" href="https://gitlab.com/Ran-n/doc/-/raw/main/licenses/pbl_v1.0.md" target="_top" title="Raw — GitLab" id="v1-link-raw-gitlab" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
-              </span>
-              <span class="lic-source-group">
-                <a class="lic-source-link" href="https://codeberg.org/ran-n/doc/src/branch/main/licenses/pbl_v1.0.md" target="_top" title="Codeberg" aria-label="Codeberg" onclick="event.stopPropagation()"><svg><use href="#icon-codeberg"/></svg></a>
-                <a class="lic-source-raw" href="https://codeberg.org/ran-n/doc/raw/branch/main/licenses/pbl_v1.0.md" target="_top" title="Raw — Codeberg" id="v1-link-raw-codeberg" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
-              </span>
+      <details class="archive">
+        <summary><span class="chevron">▸</span><span id="archive-toggle-label">Earlier editions (1)</span></summary>
+        <p class="archive-intro" id="archive-intro">Superseded text, kept for reference. Only the edition above is currently in force.</p>
+        <div class="archive-list">
+          <details class="archive-entry">
+            <summary>
+              <span class="archive-entry-title"><span class="chevron">▸</span><span class="archive-tag" id="archive-tag-v1">Superseded</span> Version 1.0</span>
+              <span class="archive-entry-date" id="v1-date">Released 2026-04-18</span>
+            </summary>
+            <div class="license-card">
+              <div class="license-card-head">
+                <button type="button" class="lic-original-toggle" id="v1-original-toggle" hidden></button>
+                <div class="lic-sources">
+                  <span class="lic-source-group">
+                    <a class="lic-source-link" href="https://github.com/Ran-n/doc/blob/main/licenses/pbl_v1.0.md" target="_top" title="GitHub" aria-label="GitHub"><svg><use href="#icon-github"/></svg></a>
+                    <a class="lic-source-raw" href="https://raw.githubusercontent.com/Ran-n/doc/main/licenses/pbl_v1.0.md" target="_top" title="Raw — GitHub" id="v1-link-raw-github"><svg><use href="#icon-raw"/></svg></a>
+                  </span>
+                  <span class="lic-source-group">
+                    <a class="lic-source-link" href="https://gitlab.com/Ran-n/doc/-/blob/main/licenses/pbl_v1.0.md" target="_top" title="GitLab" aria-label="GitLab"><svg><use href="#icon-gitlab"/></svg></a>
+                    <a class="lic-source-raw" href="https://gitlab.com/Ran-n/doc/-/raw/main/licenses/pbl_v1.0.md" target="_top" title="Raw — GitLab" id="v1-link-raw-gitlab"><svg><use href="#icon-raw"/></svg></a>
+                  </span>
+                  <span class="lic-source-group">
+                    <a class="lic-source-link" href="https://codeberg.org/ran-n/doc/src/branch/main/licenses/pbl_v1.0.md" target="_top" title="Codeberg" aria-label="Codeberg"><svg><use href="#icon-codeberg"/></svg></a>
+                    <a class="lic-source-raw" href="https://codeberg.org/ran-n/doc/raw/branch/main/licenses/pbl_v1.0.md" target="_top" title="Raw — Codeberg" id="v1-link-raw-codeberg"><svg><use href="#icon-raw"/></svg></a>
+                  </span>
+                </div>
+              </div>
+              <p class="lic-notice" id="v1-notice" hidden></p>
+              <div class="lic-doc" id="v1-body"></div>
             </div>
-          </div>
-          <p class="lic-notice" id="v1-notice" hidden></p>
-          <div class="lic-doc" id="v1-body"></div>
+          </details>
         </div>
       </details>
     </section>
@@ -379,13 +450,12 @@
       nav_source: 'Source', nav_breren: 'Breren ↗',
       eyebrow: 'License',
       hero_title: 'PayBack License (PBL)',
-      hero_lede: 'The license used by every Ran# project — free for personal, academic, and non-commercial use. This page holds the current text and every past version.',
-      current_h2: 'Current — Version 2.0', current_badge: 'current',
-      current_meta: 'Released 2026-05-12',
+      hero_lede: 'Free for personal, academic, and non-commercial use. This is the license every Ran# project ships under — read below, in full.',
+      effective_note: 'In effect since 2026-05-12',
       link_github: 'GitHub', link_raw: 'Raw text',
-      previous_h2: 'Previous versions', previous_meta: 'Superseded versions, kept for reference.',
-      v1_summary: 'Version 1.0 — Released 2026-04-18',
-      v1_note: 'The original PBL: free for personal/non-commercial use, commercial use requires a revenue-share agreement with the author. No governance, voting, or multi-contributor ownership mechanics — superseded by v2.0.',
+      archive_toggle_label: 'Earlier editions (1)',
+      archive_intro: 'Superseded text, kept for reference. Only the edition above is currently in force.',
+      archive_tag: 'Superseded', v1_date: 'Released 2026-04-18',
       footer_note: 'Questions about commercial use: ',
       theme_light: 'Switch to light mode', theme_dark: 'Switch to dark mode',
       translation_notice: '',
@@ -395,13 +465,12 @@
       nav_source: 'Código', nav_breren: 'Breren ↗',
       eyebrow: 'Licenza',
       hero_title: 'PayBack License (PBL)',
-      hero_lede: 'A licenza usada en todos os proxectos de Ran# — gratuíta para uso persoal, académico e non comercial. Esta páxina contén o texto actual e todas as versións anteriores.',
-      current_h2: 'Actual — Versión 2.0', current_badge: 'actual',
-      current_meta: 'Publicada o 2026-05-12',
+      hero_lede: 'Gratuíta para uso persoal, académico e non comercial. Esta é a licenza que usa cada proxecto de Ran# — lese enteira máis abaixo.',
+      effective_note: 'En vigor desde o 2026-05-12',
       link_github: 'GitHub', link_raw: 'Texto en bruto',
-      previous_h2: 'Versións anteriores', previous_meta: 'Versións substituídas, conservadas como referencia.',
-      v1_summary: 'Versión 1.0 — Publicada o 2026-04-18',
-      v1_note: 'A PBL orixinal: gratuíta para uso persoal/non comercial, o uso comercial require un acordo de reparto de ingresos co autor. Sen goberno, votacións nin propiedade multi-contribuínte — substituída pola v2.0.',
+      archive_toggle_label: 'Edicións anteriores (1)',
+      archive_intro: 'Texto substituído, conservado como referencia. Só a edición de arriba está actualmente en vigor.',
+      archive_tag: 'Substituída', v1_date: 'Publicada o 2026-04-18',
       footer_note: 'Preguntas sobre uso comercial: ',
       theme_light: 'Cambiar a modo claro', theme_dark: 'Cambiar a modo escuro',
       translation_notice: 'Esta é unha tradución de cortesía. O texto en inglés é a versión vinculante e autoritativa desta licenza.',
@@ -411,13 +480,12 @@
       nav_source: 'Código', nav_breren: 'Breren ↗',
       eyebrow: 'Licencia',
       hero_title: 'PayBack License (PBL)',
-      hero_lede: 'La licencia usada en todos los proyectos de Ran# — gratuita para uso personal, académico y no comercial. Esta página contiene el texto actual y todas las versiones anteriores.',
-      current_h2: 'Actual — Versión 2.0', current_badge: 'actual',
-      current_meta: 'Publicada el 2026-05-12',
+      hero_lede: 'Gratuita para uso personal, académico y no comercial. Esta es la licencia que usa cada proyecto de Ran# — léela completa a continuación.',
+      effective_note: 'En vigor desde el 2026-05-12',
       link_github: 'GitHub', link_raw: 'Texto sin formato',
-      previous_h2: 'Versiones anteriores', previous_meta: 'Versiones sustituidas, conservadas como referencia.',
-      v1_summary: 'Versión 1.0 — Publicada el 2026-04-18',
-      v1_note: 'La PBL original: gratuita para uso personal/no comercial, el uso comercial requiere un acuerdo de reparto de ingresos con el autor. Sin gobernanza, votaciones ni propiedad multi-contribuyente — sustituida por la v2.0.',
+      archive_toggle_label: 'Ediciones anteriores (1)',
+      archive_intro: 'Texto sustituido, conservado como referencia. Solo la edición de arriba está actualmente en vigor.',
+      archive_tag: 'Sustituida', v1_date: 'Publicada el 2026-04-18',
       footer_note: 'Preguntas sobre uso comercial: ',
       theme_light: 'Cambiar a modo claro', theme_dark: 'Cambiar a modo oscuro',
       translation_notice: 'Esta es una traducción de cortesía. El texto en inglés es la versión vinculante y autoritativa de esta licencia.',
@@ -427,13 +495,12 @@
       nav_source: 'Código', nav_breren: 'Breren ↗',
       eyebrow: 'Licença',
       hero_title: 'PayBack License (PBL)',
-      hero_lede: 'A licença usada em todos os projetos Ran# — gratuita para uso pessoal, académico e não comercial. Esta página contém o texto atual e todas as versões anteriores.',
-      current_h2: 'Atual — Versão 2.0', current_badge: 'atual',
-      current_meta: 'Lançada em 2026-05-12',
+      hero_lede: 'Gratuita para uso pessoal, académico e não comercial. Esta é a licença usada por cada projeto Ran# — leia-a na íntegra abaixo.',
+      effective_note: 'Em vigor desde 2026-05-12',
       link_github: 'GitHub', link_raw: 'Texto bruto',
-      previous_h2: 'Versões anteriores', previous_meta: 'Versões substituídas, mantidas para referência.',
-      v1_summary: 'Versão 1.0 — Lançada em 2026-04-18',
-      v1_note: 'A PBL original: gratuita para uso pessoal/não comercial, o uso comercial requer um acordo de partilha de receita com o autor. Sem governança, votações ou propriedade multi-contribuinte — substituída pela v2.0.',
+      archive_toggle_label: 'Edições anteriores (1)',
+      archive_intro: 'Texto substituído, mantido para referência. Apenas a edição acima está atualmente em vigor.',
+      archive_tag: 'Substituída', v1_date: 'Lançada em 2026-04-18',
       footer_note: 'Perguntas sobre uso comercial: ',
       theme_light: 'Mudar para o modo claro', theme_dark: 'Mudar para o modo escuro',
       translation_notice: 'Esta é uma tradução de cortesia. O texto em inglês é a versão vinculativa e autoritativa desta licença.',
@@ -443,13 +510,12 @@
       nav_source: 'Code source', nav_breren: 'Breren ↗',
       eyebrow: 'Licence',
       hero_title: 'PayBack License (PBL)',
-      hero_lede: "La licence utilisée par tous les projets Ran# — gratuite pour un usage personnel, académique et non commercial. Cette page contient le texte actuel et toutes les versions précédentes.",
-      current_h2: 'Actuelle — Version 2.0', current_badge: 'actuelle',
-      current_meta: 'Publiée le 2026-05-12',
+      hero_lede: "Gratuite pour un usage personnel, académique et non commercial. C'est la licence utilisée par chaque projet Ran# — à lire intégralement ci-dessous.",
+      effective_note: 'En vigueur depuis le 2026-05-12',
       link_github: 'GitHub', link_raw: 'Texte brut',
-      previous_h2: 'Versions précédentes', previous_meta: 'Versions remplacées, conservées à titre de référence.',
-      v1_summary: 'Version 1.0 — Publiée le 2026-04-18',
-      v1_note: "La PBL originale : gratuite pour un usage personnel/non commercial, l'usage commercial nécessite un accord de partage des revenus avec l'auteur. Aucune gouvernance, vote ni propriété multi-contributeur — remplacée par la v2.0.",
+      archive_toggle_label: 'Versions antérieures (1)',
+      archive_intro: "Texte remplacé, conservé à titre de référence. Seule l'édition ci-dessus est actuellement en vigueur.",
+      archive_tag: 'Remplacée', v1_date: 'Publiée le 2026-04-18',
       footer_note: 'Questions sur l’usage commercial : ',
       theme_light: 'Passer en mode clair', theme_dark: 'Passer en mode sombre',
       translation_notice: "Ceci est une traduction de courtoisie. Le texte anglais est la version faisant foi et ayant force obligatoire de cette licence.",
@@ -459,13 +525,12 @@
       nav_source: 'Quellcode', nav_breren: 'Breren ↗',
       eyebrow: 'Lizenz',
       hero_title: 'PayBack License (PBL)',
-      hero_lede: 'Die Lizenz, die von jedem Ran#-Projekt verwendet wird — kostenlos für den persönlichen, akademischen und nicht-kommerziellen Gebrauch. Diese Seite enthält den aktuellen Text und alle früheren Versionen.',
-      current_h2: 'Aktuell — Version 2.0', current_badge: 'aktuell',
-      current_meta: 'Veröffentlicht am 2026-05-12',
+      hero_lede: 'Kostenlos für den persönlichen, akademischen und nicht-kommerziellen Gebrauch. Dies ist die Lizenz, unter der jedes Ran#-Projekt steht — vollständig weiter unten.',
+      effective_note: 'In Kraft seit dem 2026-05-12',
       link_github: 'GitHub', link_raw: 'Rohtext',
-      previous_h2: 'Frühere Versionen', previous_meta: 'Abgelöste Versionen, zur Referenz aufbewahrt.',
-      v1_summary: 'Version 1.0 — Veröffentlicht am 2026-04-18',
-      v1_note: 'Die ursprüngliche PBL: kostenlos für persönlichen/nicht-kommerziellen Gebrauch, kommerzielle Nutzung erfordert eine Umsatzbeteiligungsvereinbarung mit dem Autor. Keine Governance, Abstimmungen oder Mehrfach-Eigentümerschaft — abgelöst durch v2.0.',
+      archive_toggle_label: 'Frühere Ausgaben (1)',
+      archive_intro: 'Abgelöster Text, zur Referenz aufbewahrt. Nur die obige Fassung ist derzeit gültig.',
+      archive_tag: 'Abgelöst', v1_date: 'Veröffentlicht am 2026-04-18',
       footer_note: 'Fragen zur kommerziellen Nutzung: ',
       theme_light: 'Zum hellen Modus wechseln', theme_dark: 'Zum dunklen Modus wechseln',
       translation_notice: 'Dies ist eine Übersetzung als Lesehilfe. Der englische Text ist die verbindliche und maßgebliche Fassung dieser Lizenz.',
@@ -475,13 +540,12 @@
       nav_source: '源代码', nav_breren: 'Breren ↗',
       eyebrow: '许可证',
       hero_title: 'PayBack License (PBL)',
-      hero_lede: '每个 Ran# 项目使用的许可证——个人、学术及非商业用途免费。本页保存当前文本及所有历史版本。',
-      current_h2: '当前版本 — 2.0 版', current_badge: '当前',
-      current_meta: '发布于 2026-05-12',
+      hero_lede: '个人、学术及非商业用途免费。这是每个 Ran# 项目所使用的许可证——完整文本见下方。',
+      effective_note: '自 2026-05-12 起生效',
       link_github: 'GitHub', link_raw: '原始文本',
-      previous_h2: '历史版本', previous_meta: '已被取代的版本，保留作参考。',
-      v1_summary: '1.0 版 — 发布于 2026-04-18',
-      v1_note: '最初的 PBL：个人/非商业用途免费，商业用途需与作者达成收入分成协议。没有治理、投票或多贡献者所有权机制——已被 2.0 版取代。',
+      archive_toggle_label: '历史版本（1）',
+      archive_intro: '已被取代的文本，仅作参考保留。目前生效的仅为上方版本。',
+      archive_tag: '已取代', v1_date: '发布于 2026-04-18',
       footer_note: '商业用途相关问题：',
       theme_light: '切换到浅色模式', theme_dark: '切换到深色模式',
       translation_notice: '本文为便利性翻译。英文文本为本许可证具有约束力的权威版本。',
@@ -491,13 +555,12 @@
       nav_source: 'ソース', nav_breren: 'Breren ↗',
       eyebrow: 'ライセンス',
       hero_title: 'PayBack License (PBL)',
-      hero_lede: 'すべての Ran# プロジェクトで使用されているライセンス — 個人・学術・非商業利用は無料です。このページには現在のテキストと過去のすべてのバージョンが掲載されています。',
-      current_h2: '現在 — バージョン 2.0', current_badge: '現在',
-      current_meta: '2026-05-12 リリース',
+      hero_lede: '個人・学術・非商業利用は無料です。すべての Ran# プロジェクトがこのライセンスの下にあります — 全文は以下でお読みいただけます。',
+      effective_note: '2026-05-12 より有効',
       link_github: 'GitHub', link_raw: '生テキスト',
-      previous_h2: '過去のバージョン', previous_meta: '置き換えられたバージョン。参考として保存。',
-      v1_summary: 'バージョン 1.0 — 2026-04-18 リリース',
-      v1_note: '元の PBL：個人・非商業利用は無料、商業利用には著者との収益分配契約が必要。ガバナンス、投票、複数貢献者による所有権の仕組みはなし — v2.0 により置き換え。',
+      archive_toggle_label: '過去の版（1）',
+      archive_intro: '置き換えられたテキストです。参考として保存されています。現在有効なのは上記の版のみです。',
+      archive_tag: '旧版', v1_date: '2026-04-18 リリース',
       footer_note: '商業利用に関するお問い合わせ: ',
       theme_light: 'ライトモードに切り替える', theme_dark: 'ダークモードに切り替える',
       translation_notice: 'これは参考用の翻訳です。本ライセンスの拘束力を持つ正式なテキストは英語版です。',
@@ -550,16 +613,15 @@
 
   function applyTexts() {
     document.getElementById('nav-source').textContent = t('nav_source');
-    document.getElementById('nav-breren').textContent = t('nav_breren');
+    document.getElementById('nav-breren-text').textContent = t('nav_breren');
     document.getElementById('eyebrow').textContent = t('eyebrow');
     document.getElementById('hero-title').textContent = t('hero_title');
     document.getElementById('hero-lede').textContent = t('hero_lede');
-    document.getElementById('current-h2').textContent = t('current_h2');
-    document.getElementById('current-badge').textContent = t('current_badge');
-    document.getElementById('current-meta').textContent = t('current_meta');
-    document.getElementById('previous-h2').textContent = t('previous_h2');
-    document.getElementById('previous-meta').textContent = t('previous_meta');
-    document.getElementById('v1-note').textContent = t('v1_note');
+    document.getElementById('effective-note').textContent = t('effective_note');
+    document.getElementById('archive-toggle-label').textContent = t('archive_toggle_label');
+    document.getElementById('archive-intro').textContent = t('archive_intro');
+    document.getElementById('archive-tag-v1').textContent = t('archive_tag');
+    document.getElementById('v1-date').textContent = t('v1_date');
     document.getElementById('footer-note').firstChild.textContent = t('footer_note');
     updateRawTitles();
     renderLicenses();
@@ -830,7 +892,7 @@
     paragraphs.forEach(function (para) {
       var first = para[0];
 
-      var boxMatch = /^ BOX(\d+) $/.exec(first.trim());
+      var boxMatch = /^ BOX(\d+) $/.exec(first.trim());
       if (boxMatch && para.length === 1) {
         listState.open = null;
         target.appendChild(makeTemplatePanel(boxes[+boxMatch[1]]));
@@ -909,7 +971,7 @@
         while (k < rawLines.length && !/^\s*━{5,}\s*$/.test(rawLines[k])) k++;
         var end = Math.min(k, rawLines.length - 1);
         boxes.push(rawLines.slice(start, end + 1).join('\n'));
-        lines.push(' BOX' + (boxes.length - 1) + ' ');
+        lines.push(' BOX' + (boxes.length - 1) + ' ');
         k = end + 1;
       } else {
         lines.push(rawLines[k]);

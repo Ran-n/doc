@@ -1,7 +1,7 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/08/04 19:13:09.904445 )
+[//]: # (+ Revised: 	2026/08/04 19:50:17.163883 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
@@ -17,11 +17,12 @@ All notable changes to this project are documented here.
 - **Stale translation banner on language switch (`docs/index.html`)** — the license-text loader left the previous language's "courtesy translation" notice on screen until the new language's fetch resolved, so a quick switch (or the `rn-preset` postMessage handshake reconciling the detected browser language to the embedding site's language) could show English page chrome next to a leftover Galician (or other) notice. The notice is now hidden immediately when a render starts, instead of only updating once the fetch completes.
 
 ### Added
+- **Breren logo on the "Breren ↗" nav link (`docs/index.html`)** — inlined the actual castro/hillfort mark from breren.com's `icons/breren-logo.svg` (with its built-in light/dark stroke colors) before the link text, instead of a plain text link.
 - **Per-document original/translation toggle (`docs/index.html`)** — a "View original" / "View translation" pill button on each license card lets that card be flipped to the English original independently of the site-wide language picker; only shown when a translation actually exists for the current UI language.
 - **Source icons per document (`docs/index.html`)** — each license card now links out to GitHub, GitLab, and Codeberg (official brand marks, inline SVG sprite) plus a raw-text link for each, replacing the old single GitHub-only text link. Grouped per platform, ordered to match the footer.
 
 ### Changed
-- **Current license section made collapsible (`docs/index.html`)** — the v2.0 license now sits in the same `<details>`/`<summary>` toggle used for previous versions, so it can be collapsed after reading instead of always taking up the full page; also dropped the "adds governance" one-line summary shown under the heading.
+- **Current license section made collapsible (`docs/index.html`)** — the v2.0 license now sits in the same `<details>`/`<summary>` toggle used for previous versions, so it can be collapsed after reading instead of always taking up the full page; also dropped the "adds governance" one-line summary shown under the heading, and (later) dropped the analogous one-line summary shown under v1.0 for the same reason.
 - **License page redesign (`docs/index.html`)** — the PBL v2.0/v1.0 text is no longer dumped into a monospace `<pre>` block; it's now parsed from structured plain text into a real document: headed sections, styled clause numbers, a proper definitions list, bullet/lettered lists, and literal governance file-format specimens (CONTRIBUTORS/VOTE templates, ballot/seal field lists) kept verbatim in distinct code panels instead of being mixed into prose.
 - **License text externalized** — moved out of inline JS template literals into `docs/license-text/pbl-{v1.0,v2.0}.<lang>.txt`, fetched at render time instead of being baked into the page; falls back to English automatically when a language's file doesn't exist yet.
 - **Multi-language license text** — added Spanish, Portuguese, French, German, Galician, and Japanese translations of PBL v1.0 (`docs/license-text/pbl-v1.0.*.txt`), with a "courtesy translation, English is binding" notice shown whenever a non-English translation is displayed. PBL v2.0 (the current version) is English-only for now — translating it is a much larger job and remains open; other languages transparently fall back to English for it with no notice shown.
