@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PayBack License (PBL) — Version History</title>
+<meta name="description" content="Canonical text and version history of the PayBack License (PBL), used by all Ran# projects.">
+<style>
+  :root {
+    --bg: #fbf1c7; --bg-soft: #f2e5bc; --fg: #3c3836; --fg-dim: #665c54;
+    --border: #d5c4a1; --accent: #af3a03; --accent-fg: #fbf1c7; --card: #f9f5d7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #282828; --bg-soft: #32302f; --fg: #ebdbb2; --fg-dim: #a89984;
+      --border: #504945; --accent: #fe8019; --accent-fg: #282828; --card: #3c3836;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #fbf1c7; --bg-soft: #f2e5bc; --fg: #3c3836; --fg-dim: #665c54;
+    --border: #d5c4a1; --accent: #af3a03; --accent-fg: #fbf1c7; --card: #f9f5d7;
+  }
+  :root[data-theme="dark"] {
+    --bg: #282828; --bg-soft: #32302f; --fg: #ebdbb2; --fg-dim: #a89984;
+    --border: #504945; --accent: #fe8019; --accent-fg: #282828; --card: #3c3836;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  h1 { font-size: 1.75rem; margin: 0 0 0.4rem; }
+  .lede { color: var(--fg-dim); margin: 0 0 2.5rem; max-width: 56ch; }
+  h2 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-dim); margin: 0 0 1rem; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+  }
+  .card.current { border-color: var(--accent); }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .version { font-size: 1.15rem; font-weight: 600; }
+  .badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; background: var(--accent); color: var(--accent-fg);
+    padding: 0.15rem 0.5rem; border-radius: 999px; margin-left: 0.5rem; vertical-align: middle;
+  }
+  .date { color: var(--fg-dim); font-size: 0.9rem; white-space: nowrap; }
+  .card p { margin: 0.6rem 0 0.8rem; color: var(--fg-dim); font-size: 0.95rem; }
+  .card ul { margin: 0.4rem 0 0.8rem; padding-left: 1.2rem; color: var(--fg-dim); font-size: 0.92rem; }
+  .card ul li { margin-bottom: 0.25rem; }
+  .links a {
+    color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.92rem;
+    border-bottom: 1px solid transparent;
+  }
+  .links a:hover { border-bottom-color: currentColor; }
+  .links span { color: var(--border); margin: 0 0.5rem; }
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--fg-dim); font-size: 0.85rem; }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>PayBack License (PBL)</h1>
+    <p class="lede">The license used by every Ran# project. Free for personal, academic, and non-commercial use — commercial use requires a revenue-share agreement. This page tracks every published version of the license text.</p>
+
+    <h2>Current</h2>
+    <div class="card current">
+      <div class="card-head">
+        <span class="version">Version 2.0<span class="badge">current</span></span>
+        <span class="date">Released 2026-05-12</span>
+      </div>
+      <p>Adds a full governance framework on top of the v1.0 core: ownership and revenue-share tracking via a <code>CONTRIBUTORS</code> file, a GPG-signed voting process for project decisions, patent handling, fork requirements, succession, indemnification, and export-compliance terms.</p>
+      <div class="links">
+        <a href="https://github.com/Ran-n/doc/blob/main/LICENSE">Read on GitHub</a>
+        <span>·</span>
+        <a href="https://raw.githubusercontent.com/Ran-n/doc/main/LICENSE">Raw text</a>
+      </div>
+    </div>
+
+    <h2>Past versions</h2>
+    <div class="card">
+      <div class="card-head">
+        <span class="version">Version 1.0</span>
+        <span class="date">Released 2026-04-18</span>
+      </div>
+      <p>The original PBL: free for personal/non-commercial use, commercial use requires a revenue-share agreement with the author. No governance, voting, or multi-contributor ownership mechanics — superseded by v2.0.</p>
+      <div class="links">
+        <a href="https://github.com/Ran-n/doc/blob/main/licenses/pbl_v1.0.md">Read on GitHub</a>
+        <span>·</span>
+        <a href="https://raw.githubusercontent.com/Ran-n/doc/main/licenses/pbl_v1.0.md">Raw text</a>
+      </div>
+    </div>
+
+    <footer>
+      Each project links to the license text at its own repository root, which always tracks the current version. Questions about commercial use: <a href="mailto:ran.hash@proton.me">ran.hash@proton.me</a>.
+      <br>
+      <a href="https://github.com/Ran-n/doc">Source on GitHub</a>
+      <span> · </span>
+      <a href="https://gitlab.com/Ran-n/doc">GitLab</a>
+      <span> · </span>
+      <a href="https://codeberg.org/ran-n/doc">Codeberg</a>
+    </footer>
+  </div>
+</body>
+</html>

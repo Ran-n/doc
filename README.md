@@ -1,3 +1,9 @@
+[//]: # ( ---------------------------------------------------------------------- )
+[//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
+[//]: # (+ Created: 	2026/06/18 12:58:21.273277 )
+[//]: # (+ Revised: 	2026/08/04 13:12:18.608781 )
+[//]: # ( ---------------------------------------------------------------------- )
+
 # doc
 
 Central documentation for all [Ran#](mailto:ran.hash@proton.me) projects — license, donations, and shared references.
@@ -17,6 +23,8 @@ All Ran# projects are released under the [PayBack License (PBL) v2.0](https://gi
 Free for personal and non-commercial use. Commercial use requires a revenue-share agreement — contact [ran.hash@proton.me](mailto:ran.hash@proton.me).
 
 Past versions are archived in [`licenses/`](https://github.com/Ran-n/doc/tree/main/licenses): [PBL v1.0](https://github.com/Ran-n/doc/blob/main/licenses/pbl_v1.0.md).
+
+See the [version history page](https://ran-n.github.io/doc/) for a browsable overview of every released version.
 
 ---
 
