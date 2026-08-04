@@ -202,6 +202,15 @@
   .version-entry-note {
     padding: 0 1.2rem 1rem; color: var(--fg-dim); font-size: 0.9rem; margin: 0;
   }
+  details.current-entry { margin-bottom: 0; }
+  details.current-entry summary { align-items: center; }
+  details.current-entry .current-entry-title {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-family: 'Unbounded', sans-serif; font-weight: 700;
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--fg);
+  }
+  details.current-entry .license-card { border: none; border-radius: 0; margin: 0 -1.2rem -1rem; }
+  details.current-entry .license-card-head { justify-content: flex-end; }
 
   footer.site {
     margin-top: 2.5rem; padding: 2rem 0 3rem; border-top: 1px solid var(--card-border);
@@ -244,19 +253,22 @@
     </section>
 
     <section class="doc-section">
-      <h2 id="current-h2">Current — Version 2.0<span class="badge" id="current-badge">current</span></h2>
-      <p class="section-meta">Released 2026-05-12</p>
-      <div class="license-card">
-        <div class="license-card-head">
-          <span id="current-summary"></span>
-          <div class="links">
-            <a href="https://github.com/Ran-n/doc/blob/main/LICENSE" target="_top" id="current-link-github">GitHub</a>
-            <a href="https://raw.githubusercontent.com/Ran-n/doc/main/LICENSE" target="_top" id="current-link-raw">Raw text</a>
+      <details class="version-entry current-entry" open>
+        <summary>
+          <span class="current-entry-title"><span class="chevron">▸</span><span id="current-h2">Current — Version 2.0</span><span class="badge" id="current-badge">current</span></span>
+          <span class="section-meta" id="current-meta">Released 2026-05-12</span>
+        </summary>
+        <div class="license-card">
+          <div class="license-card-head">
+            <div class="links">
+              <a href="https://github.com/Ran-n/doc/blob/main/LICENSE" target="_top" id="current-link-github" onclick="event.stopPropagation()">GitHub</a>
+              <a href="https://raw.githubusercontent.com/Ran-n/doc/main/LICENSE" target="_top" id="current-link-raw" onclick="event.stopPropagation()">Raw text</a>
+            </div>
           </div>
+          <p class="lic-notice" id="lic-notice" hidden></p>
+          <div class="lic-doc" id="current-body"></div>
         </div>
-        <p class="lic-notice" id="lic-notice" hidden></p>
-        <div class="lic-doc" id="current-body"></div>
-      </div>
+      </details>
     </section>
 
     <section class="doc-section">
@@ -322,7 +334,6 @@
       hero_lede: 'The license used by every Ran# project — free for personal, academic, and non-commercial use. This page holds the current text and every past version.',
       current_h2: 'Current — Version 2.0', current_badge: 'current',
       current_meta: 'Released 2026-05-12',
-      current_summary: 'Adds governance: ownership/revenue tracking, voting, patents, forks, succession.',
       link_github: 'GitHub', link_raw: 'Raw text',
       previous_h2: 'Previous versions', previous_meta: 'Superseded versions, kept for reference.',
       v1_summary: 'Version 1.0 — Released 2026-04-18',
@@ -338,7 +349,6 @@
       hero_lede: 'A licenza usada en todos os proxectos de Ran# — gratuíta para uso persoal, académico e non comercial. Esta páxina contén o texto actual e todas as versións anteriores.',
       current_h2: 'Actual — Versión 2.0', current_badge: 'actual',
       current_meta: 'Publicada o 2026-05-12',
-      current_summary: 'Engade goberno: seguimento de propiedade/ingresos, votacións, patentes, forks, sucesión.',
       link_github: 'GitHub', link_raw: 'Texto en bruto',
       previous_h2: 'Versións anteriores', previous_meta: 'Versións substituídas, conservadas como referencia.',
       v1_summary: 'Versión 1.0 — Publicada o 2026-04-18',
@@ -354,7 +364,6 @@
       hero_lede: 'La licencia usada en todos los proyectos de Ran# — gratuita para uso personal, académico y no comercial. Esta página contiene el texto actual y todas las versiones anteriores.',
       current_h2: 'Actual — Versión 2.0', current_badge: 'actual',
       current_meta: 'Publicada el 2026-05-12',
-      current_summary: 'Añade gobernanza: seguimiento de propiedad/ingresos, votaciones, patentes, forks, sucesión.',
       link_github: 'GitHub', link_raw: 'Texto sin formato',
       previous_h2: 'Versiones anteriores', previous_meta: 'Versiones sustituidas, conservadas como referencia.',
       v1_summary: 'Versión 1.0 — Publicada el 2026-04-18',
@@ -370,7 +379,6 @@
       hero_lede: 'A licença usada em todos os projetos Ran# — gratuita para uso pessoal, académico e não comercial. Esta página contém o texto atual e todas as versões anteriores.',
       current_h2: 'Atual — Versão 2.0', current_badge: 'atual',
       current_meta: 'Lançada em 2026-05-12',
-      current_summary: 'Adiciona governança: acompanhamento de propriedade/receita, votações, patentes, forks, sucessão.',
       link_github: 'GitHub', link_raw: 'Texto bruto',
       previous_h2: 'Versões anteriores', previous_meta: 'Versões substituídas, mantidas para referência.',
       v1_summary: 'Versão 1.0 — Lançada em 2026-04-18',
@@ -386,7 +394,6 @@
       hero_lede: "La licence utilisée par tous les projets Ran# — gratuite pour un usage personnel, académique et non commercial. Cette page contient le texte actuel et toutes les versions précédentes.",
       current_h2: 'Actuelle — Version 2.0', current_badge: 'actuelle',
       current_meta: 'Publiée le 2026-05-12',
-      current_summary: 'Ajoute la gouvernance : suivi de propriété/revenus, votes, brevets, forks, succession.',
       link_github: 'GitHub', link_raw: 'Texte brut',
       previous_h2: 'Versions précédentes', previous_meta: 'Versions remplacées, conservées à titre de référence.',
       v1_summary: 'Version 1.0 — Publiée le 2026-04-18',
@@ -402,7 +409,6 @@
       hero_lede: 'Die Lizenz, die von jedem Ran#-Projekt verwendet wird — kostenlos für den persönlichen, akademischen und nicht-kommerziellen Gebrauch. Diese Seite enthält den aktuellen Text und alle früheren Versionen.',
       current_h2: 'Aktuell — Version 2.0', current_badge: 'aktuell',
       current_meta: 'Veröffentlicht am 2026-05-12',
-      current_summary: 'Fügt Governance hinzu: Eigentums-/Umsatzverfolgung, Abstimmungen, Patente, Forks, Nachfolge.',
       link_github: 'GitHub', link_raw: 'Rohtext',
       previous_h2: 'Frühere Versionen', previous_meta: 'Abgelöste Versionen, zur Referenz aufbewahrt.',
       v1_summary: 'Version 1.0 — Veröffentlicht am 2026-04-18',
@@ -418,7 +424,6 @@
       hero_lede: '每个 Ran# 项目使用的许可证——个人、学术及非商业用途免费。本页保存当前文本及所有历史版本。',
       current_h2: '当前版本 — 2.0 版', current_badge: '当前',
       current_meta: '发布于 2026-05-12',
-      current_summary: '新增治理机制：所有权/收入追踪、投票、专利、分支、继承。',
       link_github: 'GitHub', link_raw: '原始文本',
       previous_h2: '历史版本', previous_meta: '已被取代的版本，保留作参考。',
       v1_summary: '1.0 版 — 发布于 2026-04-18',
@@ -434,7 +439,6 @@
       hero_lede: 'すべての Ran# プロジェクトで使用されているライセンス — 個人・学術・非商業利用は無料です。このページには現在のテキストと過去のすべてのバージョンが掲載されています。',
       current_h2: '現在 — バージョン 2.0', current_badge: '現在',
       current_meta: '2026-05-12 リリース',
-      current_summary: 'ガバナンスを追加：所有権・収益の追跡、投票、特許、フォーク、継承。',
       link_github: 'GitHub', link_raw: '生テキスト',
       previous_h2: '過去のバージョン', previous_meta: '置き換えられたバージョン。参考として保存。',
       v1_summary: 'バージョン 1.0 — 2026-04-18 リリース',
@@ -494,9 +498,9 @@
     document.getElementById('eyebrow').textContent = t('eyebrow');
     document.getElementById('hero-title').textContent = t('hero_title');
     document.getElementById('hero-lede').textContent = t('hero_lede');
-    document.getElementById('current-h2').firstChild.textContent = t('current_h2');
+    document.getElementById('current-h2').textContent = t('current_h2');
     document.getElementById('current-badge').textContent = t('current_badge');
-    document.getElementById('current-summary').textContent = t('current_summary');
+    document.getElementById('current-meta').textContent = t('current_meta');
     document.getElementById('current-link-github').textContent = t('link_github');
     document.getElementById('current-link-raw').textContent = t('link_raw');
     document.getElementById('previous-h2').textContent = t('previous_h2');
