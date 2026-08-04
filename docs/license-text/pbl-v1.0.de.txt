@@ -1,0 +1,80 @@
+PayBack License (PBL)
+Version 1.0
+
+Copyright (c) 2026 Ran#  <ran.hash@proton.me>
+
+─────────────────────────────────────────────────────────────────────────────
+PRÄAMBEL
+─────────────────────────────────────────────────────────────────────────────
+
+Diese Software ist für Menschen kostenlos. Für kommerzielle Zwecke ist sie es nicht.
+
+Wenn Sie diese Software — oder eine modifizierte, erweiterte oder abgeleitete Version
+davon — zur Erzielung von Einnahmen nutzen, schulden Sie dem ursprünglichen Autor einen
+Anteil dieser Einnahmen. Dies gilt unabhängig davon, in welchem Ausmaß der Code verändert
+wurde. Wenn dieser Code in der Kette ist, ist der Autor in der Kette.
+
+─────────────────────────────────────────────────────────────────────────────
+ERLAUBNISSE
+─────────────────────────────────────────────────────────────────────────────
+
+Sie dürfen:
+
+  - Diese Software für persönliche, akademische oder nicht-kommerzielle Zwecke nutzen
+  - Den Quellcode studieren, kopieren und verändern
+  - Originale oder veränderte Versionen weitergeben, sofern diese Lizenz unverändert
+    erhalten bleibt und der ursprüngliche Autor genannt wird
+
+─────────────────────────────────────────────────────────────────────────────
+BEDINGUNGEN
+─────────────────────────────────────────────────────────────────────────────
+
+1. NAMENSNENNUNG
+   Alle Weitergaben — original oder verändert — müssen diese Lizenz beibehalten und
+   den ursprünglichen Autor nennen:  Ran#  <ran.hash@proton.me>
+
+2. WEITERGABE UNTER GLEICHEN BEDINGUNGEN
+   Jede veränderte oder abgeleitete Version muss unter dieser selben Lizenz
+   veröffentlicht werden (PBL v1.0 oder höher).
+
+3. KOMMERZIELLE NUTZUNG ERFORDERT VEREINBARUNG
+   „Kommerzielle Nutzung" bedeutet jede Nutzung, bei der diese Software oder eine
+   davon abgeleitete Version direkt oder indirekt zur Erzielung von Einnahmen beiträgt.
+   Dies umfasst unter anderem:
+
+     - Den Verkauf der Software oder eines Produkts, das diese enthält
+     - Die Nutzung in einem kostenpflichtigen Dienst, SaaS oder Abonnementprodukt
+     - Die interne Nutzung in einem gewinnorientierten Unternehmen zur Kostensenkung
+       oder Leistungssteigerung
+     - Die Integration in ein größeres Produkt, das verkauft oder monetarisiert wird
+
+   Wenn Ihre Nutzung kommerzieller Natur ist, müssen Sie den Autor vor der
+   Inbetriebnahme kontaktieren und eine Umsatzbeteiligungsvereinbarung aushandeln.
+   Es ist kein fester Prozentsatz festgelegt — die Bedingungen werden zwischen den
+   Parteien vereinbart. Kommerzieller Betrieb ohne eine solche Vereinbarung stellt
+   einen Verstoß gegen diese Lizenz dar.
+
+─────────────────────────────────────────────────────────────────────────────
+DURCHSETZUNG
+─────────────────────────────────────────────────────────────────────────────
+
+Ein Verstoß gegen die kommerzielle Klausel — einschließlich der Nutzung ohne
+Vereinbarung, der absichtlichen Verschleierung der Präsenz der Software in einem Produkt
+oder der Umbenennung zur Umgehung der Namensnennung — entzieht unmittelbar und dauerhaft
+alle durch diese Lizenz gewährten Rechte.
+
+Der Autor behält sich das Recht vor, rückwirkend Entschädigung für nicht lizenzierte
+kommerzielle Nutzung zu verlangen.
+
+─────────────────────────────────────────────────────────────────────────────
+HAFTUNGSAUSSCHLUSS
+─────────────────────────────────────────────────────────────────────────────
+
+DIESE SOFTWARE WIRD "WIE BESEHEN" BEREITGESTELLT, OHNE JEGLICHE GEWÄHRLEISTUNG.
+DER AUTOR HAFTET NICHT FÜR SCHÄDEN, DIE AUS DER NUTZUNG ENTSTEHEN.
+
+─────────────────────────────────────────────────────────────────────────────
+KONTAKT
+─────────────────────────────────────────────────────────────────────────────
+
+Für eine kommerzielle Lizenz:  ran.hash@proton.me

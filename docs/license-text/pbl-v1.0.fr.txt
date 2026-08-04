@@ -1,0 +1,81 @@
+PayBack License (PBL)
+Version 1.0
+
+Copyright (c) 2026 Ran#  <ran.hash@proton.me>
+
+─────────────────────────────────────────────────────────────────────────────
+PRÉAMBULE
+─────────────────────────────────────────────────────────────────────────────
+
+Ce logiciel est gratuit pour les personnes. Il ne l'est pas pour le profit.
+
+Si vous utilisez cette œuvre — ou toute version modifiée, étendue ou dérivée
+de celle-ci — pour générer des revenus, vous devez reverser une part de ces
+revenus à l'auteur original. Cette règle s'applique indépendamment de
+l'ampleur des modifications apportées au code. Si ce code fait partie de la
+chaîne, l'auteur fait partie de la chaîne.
+
+─────────────────────────────────────────────────────────────────────────────
+AUTORISATIONS
+─────────────────────────────────────────────────────────────────────────────
+
+Vous êtes libre de :
+
+  - Utiliser ce logiciel à des fins personnelles, académiques ou non commerciales
+  - Étudier, copier et modifier le code source
+  - Distribuer des versions originales ou modifiées, à condition que cette
+    licence soit conservée intégralement et que l'auteur original soit crédité
+
+─────────────────────────────────────────────────────────────────────────────
+CONDITIONS
+─────────────────────────────────────────────────────────────────────────────
+
+1. ATTRIBUTION
+   Toutes les distributions — originales ou modifiées — doivent conserver cette
+   licence et créditer l'auteur original :  Ran#  <ran.hash@proton.me>
+
+2. PARTAGE À L'IDENTIQUE
+   Toute version modifiée ou dérivée doit être publiée sous cette même licence
+   (PBL v1.0 ou toute version ultérieure).
+
+3. USAGE COMMERCIAL SOUMIS À ACCORD
+   L'« usage commercial » désigne tout usage dans lequel ce logiciel, ou un
+   dérivé de celui-ci, contribue directement ou indirectement à la génération
+   de revenus. Cela comprend notamment, sans s'y limiter :
+
+     - La vente du logiciel ou d'un produit qui l'intègre
+     - Son utilisation dans un service payant, un SaaS ou un produit par
+       abonnement
+     - Son utilisation en interne au sein d'une entreprise à but lucratif
+       pour réduire les coûts ou augmenter la production
+     - Son intégration dans un produit plus large qui est vendu ou monétisé
+
+   Si votre usage est commercial, vous devez contacter l'auteur avant tout
+   déploiement et négocier un accord de partage des revenus. Aucun pourcentage
+   fixe n'est défini ici — les conditions sont convenues entre les parties.
+   Opérer commercialement sans accord constitue une violation de cette licence.
+
+─────────────────────────────────────────────────────────────────────────────
+APPLICATION
+─────────────────────────────────────────────────────────────────────────────
+
+Toute violation de la clause commerciale — y compris l'usage sans accord,
+l'obscurcissement délibéré de la présence du logiciel dans un produit, ou le
+renommage pour contourner l'attribution — révoque immédiatement et définitivement
+tous les droits accordés par cette licence.
+
+L'auteur se réserve le droit de réclamer rétroactivement une indemnisation pour
+tout usage commercial non autorisé.
+
+─────────────────────────────────────────────────────────────────────────────
+AVERTISSEMENT
+─────────────────────────────────────────────────────────────────────────────
+
+CE LOGICIEL EST FOURNI « EN L'ÉTAT », SANS GARANTIE D'AUCUNE SORTE. L'AUTEUR
+NE SAURAIT ÊTRE TENU RESPONSABLE DE TOUT DOMMAGE DÉCOULANT DE SON UTILISATION.
+
+─────────────────────────────────────────────────────────────────────────────
+CONTACT
+─────────────────────────────────────────────────────────────────────────────
+
+Pour obtenir une licence commerciale :  ran.hash@proton.me
