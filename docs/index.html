@@ -123,16 +123,29 @@
     overflow: hidden;
   }
   .license-card-head {
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    display: flex; align-items: center; justify-content: flex-end; gap: 0.75rem;
     padding: 0.9rem 1.2rem; border-bottom: 1px solid var(--card-border);
     flex-wrap: wrap;
   }
-  .license-card-head .links { display: flex; gap: 1rem; }
-  .license-card-head a {
-    color: var(--fg-dim); text-decoration: none; font-size: 0.82rem; font-weight: 600;
-    border-bottom: 1px solid transparent;
+
+  .lic-original-toggle {
+    margin-right: auto; font: inherit; cursor: pointer; white-space: nowrap;
+    border: 1px solid var(--card-border); border-radius: 999px; background: transparent;
+    color: var(--fg-dim); padding: 0.32rem 0.8rem; font-size: 0.78rem; font-weight: 600;
   }
-  .license-card-head a:hover { color: var(--accent); border-bottom-color: currentColor; }
+  .lic-original-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .lic-original-toggle[hidden] { display: none; }
+
+  .lic-sources { display: flex; align-items: center; gap: 0.85rem; }
+  .lic-source-group { display: flex; align-items: center; gap: 0.15rem; }
+  .lic-source-link, .lic-source-raw {
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--fg-dim); border-radius: 6px; padding: 0.32rem;
+    transition: color 0.15s, background 0.15s;
+  }
+  .lic-source-link:hover, .lic-source-raw:hover { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .lic-source-link svg { width: 1.05rem; height: 1.05rem; }
+  .lic-source-raw svg { width: 0.85rem; height: 0.85rem; }
 
   .lic-notice {
     display: flex; gap: 0.55rem; align-items: flex-start; margin: 0 0 1.1rem;
@@ -203,6 +216,7 @@
   .version-entry-note {
     padding: 0 1.2rem 1rem; color: var(--fg-dim); font-size: 0.9rem; margin: 0;
   }
+  .version-entry .license-card { margin: 0 1.2rem 1.2rem; }
   details.current-entry { margin-bottom: 0; }
   details.current-entry summary { align-items: center; }
   details.current-entry .current-entry-title {
@@ -211,7 +225,6 @@
     font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--fg);
   }
   details.current-entry .license-card { border: none; border-radius: 0; margin: 0 -1.2rem -1rem; }
-  details.current-entry .license-card-head { justify-content: flex-end; }
 
   footer.site {
     margin-top: 2.5rem; padding: 2rem 0 3rem; border-top: 1px solid var(--card-border);
@@ -223,6 +236,13 @@
 </style>
 </head>
 <body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-github" viewBox="0 0 16 16"><path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656" fill="currentColor"/></symbol>
+  <symbol id="icon-gitlab" viewBox="0 0 24 24"><path d="m23.6004 9.5927-.0337-.0862L20.3.9814a.851.851 0 0 0-.3362-.405.8748.8748 0 0 0-.9997.0539.8748.8748 0 0 0-.29.4399l-2.2055 6.748H7.5375l-2.2057-6.748a.8573.8573 0 0 0-.29-.4412.8748.8748 0 0 0-.9997-.0537.8585.8585 0 0 0-.3362.4049L.4332 9.5015l-.0325.0862a6.0657 6.0657 0 0 0 2.0119 7.0105l.0113.0087.03.0213 4.976 3.7264 2.462 1.8633 1.4995 1.1321a1.0085 1.0085 0 0 0 1.2197 0l1.4995-1.1321 2.4619-1.8633 5.006-3.7489.0125-.01a6.0682 6.0682 0 0 0 2.0094-7.003z" fill="currentColor"/></symbol>
+  <symbol id="icon-codeberg" viewBox="0 0 24 24"><path d="M11.999.747A11.974 11.974 0 0 0 0 12.75c0 2.254.635 4.465 1.833 6.376L11.837 6.19c.072-.092.251-.092.323 0l4.178 5.402h-2.992l.065.239h3.113l.882 1.138h-3.674l.103.374h3.86l.777 1.003h-4.358l.135.483h4.593l.695.894h-5.038l.165.589h5.326l.609.785h-5.717l.182.65h6.038l.562.727h-6.397l.183.65h6.717A12.003 12.003 0 0 0 24 12.75 11.977 11.977 0 0 0 11.999.747zm3.654 19.104.182.65h5.326c.173-.204.353-.433.513-.65zm.385 1.377.18.65h3.563c.233-.198.485-.428.712-.65zm.383 1.377.182.648h1.203c.356-.204.685-.412 1.042-.648z" fill="currentColor"/></symbol>
+  <symbol id="icon-raw" viewBox="0 0 16 16"><path d="M9.5 1.5a.5.5 0 0 0-.5-.5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6.5a.5.5 0 0 0-.146-.354l-4-4A.5.5 0 0 0 9.5 1.5zM4 2h5v3a1 1 0 0 0 1 1h3v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm6 .707L12.293 5H10.5a.5.5 0 0 1-.5-.5V2.707zM4.5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 2.5a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6z" fill="currentColor"/></symbol>
+</svg>
 
 <div class="wrap">
   <header class="site">
@@ -261,9 +281,20 @@
         </summary>
         <div class="license-card">
           <div class="license-card-head">
-            <div class="links">
-              <a href="https://github.com/Ran-n/doc/blob/main/LICENSE" target="_top" id="current-link-github" onclick="event.stopPropagation()">GitHub</a>
-              <a href="https://raw.githubusercontent.com/Ran-n/doc/main/LICENSE" target="_top" id="current-link-raw" onclick="event.stopPropagation()">Raw text</a>
+            <button type="button" class="lic-original-toggle" id="current-original-toggle" hidden></button>
+            <div class="lic-sources">
+              <span class="lic-source-group">
+                <a class="lic-source-link" href="https://github.com/Ran-n/doc/blob/main/LICENSE" target="_top" title="GitHub" aria-label="GitHub" onclick="event.stopPropagation()"><svg><use href="#icon-github"/></svg></a>
+                <a class="lic-source-raw" href="https://raw.githubusercontent.com/Ran-n/doc/main/LICENSE" target="_top" title="Raw — GitHub" id="current-link-raw-github" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
+              </span>
+              <span class="lic-source-group">
+                <a class="lic-source-link" href="https://gitlab.com/Ran-n/doc/-/blob/main/LICENSE" target="_top" title="GitLab" aria-label="GitLab" onclick="event.stopPropagation()"><svg><use href="#icon-gitlab"/></svg></a>
+                <a class="lic-source-raw" href="https://gitlab.com/Ran-n/doc/-/raw/main/LICENSE" target="_top" title="Raw — GitLab" id="current-link-raw-gitlab" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
+              </span>
+              <span class="lic-source-group">
+                <a class="lic-source-link" href="https://codeberg.org/ran-n/doc/src/branch/main/LICENSE" target="_top" title="Codeberg" aria-label="Codeberg" onclick="event.stopPropagation()"><svg><use href="#icon-codeberg"/></svg></a>
+                <a class="lic-source-raw" href="https://codeberg.org/ran-n/doc/raw/branch/main/LICENSE" target="_top" title="Raw — Codeberg" id="current-link-raw-codeberg" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
+              </span>
             </div>
           </div>
           <p class="lic-notice" id="lic-notice" hidden></p>
@@ -279,13 +310,29 @@
       <details class="version-entry">
         <summary>
           <span><span class="chevron">▸</span>Version 1.0 — Released 2026-04-18</span>
-          <span class="links">
-            <a href="https://github.com/Ran-n/doc/blob/main/licenses/pbl_v1.0.md" target="_top" onclick="event.stopPropagation()">GitHub</a>
-          </span>
         </summary>
         <p class="version-entry-note" id="v1-note">The original PBL: free for personal/non-commercial use, commercial use requires a revenue-share agreement with the author. No governance, voting, or multi-contributor ownership mechanics — superseded by v2.0.</p>
-        <p class="lic-notice" id="v1-notice" hidden></p>
-        <div class="lic-doc" id="v1-body"></div>
+        <div class="license-card">
+          <div class="license-card-head">
+            <button type="button" class="lic-original-toggle" id="v1-original-toggle" hidden></button>
+            <div class="lic-sources">
+              <span class="lic-source-group">
+                <a class="lic-source-link" href="https://github.com/Ran-n/doc/blob/main/licenses/pbl_v1.0.md" target="_top" title="GitHub" aria-label="GitHub" onclick="event.stopPropagation()"><svg><use href="#icon-github"/></svg></a>
+                <a class="lic-source-raw" href="https://raw.githubusercontent.com/Ran-n/doc/main/licenses/pbl_v1.0.md" target="_top" title="Raw — GitHub" id="v1-link-raw-github" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
+              </span>
+              <span class="lic-source-group">
+                <a class="lic-source-link" href="https://gitlab.com/Ran-n/doc/-/blob/main/licenses/pbl_v1.0.md" target="_top" title="GitLab" aria-label="GitLab" onclick="event.stopPropagation()"><svg><use href="#icon-gitlab"/></svg></a>
+                <a class="lic-source-raw" href="https://gitlab.com/Ran-n/doc/-/raw/main/licenses/pbl_v1.0.md" target="_top" title="Raw — GitLab" id="v1-link-raw-gitlab" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
+              </span>
+              <span class="lic-source-group">
+                <a class="lic-source-link" href="https://codeberg.org/ran-n/doc/src/branch/main/licenses/pbl_v1.0.md" target="_top" title="Codeberg" aria-label="Codeberg" onclick="event.stopPropagation()"><svg><use href="#icon-codeberg"/></svg></a>
+                <a class="lic-source-raw" href="https://codeberg.org/ran-n/doc/raw/branch/main/licenses/pbl_v1.0.md" target="_top" title="Raw — Codeberg" id="v1-link-raw-codeberg" onclick="event.stopPropagation()"><svg><use href="#icon-raw"/></svg></a>
+              </span>
+            </div>
+          </div>
+          <p class="lic-notice" id="v1-notice" hidden></p>
+          <div class="lic-doc" id="v1-body"></div>
+        </div>
       </details>
     </section>
   </div>
@@ -341,7 +388,8 @@
       v1_note: 'The original PBL: free for personal/non-commercial use, commercial use requires a revenue-share agreement with the author. No governance, voting, or multi-contributor ownership mechanics — superseded by v2.0.',
       footer_note: 'Questions about commercial use: ',
       theme_light: 'Switch to light mode', theme_dark: 'Switch to dark mode',
-      translation_notice: ''
+      translation_notice: '',
+      view_original: 'View original', view_translation: 'View translation'
     },
     gl: {
       nav_source: 'Código', nav_breren: 'Breren ↗',
@@ -356,7 +404,8 @@
       v1_note: 'A PBL orixinal: gratuíta para uso persoal/non comercial, o uso comercial require un acordo de reparto de ingresos co autor. Sen goberno, votacións nin propiedade multi-contribuínte — substituída pola v2.0.',
       footer_note: 'Preguntas sobre uso comercial: ',
       theme_light: 'Cambiar a modo claro', theme_dark: 'Cambiar a modo escuro',
-      translation_notice: 'Esta é unha tradución de cortesía. O texto en inglés é a versión vinculante e autoritativa desta licenza.'
+      translation_notice: 'Esta é unha tradución de cortesía. O texto en inglés é a versión vinculante e autoritativa desta licenza.',
+      view_original: 'Ver orixinal', view_translation: 'Ver tradución'
     },
     es: {
       nav_source: 'Código', nav_breren: 'Breren ↗',
@@ -371,7 +420,8 @@
       v1_note: 'La PBL original: gratuita para uso personal/no comercial, el uso comercial requiere un acuerdo de reparto de ingresos con el autor. Sin gobernanza, votaciones ni propiedad multi-contribuyente — sustituida por la v2.0.',
       footer_note: 'Preguntas sobre uso comercial: ',
       theme_light: 'Cambiar a modo claro', theme_dark: 'Cambiar a modo oscuro',
-      translation_notice: 'Esta es una traducción de cortesía. El texto en inglés es la versión vinculante y autoritativa de esta licencia.'
+      translation_notice: 'Esta es una traducción de cortesía. El texto en inglés es la versión vinculante y autoritativa de esta licencia.',
+      view_original: 'Ver original', view_translation: 'Ver traducción'
     },
     pt: {
       nav_source: 'Código', nav_breren: 'Breren ↗',
@@ -386,7 +436,8 @@
       v1_note: 'A PBL original: gratuita para uso pessoal/não comercial, o uso comercial requer um acordo de partilha de receita com o autor. Sem governança, votações ou propriedade multi-contribuinte — substituída pela v2.0.',
       footer_note: 'Perguntas sobre uso comercial: ',
       theme_light: 'Mudar para o modo claro', theme_dark: 'Mudar para o modo escuro',
-      translation_notice: 'Esta é uma tradução de cortesia. O texto em inglês é a versão vinculativa e autoritativa desta licença.'
+      translation_notice: 'Esta é uma tradução de cortesia. O texto em inglês é a versão vinculativa e autoritativa desta licença.',
+      view_original: 'Ver original', view_translation: 'Ver tradução'
     },
     fr: {
       nav_source: 'Code source', nav_breren: 'Breren ↗',
@@ -401,7 +452,8 @@
       v1_note: "La PBL originale : gratuite pour un usage personnel/non commercial, l'usage commercial nécessite un accord de partage des revenus avec l'auteur. Aucune gouvernance, vote ni propriété multi-contributeur — remplacée par la v2.0.",
       footer_note: 'Questions sur l’usage commercial : ',
       theme_light: 'Passer en mode clair', theme_dark: 'Passer en mode sombre',
-      translation_notice: "Ceci est une traduction de courtoisie. Le texte anglais est la version faisant foi et ayant force obligatoire de cette licence."
+      translation_notice: "Ceci est une traduction de courtoisie. Le texte anglais est la version faisant foi et ayant force obligatoire de cette licence.",
+      view_original: 'Voir l’original', view_translation: 'Voir la traduction'
     },
     de: {
       nav_source: 'Quellcode', nav_breren: 'Breren ↗',
@@ -416,7 +468,8 @@
       v1_note: 'Die ursprüngliche PBL: kostenlos für persönlichen/nicht-kommerziellen Gebrauch, kommerzielle Nutzung erfordert eine Umsatzbeteiligungsvereinbarung mit dem Autor. Keine Governance, Abstimmungen oder Mehrfach-Eigentümerschaft — abgelöst durch v2.0.',
       footer_note: 'Fragen zur kommerziellen Nutzung: ',
       theme_light: 'Zum hellen Modus wechseln', theme_dark: 'Zum dunklen Modus wechseln',
-      translation_notice: 'Dies ist eine Übersetzung als Lesehilfe. Der englische Text ist die verbindliche und maßgebliche Fassung dieser Lizenz.'
+      translation_notice: 'Dies ist eine Übersetzung als Lesehilfe. Der englische Text ist die verbindliche und maßgebliche Fassung dieser Lizenz.',
+      view_original: 'Original anzeigen', view_translation: 'Übersetzung anzeigen'
     },
     zh: {
       nav_source: '源代码', nav_breren: 'Breren ↗',
@@ -431,7 +484,8 @@
       v1_note: '最初的 PBL：个人/非商业用途免费，商业用途需与作者达成收入分成协议。没有治理、投票或多贡献者所有权机制——已被 2.0 版取代。',
       footer_note: '商业用途相关问题：',
       theme_light: '切换到浅色模式', theme_dark: '切换到深色模式',
-      translation_notice: '本文为便利性翻译。英文文本为本许可证具有约束力的权威版本。'
+      translation_notice: '本文为便利性翻译。英文文本为本许可证具有约束力的权威版本。',
+      view_original: '查看原文', view_translation: '查看译文'
     },
     ja: {
       nav_source: 'ソース', nav_breren: 'Breren ↗',
@@ -446,7 +500,8 @@
       v1_note: '元の PBL：個人・非商業利用は無料、商業利用には著者との収益分配契約が必要。ガバナンス、投票、複数貢献者による所有権の仕組みはなし — v2.0 により置き換え。',
       footer_note: '商業利用に関するお問い合わせ: ',
       theme_light: 'ライトモードに切り替える', theme_dark: 'ダークモードに切り替える',
-      translation_notice: 'これは参考用の翻訳です。本ライセンスの拘束力を持つ正式なテキストは英語版です。'
+      translation_notice: 'これは参考用の翻訳です。本ライセンスの拘束力を持つ正式なテキストは英語版です。',
+      view_original: '原文を表示', view_translation: '翻訳を表示'
     }
   };
 
@@ -502,14 +557,24 @@
     document.getElementById('current-h2').textContent = t('current_h2');
     document.getElementById('current-badge').textContent = t('current_badge');
     document.getElementById('current-meta').textContent = t('current_meta');
-    document.getElementById('current-link-github').textContent = t('link_github');
-    document.getElementById('current-link-raw').textContent = t('link_raw');
     document.getElementById('previous-h2').textContent = t('previous_h2');
     document.getElementById('previous-meta').textContent = t('previous_meta');
     document.getElementById('v1-note').textContent = t('v1_note');
     document.getElementById('footer-note').firstChild.textContent = t('footer_note');
+    updateRawTitles();
     renderLicenses();
     updateBrerenLinks();
+  }
+
+  function updateRawTitles() {
+    ['current-link-raw-github', 'current-link-raw-gitlab', 'current-link-raw-codeberg',
+     'v1-link-raw-github', 'v1-link-raw-gitlab', 'v1-link-raw-codeberg'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var platform = el.title.split('—').pop().trim();
+      el.title = t('link_raw') + ' — ' + platform;
+      el.setAttribute('aria-label', el.title);
+    });
   }
 
   // A plain top-level navigation (target="_top" link click) can't carry a
@@ -546,6 +611,11 @@
   var LICENSE_CACHE = {};
   var licenseRenderToken = 0;
 
+  // Per-card override: when true, that card shows the English original even
+  // though the page's UI language is a translation. Toggled independently
+  // per document by the "view original / view translation" button.
+  var ORIGINAL_OVERRIDE = { 'current-body': false, 'v1-body': false };
+
   function fetchLicenseText(basename, lang) {
     var key = basename + '.' + lang;
     if (!LICENSE_CACHE[key]) {
@@ -559,15 +629,18 @@
 
   function renderLicenses() {
     var token = ++licenseRenderToken;
-    renderLicenseInto('current-body', 'lic-notice', 'pbl-v2.0', token);
-    renderLicenseInto('v1-body', 'v1-notice', 'pbl-v1.0', token);
+    renderLicenseInto('current-body', 'lic-notice', 'current-original-toggle', 'pbl-v2.0', token);
+    renderLicenseInto('v1-body', 'v1-notice', 'v1-original-toggle', 'pbl-v1.0', token);
   }
 
-  function renderLicenseInto(bodyId, noticeId, basename, token) {
+  function renderLicenseInto(bodyId, noticeId, toggleId, basename, token) {
     var bodyEl = document.getElementById(bodyId);
     var noticeEl = document.getElementById(noticeId);
+    var toggleEl = document.getElementById(toggleId);
     if (!bodyEl) return;
-    var requestedLang = currentLang;
+    var uiLang = currentLang;
+    var showOriginal = ORIGINAL_OVERRIDE[bodyId];
+    var requestedLang = showOriginal ? 'en' : uiLang;
     var resolvedLang = requestedLang;
 
     // Hide any notice left over from a previous language immediately —
@@ -575,14 +648,23 @@
     // fetch resolves, instead of disappearing the moment the switch happens.
     if (noticeEl) noticeEl.hidden = true;
 
-    fetchLicenseText(basename, requestedLang)
+    // Whether a translation actually exists for the UI language, independent
+    // of the override above — decides whether the toggle button shows at all.
+    var translationExists = uiLang === 'en'
+      ? Promise.resolve(false)
+      : fetchLicenseText(basename, uiLang).then(function () { return true; }, function () { return false; });
+
+    var textPromise = fetchLicenseText(basename, requestedLang)
       .catch(function () {
         if (requestedLang === 'en') throw new Error('missing base license text: ' + basename);
         resolvedLang = 'en';
         return fetchLicenseText(basename, 'en');
-      })
-      .then(function (text) {
+      });
+
+    Promise.all([textPromise, translationExists])
+      .then(function (results) {
         if (token !== licenseRenderToken) return; // superseded by a later language switch
+        var text = results[0], hasTranslation = results[1];
         bodyEl.innerHTML = '';
         bodyEl.appendChild(parseLicenseText(text));
         if (noticeEl) {
@@ -594,11 +676,31 @@
             noticeEl.textContent = t('translation_notice');
           }
         }
+        if (toggleEl) {
+          if (hasTranslation) {
+            toggleEl.hidden = false;
+            toggleEl.textContent = showOriginal ? t('view_translation') : t('view_original');
+          } else {
+            toggleEl.hidden = true;
+          }
+        }
       })
       .catch(function () {
         if (token !== licenseRenderToken) return;
         bodyEl.textContent = 'Unable to load license text.';
       });
+  }
+
+  function setupOriginalToggles() {
+    Object.keys(ORIGINAL_OVERRIDE).forEach(function (bodyId) {
+      var toggleId = bodyId === 'current-body' ? 'current-original-toggle' : 'v1-original-toggle';
+      var el = document.getElementById(toggleId);
+      if (!el) return;
+      el.addEventListener('click', function () {
+        ORIGINAL_OVERRIDE[bodyId] = !ORIGINAL_OVERRIDE[bodyId];
+        renderLicenses();
+      });
+    });
   }
 
   function splitParagraphs(lines) {
@@ -939,6 +1041,7 @@
 
   setupLangPicker();
   setupThemeToggle();
+  setupOriginalToggles();
   applyTheme(effectiveTheme());
   document.documentElement.lang = currentLang;
   applyTexts();

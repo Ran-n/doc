@@ -1,7 +1,7 @@
 [//]: # ( ---------------------------------------------------------------------- )
 [//]: # (+ Authors: 	Ran# <ran.hash@proton.me> )
 [//]: # (+ Created: 	2026/05/05 19:02:30.613699 )
-[//]: # (+ Revised: 	2026/08/04 18:48:21.678177 )
+[//]: # (+ Revised: 	2026/08/04 19:13:09.904445 )
 [//]: # ( ---------------------------------------------------------------------- )
 
 # Changelog
@@ -15,6 +15,10 @@ All notable changes to this project are documented here.
 ### Fixed
 - **Translation notice ignored its own `hidden` attribute (`docs/index.html`)** — `.lic-notice` set `display: flex` unconditionally, which as an author stylesheet rule overrides the browser's default `[hidden] { display: none; }`, so the courtesy-translation banner stayed visible (often with stale text from a previously rendered language) even when JS had correctly marked it hidden for English. Added an explicit `.lic-notice[hidden] { display: none; }` rule and clear the text when hiding.
 - **Stale translation banner on language switch (`docs/index.html`)** — the license-text loader left the previous language's "courtesy translation" notice on screen until the new language's fetch resolved, so a quick switch (or the `rn-preset` postMessage handshake reconciling the detected browser language to the embedding site's language) could show English page chrome next to a leftover Galician (or other) notice. The notice is now hidden immediately when a render starts, instead of only updating once the fetch completes.
+
+### Added
+- **Per-document original/translation toggle (`docs/index.html`)** — a "View original" / "View translation" pill button on each license card lets that card be flipped to the English original independently of the site-wide language picker; only shown when a translation actually exists for the current UI language.
+- **Source icons per document (`docs/index.html`)** — each license card now links out to GitHub, GitLab, and Codeberg (official brand marks, inline SVG sprite) plus a raw-text link for each, replacing the old single GitHub-only text link. Grouped per platform, ordered to match the footer.
 
 ### Changed
 - **Current license section made collapsible (`docs/index.html`)** — the v2.0 license now sits in the same `<details>`/`<summary>` toggle used for previous versions, so it can be collapsed after reading instead of always taking up the full page; also dropped the "adds governance" one-line summary shown under the heading.
